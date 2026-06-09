@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Introduction Card — LEC Colchester 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#f5f4f0;color:#1a1a18;padding:16px;font-size:13px}
+h1{font-size:17px;font-weight:500;margin-bottom:2px}
+.sub{font-size:12px;color:#666;margin-bottom:16px}
+.card{background:#fff;border:0.5px solid #ddd;border-radius:12px;padding:16px 18px;margin-bottom:10px}
+.sec{font-size:10px;font-weight:500;color:#aaa;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+.field{margin-bottom:10px}
+.field label{font-size:12px;color:#555;display:block;margin-bottom:3px}
+.field input,.field textarea{width:100%;border:0.5px solid #ccc;border-radius:8px;padding:7px 10px;font-size:13px;background:#fff;color:#1a1a18;font-family:inherit;resize:none}
+.field input:focus,.field textarea:focus{outline:none;border-color:#888}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pill-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.pill{padding:4px 11px;border-radius:20px;font-size:11px;border:0.5px solid #ccc;cursor:pointer;transition:background .12s;background:#fff}
+.pill.sel{background:#1a1a18;color:#fff;border-color:transparent}
+.check-row{display:flex;align-items:center;gap:8px;margin-top:5px}
+.check-row input[type=checkbox]{width:15px;height:15px;cursor:pointer;accent-color:#1a1a18}
+.check-row label{font-size:12px;color:#555;cursor:pointer}
+.phrase-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.phrase{background:#f5f4f0;border-radius:8px;padding:7px 10px;font-size:11px;line-height:1.4}
+.phrase .en{font-weight:500;color:#1a1a18}
+.phrase .fr{color:#888;font-size:10px}
+.btn-row{display:flex;gap:8px;margin-top:4px;flex-wrap:wrap}
+button{padding:7px 16px;font-size:13px;border:0.5px solid #ccc;border-radius:8px;background:transparent;color:#1a1a18;cursor:pointer;font-family:inherit}
+button:hover{background:#eee}
+button.primary{background:#1a1a18;color:#fff;border-color:transparent}
+button.primary:hover{opacity:.85}
+.preview{background:#f5f4f0;border:0.5px solid #ccc;border-radius:8px;padding:14px 16px;margin-top:12px;font-size:13px;line-height:1.8;white-space:pre-wrap;display:none}
+.help{font-size:11px;color:#aaa;margin-top:8px;line-height:1.5}
+
+/* ── PRINT ── */
+@media print{
+  body{background:#fff;padding:6mm;font-size:11px}
+  .no-print{display:none!important}
+  .card{border:0.5px solid #ccc;border-radius:6px;padding:10px 12px;margin-bottom:6mm;break-inside:avoid}
+  .field input,.field textarea{border:none;border-bottom:0.5px solid #ccc;border-radius:0;padding:2px 0;font-size:11px}
+  .phrase-grid{gap:4px}
+  .phrase{padding:5px 7px}
+  h1{font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<h1>My introduction card 🇬🇧</h1>
+<p class="sub">Fill this in before you arrive — show it on your phone or give a printed copy to your host family.</p>
+
+<div class="card">
+  <p class="sec">About me</p>
+  <div class="two">
+    <div class="field"><label>First name</label><input id="fn" placeholder="e.g. Léa"/></div>
+    <div class="field"><label>Age</label><input id="age" type="number" min="14" max="19" placeholder="15"/></div>
+  </div>
+  <div class="field"><label>I come from…</label><input id="from" placeholder="e.g. Lyon, France"/></div>
+  <div class="field"><label>At home I live with…</label><input id="fam" placeholder="e.g. my mum, my dad and my sister Emma"/></div>
+  <div class="field"><label>My hobbies &amp; interests</label><input id="hobbies" placeholder="e.g. football, drawing, playing guitar"/></div>
+  <div class="field"><label>My favourites (food / music / subject…)</label><input id="fav" placeholder="e.g. pizza / pop music / science"/></div>
+  <div class="field"><label>One thing I'm excited about in England</label><input id="excited" placeholder="e.g. I'm really looking forward to visiting Cambridge!"/></div>
+</div>
+
+<div class="card">
+  <p class="sec">Practical info for my host family</p>
+  <div class="field">
+    <label>My level of English</label>
+    <div class="pill-row">
+      <span class="pill" data-v="A1" onclick="selPill(this)">A1 — beginner</span>
+      <span class="pill" data-v="A2" onclick="selPill(this)">A2 — elementary</span>
+      <span class="pill" data-v="B1" onclick="selPill(this)">B1 — intermediate</span>
+      <span class="pill" data-v="B2" onclick="selPill(this)">B2 — upper-intermediate</span>
+    </div>
+    <input type="hidden" id="level"/>
+  </div>
+  <div class="field">
+    <label>Food allergies or dietary needs</label>
+    <div class="check-row"><input type="checkbox" id="al-none" onchange="toggleNone(this)"><label for="al-none">None / no restrictions</label></div>
+    <div class="check-row"><input type="checkbox" id="al-gluten"><label for="al-gluten">Gluten-free</label></div>
+    <div class="check-row"><input type="checkbox" id="al-dairy"><label for="al-dairy">Dairy-free / lactose intolerant</label></div>
+    <div class="check-row"><input type="checkbox" id="al-nut"><label for="al-nut">⚠ Nut allergy (serious)</label></div>
+    <div class="check-row"><input type="checkbox" id="al-veg"><label for="al-veg">Vegetarian</label></div>
+    <div class="check-row" style="align-items:flex-start">
+      <input type="checkbox" id="al-other" style="margin-top:2px">
+      <label for="al-other">Other:</label>
+      <input type="text" id="al-other-txt" style="flex:1;margin-left:6px;padding:3px 8px;font-size:12px;border:0.5px solid #ccc;border-radius:6px" placeholder="please specify…"/>
+    </div>
+  </div>
+  <div class="field">
+    <label>Anything else my host family should know</label>
+    <textarea id="other" rows="2" placeholder="e.g. I go to bed late / I'm shy at first / I love helping in the kitchen…"></textarea>
+  </div>
+</div>
+
+<div class="card">
+  <p class="sec">Useful phrases — pour briser la glace 🗣</p>
+  <p class="help" style="margin-bottom:6px">Point and read if you're stuck!</p>
+  <div class="phrase-grid">
+    <div class="phrase"><div class="en">Hello! I'm [name]. Nice to meet you!</div><div class="fr">Bonjour, je m'appelle… Enchanté(e) !</div></div>
+    <div class="phrase"><div class="en">Thank you for having me.</div><div class="fr">Merci de m'accueillir.</div></div>
+    <div class="phrase"><div class="en">I'm a bit tired from the journey.</div><div class="fr">Je suis un peu fatigué(e) du voyage.</div></div>
+    <div class="phrase"><div class="en">Could you repeat that, please?</div><div class="fr">Pourriez-vous répéter, s'il vous plaît ?</div></div>
+    <div class="phrase"><div class="en">I don't understand, but I'll try!</div><div class="fr">Je ne comprends pas, mais je vais essayer !</div></div>
+    <div class="phrase"><div class="en">What time is dinner, please?</div><div class="fr">À quelle heure est le dîner, s'il vous plaît ?</div></div>
+    <div class="phrase"><div class="en">Can I help with anything?</div><div class="fr">Est-ce que je peux aider ?</div></div>
+    <div class="phrase"><div class="en">I'm looking forward to this week!</div><div class="fr">J'ai hâte de cette semaine ici !</div></div>
+  </div>
+</div>
+
+<div class="btn-row no-print">
+  <button class="primary" onclick="gen()">Generate my card ↗</button>
+  <button onclick="copyTxt()">Copy text</button>
+  <button onclick="window.print()">Print 🖨</button>
+  <button onclick="clearAll()">Clear</button>
+</div>
+<div class="preview" id="preview"></div>
+<p class="help no-print" id="hint" style="display:none">👆 Copy and paste into a message, or print this page to give to your host family.</p>
+
+<script>
+function selPill(el){document.querySelectorAll('.pill').forEach(p=>p.classList.remove('sel'));el.classList.add('sel');document.getElementById('level').value=el.dataset.v;}
+function toggleNone(cb){if(cb.checked){['al-gluten','al-dairy','al-nut','al-veg','al-other'].forEach(id=>document.getElementById(id).checked=false);}}
+function getAllergies(){
+  const m={'al-gluten':'gluten-free','al-dairy':'dairy-free / lactose intolerant','al-nut':'NUT ALLERGY ⚠','al-veg':'vegetarian'};
+  const out=[];
+  for(const[id,l]of Object.entries(m)){if(document.getElementById(id).checked)out.push(l);}
+  if(document.getElementById('al-other').checked){const t=document.getElementById('al-other-txt').value.trim();if(t)out.push(t);}
+  if(document.getElementById('al-none').checked)out.push('none');
+  return out.length?out.join(', '):'not specified';
+}
+function gen(){
+  const fn=document.getElementById('fn').value.trim()||'[your name]';
+  const age=document.getElementById('age').value||'?';
+  const from=document.getElementById('from').value.trim()||'France';
+  const fam=document.getElementById('fam').value.trim();
+  const hobbies=document.getElementById('hobbies').value.trim();
+  const fav=document.getElementById('fav').value.trim();
+  const excited=document.getElementById('excited').value.trim();
+  const level=document.getElementById('level').value||'not specified';
+  const other=document.getElementById('other').value.trim();
+  let t=`── Hello from ${fn}! ──\n\n`;
+  t+=`Hi! My name is ${fn} and I am ${age} years old. I come from ${from}.\n`;
+  if(fam)t+=`At home I live with ${fam}.\n`;
+  if(hobbies)t+=`My hobbies: ${hobbies}.\n`;
+  if(fav)t+=`My favourites: ${fav}.\n`;
+  if(excited)t+=`\n${excited}\n`;
+  t+=`\n── Practical info ──\n`;
+  t+=`English level: ${level}.\n`;
+  t+=`Food / allergies: ${getAllergies()}.\n`;
+  if(other)t+=`Note: ${other}\n`;
+  t+=`\nI'm really happy to be here — please don't hesitate to talk to me! 😊`;
+  const box=document.getElementById('preview');box.textContent=t;box.style.display='block';
+  document.getElementById('hint').style.display='block';
+}
+function copyTxt(){if(!document.getElementById('preview').textContent)gen();navigator.clipboard.writeText(document.getElementById('preview').textContent).catch(()=>{});}
+function clearAll(){
+  ['fn','from','fam','hobbies','fav','excited','other'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('age').value='';
+  document.querySelectorAll('.pill').forEach(p=>p.classList.remove('sel'));
+  document.getElementById('level').value='';
+  ['al-none','al-gluten','al-dairy','al-nut','al-veg','al-other'].forEach(id=>document.getElementById(id).checked=false);
+  document.getElementById('al-other-txt').value='';
+  document.getElementById('preview').style.display='none';
+  document.getElementById('hint').style.display='none';
+}
+</script>
+</body>
+</html>
