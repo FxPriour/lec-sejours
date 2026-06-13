@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Day 1 — Roman Trivia Trail</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#fff;color:#1a1a18;font-size:12px;padding:10mm 12mm}
+h1{font-size:15px;font-weight:500;margin-bottom:1px}
+h2{font-size:12px;font-weight:500;margin:12px 0 5px;border-top:0.5px solid #eee;padding-top:8px;color:#555}
+.meta{font-size:10px;color:#888;margin-bottom:10px}
+hr{border:none;border-top:0.5px solid #ddd;margin:10px 0}
+.stars{color:#b06c00;font-size:11px;letter-spacing:1px}
+.task{margin-bottom:10px;padding:9px 11px;border-left:2px solid #ddd;break-inside:avoid}
+.task.t1{border-color:#5bab7a}.task.t2{border-color:#e8a020}.task.t3{border-color:#c0392b}
+.task-title{font-weight:500;font-size:12px;margin-bottom:4px}
+.task-body{font-size:11px;color:#333;line-height:1.6}
+.task-body ul,.task-body ol{padding-left:14px;margin-top:3px}
+.task-body li{margin-bottom:3px}
+.box{background:#f5f4f0;border-radius:6px;padding:8px 10px;margin-top:6px;font-size:11px;line-height:1.6}
+.box .label{font-size:9px;font-weight:500;color:#aaa;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.wl{border-bottom:0.5px solid #ccc;height:18px;margin-bottom:4px}
+.tip{font-size:10px;color:#888;font-style:italic;margin-top:4px}
+.gram-box{background:#eef4ff;border-radius:6px;padding:8px 10px;margin:8px 0;font-size:11px;line-height:1.7}
+.gram-box .label{font-size:9px;font-weight:500;color:#4a6fa5;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+table{width:100%;border-collapse:collapse;font-size:11px;margin-top:6px}
+th{background:#f5f4f0;padding:4px 8px;text-align:left;font-weight:500;border:0.5px solid #ddd}
+td{padding:4px 8px;border:0.5px solid #ddd;vertical-align:top}
+.text-box{background:#fffef0;border:0.5px solid #e0d890;border-radius:6px;padding:10px 12px;font-size:11px;line-height:1.75;margin:8px 0}
+.text-box .src{font-size:9px;color:#aaa;margin-top:4px;font-style:italic}
+.stop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px}
+.stop{border:0.5px solid #ddd;border-radius:6px;padding:6px 8px;font-size:11px;break-inside:avoid}
+.stop .n{font-weight:500;font-size:10px;color:#4a6fa5;margin-bottom:2px}
+.stop .ans{border-bottom:0.5px solid #ccc;height:16px;margin-bottom:3px}
+.stop .photo{font-size:9px;color:#aaa;margin-top:2px}
+@media print{body{padding:8mm 10mm}.stop-grid{gap:4px}.stop{padding:5px 6px}}
+</style>
+</head>
+<body>
+
+<h1>Day 1 — Roman Trivia Trail</h1>
+<div class="meta">Tuesday 16 June · Afternoon activity: scavenger hunt in the city centre</div>
+
+<h2>Warm-up — What do you already know?</h2>
+<div class="task t1">
+  <div class="task-body">
+    Answer out loud — no right or wrong answers:
+    <ol>
+      <li>What do you know about the Romans in Britain?</li>
+      <li>How long ago did the Romans arrive in England?</li>
+      <li>Can you name one thing the Romans built that still exists today?</li>
+    </ol>
+  </div>
+</div>
+
+<h2>Reading — The Roman Trivia Trail leaflet</h2>
+<div class="task t1">
+  <div class="task-body">
+    <div class="text-box">
+      <b>Stop 1 — Roman Mosaic (Firstsite)</b> Discovered in 1923 as the floor of a Roman dining room, this mosaic spent years on display at the Castle before returning to its original location, now showcased inside the Firstsite Gallery.<br><br>
+      <b>Stop 2 — Colchester Castle</b> The Castle is Norman but built on the ruins of a Roman Temple, partially of Roman tiles. At 950 years old, it is less than half the age of the Roman Wall!<br><br>
+      <b>Stop 3 — Charles Gray's Summer House</b> Charles Gray once owned the land that is now Castle Park. He was given the Castle as a wedding present. This summer house was built in 1731 to resemble a Roman Temple.<br><br>
+      <b>Stop 4 — Roman House</b> You can see the outline of a Roman House near the Castle Park bandstand. There are no ruins as the bricks from these houses were used to build the Castle!<br><br>
+      <b>Stop 5 — Outer Temple Wall</b> Don't miss the small brick wall on your left as you exit the Park. It's the last remaining piece of the Roman Temple of Claudius!<br><br>
+      <b>Stop 6 — Roman Theatre</b> Peer through the window to see a section of the Roman Theatre. If you look at the paving stones nearby you can see the shape of the theatre marked out in a darker colour.<br><br>
+      <b>Stop 7 — Queen Boudica</b> As you reach the Town Hall, look up at the statues. Boudica is famous for leading a rebellion against the Romans and destroying the Roman city of Camulodunum.<br><br>
+      <b>Stop 8 — Elephants</b> Colchester is full of elephants! It is said the Roman emperor Claudius rode elephants into Colchester — the first elephants ever seen in Britain!<br><br>
+      <b>Stop 9 — Mercury Theatre</b> Named after the Roman Messenger God, Mercury, who had wings on his feet. Inside is a replica of an important Roman artefact found in Colchester.<br><br>
+      <b>Stop 10 — Balkerne Gate</b> This is the largest standing Roman Gateway left in Britain. There would have been an even larger gateway next to this, where Emperor Claudius would have arrived with his elephants.<br><br>
+      <b>Stop 11 — Roman Church</b> It's thought that this might have been the very first Christian church in Britain — but it may also have been a smaller temple to a Roman God called Mithras.<br><br>
+      <b>Stop 12 — Roman Circus</b> This is the only known Roman Chariot Racing site in Britain. At its height, up to eight horse-drawn chariots would have raced around the circuit.
+      <div class="src">Source: Visit Colchester — Roman Trivia Trail · visitcolchester.com</div>
+    </div>
+  </div>
+</div>
+
+<div class="task t1">
+  <div class="task-title"><span class="stars">★</span> True / False / Not mentioned</div>
+  <div class="task-body">
+    Write T, F or NM next to each statement.
+    <ol style="padding-left:16px;margin-top:6px;line-height:2.2">
+      <li>The Roman mosaic was discovered in the 20th century. ____</li>
+      <li>Colchester Castle is older than the Roman Wall. ____</li>
+      <li>The bricks from Roman houses were used to build the castle. ____</li>
+      <li>The Roman Theatre is completely intact and open to the public. ____</li>
+      <li>Boudica was a Roman general who defended Camulodunum. ____</li>
+      <li>The Balkerne Gate is the largest Roman gateway still standing in Britain. ____</li>
+      <li>The Roman Circus was used for chariot racing. ____</li>
+      <li>Emperor Claudius brought giraffes to Colchester. ____</li>
+    </ol>
+  </div>
+</div>
+
+<div class="task t2">
+  <div class="task-title"><span class="stars">★★</span> Short answers</div>
+  <div class="task-body">
+    <ol style="padding-left:16px;margin-top:4px">
+      <li>What two things can visitors see at Stop 6 to understand the shape of the Roman Theatre?<br><div class="wl"></div></li>
+      <li>Why is there no visible ruin at Stop 4?<br><div class="wl"></div></li>
+      <li>Why does the leaflet use phrases like "it's thought" and "it may have been" at Stop 11?<br><div class="wl"></div>
+      <span class="tip">★★★ What does this uncertainty tell us about how historians work?</span></li>
+    </ol>
+  </div>
+</div>
+
+<div class="task t3">
+  <div class="task-title"><span class="stars">★★★</span> Extended response</div>
+  <div class="task-body">
+    "Colchester's Roman past is everywhere — you just have to know where to look."<br>
+    Using at least three stops from the trail, explain why you agree or disagree. (4–6 sentences)
+    <div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div>
+  </div>
+</div>
+
+<h2>Grammar focus</h2>
+<div class="gram-box">
+  <div class="label">Modal verbs of deduction — talking about the past</div>
+  <table>
+    <tr><th>Modal</th><th>Meaning</th><th>Example from the leaflet</th></tr>
+    <tr><td><b>might have been</b></td><td>possible (uncertain)</td><td>"It <b>might have been</b> the first Christian church."</td></tr>
+    <tr><td><b>may have been</b></td><td>possible (slightly more certain)</td><td>"It <b>may have been</b> a temple to Mithras."</td></tr>
+    <tr><td><b>would have</b></td><td>expected or imagined past</td><td>"Eight chariots <b>would have</b> raced around the circuit."</td></tr>
+    <tr><td><b>must have been</b></td><td>near certainty</td><td>"It <b>must have been</b> an impressive sight."</td></tr>
+  </table>
+  <span class="tip">★★★ Complete this sentence: "When Claudius arrived with his elephants, it must have been…"</span>
+</div>
+
+<h2>Vocabulary — 10 words of the day</h2>
+<div class="box">
+  <div class="two">
+    <div>mosaic · temple · ruins · rebellion · chariot</div>
+    <div>gateway · artefact · circuit · replica · inscription</div>
+  </div>
+</div>
+
+<hr>
+<h2>Afternoon — Scavenger hunt briefing</h2>
+
+<div class="task t1">
+  <div class="task-body">
+    <div class="box">
+      <div class="label">Rules</div>
+      <ul>
+        <li>Speak English in your group.</li>
+        <li>At each stop: take a photo + write the answer on your answer sheet.</li>
+        <li>Stay together — never split the group.</li>
+        <li>In case of any problem, call the emergency number: ____________________</li>
+        <li>Meet back at __________________ by ____h____</li>
+      </ul>
+    </div>
+    <div class="box" style="margin-top:8px">
+      <div class="label">Useful phrases for this afternoon</div>
+      "Where is stop number…?" · "It says in the leaflet that…" · "Can you take a photo of…?" · "I think this must be…" · "Let's go to… next."
+    </div>
+  </div>
+</div>
+
+<hr>
+<h2>Answer sheet — complete on the trail ✂</h2>
+<div class="meta">Group: _________ · Names: ___________________________________ · Departure time: ____</div>
+
+<div class="stop-grid">
+  <div class="stop"><div class="n">Stop 1 — Roman Mosaic</div>When was this mosaic discovered?<div class="ans"></div>Where was it displayed before returning here?<div class="ans"></div><div class="photo">📸 Photo required</div></div>
+  <div class="stop"><div class="n">Stop 2 — Colchester Castle</div>What was here before the castle was built?<div class="ans"></div>Can you spot Roman tiles in the walls? Describe where.<div class="ans"></div><div class="photo">📸 Photo required</div></div>
+  <div class="stop"><div class="n">Stop 3 — Summer House</div>What does this building resemble, and when was it built?<div class="ans"></div>Who was given the Castle as a wedding present?<div class="ans"></div><div class="photo">📸 Photo required</div></div>
+  <div class="stop"><div class="n">Stop 4 — Roman House</div>Why are there no ruins here?<div class="ans"></div><span class="tip">★★ What do you think this area looked like in Roman times?</span><div class="ans"></div><div class="photo">📸 Photo of the area</div></div>
+  <div class="stop"><div class="n">Stop 5 — Outer Temple Wall</div>What is this small wall the last remaining piece of?<div class="ans"></div><span class="tip">★★★ Why do you think so little of it survived?</span><div class="ans"></div><div class="photo">📸 Photo required</div></div>
+  <div class="stop"><div class="n">Stop 6 — Roman Theatre</div>How can you see the shape of the theatre without going inside?<div class="ans"></div>Where can part of the stage still be seen?<div class="ans"></div><div class="photo">📸 Photo through the window</div></div>
+  <div class="stop"><div class="n">Stop 7 — Queen Boudica</div>What is Boudica famous for?<div class="ans"></div><span class="tip">★★ Why might the Romans have seen her as a villain and the British as a hero?</span><div class="ans"></div><div class="photo">📸 Photo with the statue</div></div>
+  <div class="stop"><div class="n">Stop 8 — Elephants</div>Why are there elephants in Colchester?<div class="ans"></div>Find a second elephant nearby (hint: look up!). Where is it?<div class="ans"></div><div class="photo">📸 Photo with elephant</div></div>
+  <div class="stop"><div class="n">Stop 9 — Mercury Theatre</div>Who was Mercury and what was he the god of?<div class="ans"></div>What Roman artefact can be found inside?<div class="ans"></div><div class="photo">📸 Photo of the statue on the front</div></div>
+  <div class="stop"><div class="n">Stop 10 — Balkerne Gate</div>What is special about this gate?<div class="ans"></div><span class="tip">★★ Why might Claudius have chosen this gate to enter Colchester?</span><div class="ans"></div><div class="photo">📸 Photo at / through the gate</div></div>
+  <div class="stop"><div class="n">Stop 11 — Roman Church</div>Why are historians uncertain about what this building was?<div class="ans"></div><span class="tip">★★★ Use a modal: "This building might have been… because…"</span><div class="ans"></div><div class="photo">📸 Photo required</div></div>
+  <div class="stop"><div class="n">Stop 12 — Roman Circus</div>What was a Roman Circus used for?<div class="ans"></div>How many chariots could race at the same time?<div class="ans"></div><div class="photo">📸 Required · 🏆 Bonus: sketch the circuit shape</div></div>
+</div>
+
+<hr>
+<h2>Debrief — back in class</h2>
+<div class="task t2">
+  <div class="task-title"><span class="stars">★★</span> Discussion</div>
+  <div class="task-body">
+    Each group presents their two most interesting stops. No repeats between groups.<br><br>
+    <ul>
+      <li><span class="stars">★</span> Which stop surprised you the most? Why?</li>
+      <li><span class="stars">★★</span> "The Romans were in Colchester almost 2,000 years ago, but their presence is still visible today." Do you agree?</li>
+      <li><span class="stars">★★★</span> Compare Colchester's Roman heritage with a historical site you know in France. Which is better preserved? Why might that be?</li>
+    </ul>
+  </div>
+</div>
+
+<div class="task t1">
+  <div class="task-title"><span class="stars">★</span> Journal — Day 1 (add to your entry from this morning)</div>
+  <div class="task-body">
+    <div class="box">"The Roman site that impressed me most today was… because…"<br>
+    <span class="tip">★★★ Use a modal: "It must have been extraordinary to live in Roman Colchester because…"</span></div>
+  </div>
+</div>
+</body>
+</html>

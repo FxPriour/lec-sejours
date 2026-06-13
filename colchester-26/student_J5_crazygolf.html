@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Day 5 — Crazy Golf</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#fff;color:#1a1a18;font-size:12px;padding:10mm 12mm}
+h1{font-size:15px;font-weight:500;margin-bottom:1px}
+h2{font-size:12px;font-weight:500;margin:12px 0 5px;border-top:0.5px solid #eee;padding-top:8px;color:#555}
+.meta{font-size:10px;color:#888;margin-bottom:10px}
+hr{border:none;border-top:0.5px solid #ddd;margin:10px 0}
+.stars{color:#b06c00;font-size:11px;letter-spacing:1px}
+.task{margin-bottom:10px;padding:9px 11px;border-left:2px solid #ddd;break-inside:avoid}
+.task.t1{border-color:#5bab7a}.task.t2{border-color:#e8a020}.task.t3{border-color:#c0392b}
+.task-title{font-weight:500;font-size:12px;margin-bottom:4px}
+.task-body{font-size:11px;color:#333;line-height:1.6}
+.task-body ul,.task-body ol{padding-left:14px;margin-top:3px}
+.task-body li{margin-bottom:2px}
+.box{background:#f5f4f0;border-radius:6px;padding:8px 10px;margin-top:6px;font-size:11px;line-height:1.6}
+.box .label{font-size:9px;font-weight:500;color:#aaa;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.wl{border-bottom:0.5px solid #ccc;height:18px;margin-bottom:4px}
+.tip{font-size:10px;color:#888;font-style:italic;margin-top:4px}
+.gram-box{background:#eef4ff;border-radius:6px;padding:8px 10px;margin:8px 0;font-size:11px;line-height:1.7}
+.gram-box .label{font-size:9px;font-weight:500;color:#4a6fa5;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+table{width:100%;border-collapse:collapse;font-size:11px;margin-top:6px}
+th{background:#f5f4f0;padding:4px 8px;text-align:left;font-weight:500;border:0.5px solid #ddd}
+td{padding:4px 8px;border:0.5px solid #ddd;vertical-align:top}
+.text-box{background:#fffef0;border:0.5px solid #e0d890;border-radius:6px;padding:10px 12px;font-size:11px;line-height:1.75;margin:8px 0}
+.text-box .src{font-size:9px;color:#aaa;margin-top:4px;font-style:italic}
+.prod{background:#fff8e8;border:0.5px solid #e8a020;border-radius:6px;padding:8px 10px;margin-top:8px;font-size:11px;line-height:1.6}
+.prod .label{font-size:9px;font-weight:500;color:#b06c00;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.eval-notice{background:#fef3e2;border:0.5px solid #e8a020;border-radius:6px;padding:10px 12px;margin:10px 0;font-size:11px}
+@media print{body{padding:8mm 10mm}}
+</style>
+</head>
+<body>
+
+<h1>Day 5 — Session 1 · Saving the planet</h1>
+<div class="meta">Monday 22 June · Theme: Environment · Grammar: modal verbs revision · Written assessment this session</div>
+
+<h2>Vocabulary check</h2>
+<div class="task t1">
+  <div class="task-body">
+    <div class="box">college → __ · founded → __ · chapel → __ · rivalry → __ · prestigious → __</div>
+  </div>
+</div>
+
+<h2>Warm-up — Weekend debrief</h2>
+<div class="task t1">
+  <div class="task-body">
+    Round the class — one sentence each:<br>
+    <b>"This weekend I [activity]. It was [adjective] because [reason]."</b><br>
+    <span class="tip">★★★ Add a comparison: "It was more [adjective] than I expected because…"</span>
+  </div>
+</div>
+
+<h2>Reading</h2>
+<div class="task t1">
+  <div class="task-body">
+    <div class="text-box">
+      Britain has a long tradition of public parks and green spaces. In the Victorian era, city planners believed that access to nature was essential for the mental and physical health of urban populations. Today, scientists agree: studies show that spending just 20 minutes in a green space significantly reduces stress levels.<br><br>
+      But green spaces are under threat. Urban expansion, climate change, and budget cuts have led to the loss of parks and wild areas across the UK. Campaigners argue that local authorities <i>must</i> protect these spaces — not only for human wellbeing, but for biodiversity. "We cannot afford to lose what little nature remains in our cities," said one environmental activist in a recent BBC report.<br><br>
+      Crazy golf courses, like the one you are visiting today, might seem frivolous — but they are part of the green space tradition. They bring people outdoors, away from screens, and into contact with nature. In a small way, they are part of the answer to our mental health crisis.
+      <div class="src">Adapted from BBC News / The Guardian / Public Health England</div>
+    </div>
+    <ul>
+      <li><span class="stars">★</span> What do scientists say about green spaces and stress?</li>
+      <li><span class="stars">★★</span> Find the modal verb in the activist's quote. What does it express — obligation, possibility, or advice?</li>
+      <li><span class="stars">★★★</span> The last paragraph links crazy golf to mental health. Do you find this argument convincing? Why or why not?</li>
+    </ul>
+    <div class="wl"></div><div class="wl"></div>
+  </div>
+</div>
+
+<h2>Grammar revision — Modal verbs</h2>
+<div class="gram-box">
+  <div class="label">Quick reference</div>
+  <table>
+    <tr><th>Modal</th><th>Use</th><th>Example</th></tr>
+    <tr><td><b>must</b></td><td>strong obligation / certainty</td><td>"We <b>must</b> protect green spaces."</td></tr>
+    <tr><td><b>should</b></td><td>recommendation</td><td>"Governments <b>should</b> invest in parks."</td></tr>
+    <tr><td><b>could</b></td><td>possibility / suggestion</td><td>"Cities <b>could</b> plant more trees."</td></tr>
+    <tr><td><b>might</b></td><td>uncertain possibility</td><td>"This <b>might</b> help reduce pollution."</td></tr>
+    <tr><td><b>can't</b></td><td>impossibility</td><td>"We <b>can't</b> afford to lose nature."</td></tr>
+  </table>
+  <div style="margin-top:6px">
+    <b>Connectors for your writing:</b> However · In addition · As a result · For example · On the other hand<br>
+    <span class="tip">★ Focus on: but / because / so / and</span>
+  </div>
+</div>
+
+<div class="eval-notice">
+  📝 <b>Written assessment — this session (45 minutes)</b><br>
+  Your teacher will hand out a separate assessment sheet. Documents not allowed.
+</div>
+
+<h2>Vocabulary — 10 words of the day</h2>
+<div class="box">
+  <div class="two">
+    <div>biodiversity · campaign · urban · wellbeing · sustainable</div>
+    <div>threat · expansion · authority · reduce · essential</div>
+  </div>
+</div>
+
+<hr>
+<h1>Day 5 — Session 2 · Green spaces &amp; sustainable leisure</h1>
+<div class="meta">Monday 22 June · After crazy golf · Assessment feedback + oral production</div>
+
+<div class="task t2">
+  <div class="task-title"><span class="stars">★★</span> Task — Design a sustainable leisure space</div>
+  <div class="task-body">
+    Groups of 3–4. You are urban planners. Propose a sustainable leisure project for Colchester. Present your idea to the class in 2 minutes.
+    <div class="box">
+      <div class="label">Your presentation must include</div>
+      1. What it is (describe the space / activity)<br>
+      2. Why it is good for people (health, social, cultural)<br>
+      3. Why it is good for the environment<br>
+      4. One challenge and how to solve it
+    </div>
+    <span class="tip">★ 3 sentences and a drawing is fine.<br>★★★ Use at least 3 different modal verbs in your presentation.</span>
+  </div>
+</div>
+
+<div class="task t3">
+  <div class="task-title"><span class="stars">★★★</span> Journal — Day 5</div>
+  <div class="task-body">
+    <div class="prod">
+      <div class="label">📔 Halfway through — what I've learnt</div>
+      <b>★</b> 3 sentences using: "I have learnt… / I have visited… / I have spoken English with…"<br>
+      <b>★★</b> 60 words. One strong point, one thing to improve, one surprise from the first week.<br>
+      <b>★★★</b> 80–100 words. A letter to a friend in France. Tell them about the week, compare Colchester with what you imagined, and mention what you still want to do.
+    </div>
+    <div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div>
+  </div>
+</div>
+</body>
+</html>

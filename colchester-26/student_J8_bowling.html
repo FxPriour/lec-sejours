@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Day 8 — Bowling</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#fff;color:#1a1a18;font-size:12px;padding:10mm 12mm}
+h1{font-size:15px;font-weight:500;margin-bottom:1px}
+h2{font-size:12px;font-weight:500;margin:12px 0 5px;border-top:0.5px solid #eee;padding-top:8px;color:#555}
+.meta{font-size:10px;color:#888;margin-bottom:10px}
+hr{border:none;border-top:0.5px solid #ddd;margin:10px 0}
+.stars{color:#b06c00;font-size:11px;letter-spacing:1px}
+.task{margin-bottom:10px;padding:9px 11px;border-left:2px solid #ddd;break-inside:avoid}
+.task.t1{border-color:#5bab7a}.task.t2{border-color:#e8a020}.task.t3{border-color:#c0392b}
+.task-title{font-weight:500;font-size:12px;margin-bottom:4px}
+.task-body{font-size:11px;color:#333;line-height:1.6}
+.task-body ul,.task-body ol{padding-left:14px;margin-top:3px}
+.task-body li{margin-bottom:2px}
+.box{background:#f5f4f0;border-radius:6px;padding:8px 10px;margin-top:6px;font-size:11px;line-height:1.6}
+.box .label{font-size:9px;font-weight:500;color:#aaa;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.wl{border-bottom:0.5px solid #ccc;height:18px;margin-bottom:4px}
+.tip{font-size:10px;color:#888;font-style:italic;margin-top:4px}
+.gram-box{background:#eef4ff;border-radius:6px;padding:8px 10px;margin:8px 0;font-size:11px;line-height:1.7}
+.gram-box .label{font-size:9px;font-weight:500;color:#4a6fa5;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+table{width:100%;border-collapse:collapse;font-size:11px;margin-top:6px}
+th{background:#f5f4f0;padding:4px 8px;text-align:left;font-weight:500;border:0.5px solid #ddd}
+td{padding:4px 8px;border:0.5px solid #ddd;vertical-align:top}
+.text-box{background:#fffef0;border:0.5px solid #e0d890;border-radius:6px;padding:10px 12px;font-size:11px;line-height:1.75;margin:8px 0}
+.text-box .src{font-size:9px;color:#aaa;margin-top:4px;font-style:italic}
+.prod{background:#fff8e8;border:0.5px solid #e8a020;border-radius:6px;padding:8px 10px;margin-top:8px;font-size:11px;line-height:1.6}
+.prod .label{font-size:9px;font-weight:500;color:#b06c00;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.farewell{background:#e8f5ee;border:0.5px solid #5bab7a;border-radius:6px;padding:10px 12px;margin-top:10px;font-size:11px;line-height:1.6}
+.farewell .label{font-size:9px;font-weight:500;color:#2d7a4f;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+@media print{body{padding:8mm 10mm}}
+</style>
+</head>
+<body>
+
+<h1>Day 8 — Session 1 · Bowling: a very American sport</h1>
+<div class="meta">Thursday 25 June · Theme: Sport &amp; society · Grammar: comparatives — full review · Activity: 2.30pm (2 games)</div>
+
+<h2>Vocabulary check</h2>
+<div class="task t1">
+  <div class="task-body">
+    <div class="box">drowning → __ · lifeguard → __ · supervision → __ · awareness → __ · compulsory → __</div>
+  </div>
+</div>
+
+<h2>Reading</h2>
+<div class="task t1">
+  <div class="task-body">
+    <div class="text-box">
+      Bowling is one of the most popular recreational sports in the United States. An estimated 70 million Americans bowl at least once a year, making it the country's most participated-in sport after swimming. Bowling alleys are a fixture of American suburban life — air-conditioned, brightly lit, serving burgers and sodas.<br><br>
+      The sport has ancient origins: archaeologists have found evidence of bowling-like games in ancient Egypt, dating back 5,000 years. But the modern game — with its ten-pin format, heavy balls, and electronic scoring — was largely shaped in 20th-century America. It became a working-class leisure activity, associated with unions, social clubs, and the culture of Middle America.<br><br>
+      Compare this to darts, the quintessentially British pub game. Both involve precision, both require concentration, and both have managed to turn a casual leisure activity into a professional sport. But their cultural contexts could hardly be more different: the dimly lit, noisy pub versus the bright, climate-controlled bowling alley. Two sports, two cultures, one shared love of competition.
+      <div class="src">Adapted from Bowling.com / BBC Sport / History Today</div>
+    </div>
+    <ul>
+      <li><span class="stars">★</span> How many Americans bowl each year according to the text?</li>
+      <li><span class="stars">★</span> Where does the text say bowling-like games were found 5,000 years ago?</li>
+      <li><span class="stars">★★</span> What do darts and bowling have in common? Find two similarities.</li>
+      <li><span class="stars">★★★</span> "Two sports, two cultures, one shared love of competition." Explain this in your own words, using examples from the text.</li>
+    </ul>
+    <div class="wl"></div><div class="wl"></div><div class="wl"></div>
+  </div>
+</div>
+
+<h2>Grammar — Comparatives: full review</h2>
+<div class="gram-box">
+  <div class="label">Darts vs bowling — structures to use today</div>
+  <table>
+    <tr><th>Structure</th><th>Example</th></tr>
+    <tr><td><b>more… than</b></td><td>"Bowling is <b>more popular than</b> darts in the US."</td></tr>
+    <tr><td><b>less… than</b></td><td>"Darts is <b>less expensive than</b> bowling."</td></tr>
+    <tr><td><b>as… as</b></td><td>"Both sports are <b>as competitive as</b> each other."</td></tr>
+    <tr><td><b>not nearly as… as</b></td><td>"Bowling is <b>not nearly as British as</b> darts."</td></tr>
+    <tr><td><b>whereas / while</b></td><td>"Darts is played in pubs, <b>whereas</b> bowling needs a special venue."</td></tr>
+    <tr><td><b>both… and</b></td><td>"<b>Both</b> darts <b>and</b> bowling require precision."</td></tr>
+  </table>
+</div>
+
+<div class="task t2">
+  <div class="task-title"><span class="stars">★★</span> Darts vs bowling — the great debate</div>
+  <div class="task-body">
+    In pairs: one of you defends darts, the other bowling. 5 minutes to prepare, then 5 minutes face-to-face.
+    <div class="box">
+      <div class="label">Questions to cover</div>
+      Which is more exciting to watch? · Which requires more skill? · Which is more accessible? · Which has a richer cultural history? · Which would you recommend to a visitor?
+    </div>
+    <span class="tip">★ "I think [sport] is better because…" + one comparative.<br>★★★ Use "whereas", "not nearly as… as", and refer to your own experience this week.</span>
+  </div>
+</div>
+
+<h2>Vocabulary — 10 words of the day</h2>
+<div class="box">
+  <div class="two">
+    <div>recreational · suburban · precision · concentrate · origin</div>
+    <div>quintessential · casual · participated · associated · fixture</div>
+  </div>
+</div>
+
+<hr>
+<h1>Day 8 — Session 2 · End of stay</h1>
+<div class="meta">Thursday 25 June · After bowling · Final presentations + farewell journal</div>
+
+<div class="task t1">
+  <div class="task-title"><span class="stars">★</span> Bowling debrief</div>
+  <div class="task-body">
+    Round the class — one sentence each:<br>
+    <b>"Bowling is [more/less/as] [adjective] as/than darts because…"</b>
+  </div>
+</div>
+
+<div class="task t2">
+  <div class="task-title"><span class="stars">★★</span> Final presentation — What I take away</div>
+  <div class="task-body">
+    Individual or pair presentation — 2 minutes maximum. Choose a topic from the list, or propose your own.
+    <div class="box">
+      <div class="label">Topics</div>
+      "The most surprising thing about England" · "What darts and bowling taught me about culture" · "A place in Colchester I will never forget" · "How my English has changed this week" · "If I came back to Colchester, I would…" · "One thing England does better than France, and one thing France does better" · Free choice (check with your teacher)
+    </div>
+    <span class="tip">★ 3–4 prepared sentences, reading allowed.<br>★★★ No notes — use at least one comparative, one passive, and one reported speech sentence.</span>
+  </div>
+</div>
+
+<div class="task t3">
+  <div class="task-title"><span class="stars">★★★</span> Final journal entry — A letter to your host family</div>
+  <div class="task-body">
+    <div class="farewell">
+      <div class="label">📔 Write a thank-you letter in English</div>
+      <b>★ (40–60 words):</b><br>
+      "Dear [name], Thank you for having me. I really enjoyed… My favourite moment was… I will remember… Best wishes, [your name]"<br><br>
+      <b>★★ (80–100 words):</b><br>
+      Introduction (thanks) + one specific memory you shared with the family + what you learnt / how you changed + a warm closing.<br><br>
+      <b>★★★ (120 words):</b><br>
+      A full letter. Include at least one comparison between life at home and here, one past moment described in detail, and a look forward ("I hope I will…" / "If I come back…").
+    </div>
+    <div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div><div class="wl"></div>
+    <span class="tip">You can give this letter to your host family on your last evening, or keep it as a personal record of the trip.</span>
+  </div>
+</div>
+
+<div class="task t1">
+  <div class="task-title"><span class="stars">★</span> Closing round</div>
+  <div class="task-body">
+    One last sentence each:<br>
+    <b>"When I get home, the first thing I will say in English is…"</b>
+  </div>
+</div>
+</body>
+</html>
