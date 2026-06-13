@@ -89,7 +89,7 @@ button.primary:hover{opacity:.85}
     <input type="text" id="modal-name" placeholder="Name…" maxlength="30" autocomplete="off"/>
 
     <label for="modal-answer">Their answer <span style="color:#bbb">(optional, 3 words max)</span></label>
-    <input type="text" id="modal-answer" placeholder="e.g. a dog and a cat" maxlength="40" autocomplete="off"/>
+    <input type="text" id="modal-answer" placeholder="" maxlength="40" autocomplete="off"/>
     <div class="field-hint">Leave blank if the clue doesn't need an answer.</div>
 
     <div class="btn-row">
@@ -101,25 +101,25 @@ button.primary:hover{opacity:.85}
 
 <script>
 const ALL=[
-  {q:"has been to an English-speaking country",h:"<b>Have you ever been to…?</b><br>e.g. England, Ireland, the USA, Australia…",d:2,ans:true},
-  {q:"has a pet at home",h:"<b>Do you have any pets?</b><br>e.g. a dog, a cat, a rabbit…",d:1,ans:true},
-  {q:"can play a musical instrument",h:"<b>Do you play any instruments?</b><br>e.g. the guitar, the piano…",d:1,ans:true},
-  {q:"has watched a series in English",h:"<b>Have you ever watched a series in English?</b><br>e.g. Stranger Things, The Office…",d:2,ans:true},
-  {q:"can name 3 British cities",h:"<b>Can you name three British cities?</b><br>Listen carefully to their answer!",d:2,ans:true},
+  {q:"has been to an English-speaking country",h:"<b>Have you ever been to…?</b><br>e.g. England, Ireland, the USA, Australia…<br><i>Follow-up: Which country? When?</i>",d:2,ans:true,ph:"e.g. Ireland, last year"},
+  {q:"has a pet at home",h:"<b>Do you have any pets?</b><br>e.g. a dog, a cat, a rabbit…<br><i>Follow-up: What's its name?</i>",d:1,ans:true,ph:"e.g. a dog called Max"},
+  {q:"can play a musical instrument",h:"<b>Do you play any instruments?</b><br>e.g. the guitar, the piano…<br><i>Follow-up: How long have you played?</i>",d:1,ans:true,ph:"e.g. guitar, 3 years"},
+  {q:"has watched a series in English",h:"<b>Have you ever watched a series in English?</b><br>e.g. Stranger Things, The Office…<br><i>Follow-up: With subtitles or without?</i>",d:2,ans:true,ph:"e.g. yes, with subtitles"},
+  {q:"can name 3 British cities",h:"<b>Can you name three British cities?</b><br>Listen carefully to their answer!",d:2,ans:true,ph:""},
   {q:"has never eaten fish and chips",h:"<b>Have you ever eaten fish and chips?</b><br>(If they say no → square is yours!)",d:2,ans:false},
-  {q:"would like to study abroad",h:"<b>Would you like to study in another country?</b><br>Where? Why?",d:2,ans:true},
-  {q:"has a hobby that involves being outdoors",h:"<b>What do you do in your free time?</b><br>e.g. cycling, football, hiking…",d:1,ans:true},
-  {q:"is nervous about speaking English",h:"<b>How do you feel about speaking English?</b><br>Are you nervous / excited / confident?",d:2,ans:true},
-  {q:"has a favourite English word",h:"<b>Do you have a favourite English word?</b><br>What is it? Why?",d:2,ans:true},
-  {q:"has already texted their host family",h:"<b>Have you contacted your host family yet?</b>",d:1,ans:false},
-  {q:"has a birthday in summer",h:"<b>When is your birthday?</b><br>(June, July or August = summer)",d:1,ans:true},
-  {q:"can say something in a 3rd language",h:"<b>Do you speak any other languages?</b><br>Ask them to say something!",d:1,ans:true},
-  {q:"is excited about Cambridge",h:"<b>Are you looking forward to Cambridge?</b><br>What do you want to see there?",d:1,ans:true},
+  {q:"would like to study abroad",h:"<b>Would you like to study in another country?</b><br>Where? Why?<br><i>Follow-up: Which country, and why?</i>",d:2,ans:true,ph:"e.g. Canada, for university"},
+  {q:"has a hobby that involves being outdoors",h:"<b>What do you do in your free time?</b><br>e.g. cycling, football, hiking…",d:1,ans:true,ph:"e.g. cycling on weekends"},
+  {q:"is nervous about speaking English",h:"<b>How do you feel about speaking English?</b><br>Are you nervous / excited / confident?<br><i>Follow-up: A little, or a lot?</i>",d:2,ans:true,ph:"e.g. a little nervous"},
+  {q:"has a favourite English word",h:"<b>Do you have a favourite English word?</b><br>What is it? Why?",d:2,ans:true,ph:"e.g. 'wonderful', sounds nice"},
+  {q:"has already texted their host family",h:"<b>Have you contacted your host family yet?</b><br><i>Follow-up: When?</i>",d:1,ans:true,ph:"e.g. yesterday evening"},
+  {q:"has a birthday in summer",h:"<b>When is your birthday?</b><br>(June, July or August = summer)<br><i>Follow-up: What date?</i>",d:1,ans:true,ph:"e.g. 14th July"},
+  {q:"can say something in a 3rd language",h:"<b>Do you speak any other languages?</b><br>Ask them to say something!<br><i>Follow-up: What language, and what did they say?</i>",d:1,ans:true,ph:"e.g. Spanish, 'hola'"},
+  {q:"is excited about Cambridge",h:"<b>Are you looking forward to Cambridge?</b><br>What do you want to see there?<br><i>Follow-up: What do they want to see?</i>",d:1,ans:true,ph:"e.g. the colleges"},
   {q:"is a left-handed person",h:"<b>Are you left-handed or right-handed?</b>",d:1,ans:false},
-  {q:"is older than you",h:"<b>How old are you?</b><br>(Find someone born before you)",d:1,ans:true},
-  {q:"is younger than you",h:"<b>How old are you?</b><br>(Find someone born after you)",d:1,ans:true},
-  {q:"prefers the countryside to the city",h:"<b>Do you prefer the countryside or the city?</b><br>Ask why!",d:2,ans:true},
-  {q:"has helped someone today",h:"<b>Have you helped anyone today?</b><br>What did you do?",d:2,ans:true},
+  {q:"is older than you",h:"<b>How old are you?</b><br>(Find someone born before you)<br><i>Follow-up: By how much?</i>",d:1,ans:true,ph:"e.g. 3 months older"},
+  {q:"is younger than you",h:"<b>How old are you?</b><br>(Find someone born after you)<br><i>Follow-up: By how much?</i>",d:1,ans:true,ph:"e.g. 2 months younger"},
+  {q:"prefers the countryside to the city",h:"<b>Do you prefer the countryside or the city?</b><br>Ask why!<br><i>Follow-up: Why?</i>",d:2,ans:true,ph:"e.g. quieter, more nature"},
+  {q:"has helped someone today",h:"<b>Have you helped anyone today?</b><br>What did you do?<br><i>Follow-up: What did they do?</i>",d:2,ans:true,ph:"e.g. carried a bag"},
   {q:"has never been on a boat",h:"<b>Have you ever been on a boat or a ferry?</b><br>(If they say no → square is yours!)",d:1,ans:false},
 ];
 
@@ -180,6 +180,7 @@ function openModal(i){
     document.getElementById('modal-hint').classList.remove('shown');
     document.getElementById('modal-name').value=cards[i].name;
     document.getElementById('modal-answer').value=cards[i].answer||'';
+    document.getElementById('modal-answer').placeholder=cards[i].ph||'';
     document.getElementById('modal').style.display='flex';
     setTimeout(()=>document.getElementById('modal-name').focus(),80);
     return;
@@ -191,6 +192,7 @@ function openModal(i){
   document.getElementById('modal-hint').classList.remove('shown');
   document.getElementById('modal-name').value='';
   document.getElementById('modal-answer').value='';
+  document.getElementById('modal-answer').placeholder=cards[i].ph||'';
   document.getElementById('modal').style.display='flex';
   setTimeout(()=>document.getElementById('modal-name').focus(),80);
 }
