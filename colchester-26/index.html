@@ -3,67 +3,119 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LEC Colchester 2026</title>
+  <title>LEC — Colchester 2026</title>
   <style>
-    body { font-family: Georgia, serif; max-width: 720px; margin: 40px auto; padding: 0 20px; color: #222; }
-    h1 { font-size: 1.6rem; border-bottom: 2px solid #c00; padding-bottom: 8px; }
-    h2 { font-size: 1.1rem; margin-top: 2rem; color: #c00; }
-    ul { list-style: none; padding: 0; }
-    li { margin: 6px 0; }
-    a { color: #1a0dab; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    body { font-family: Georgia, serif; max-width: 1100px; margin: 40px auto; padding: 0 20px; color: #222; }
+    h1 { font-size: 1.6rem; border-bottom: 2px solid #c00; padding-bottom: 8px; margin-bottom: 1.5rem; }
     .back { font-size: 0.85rem; margin-bottom: 1.5rem; }
-    .back a { color: #555; }
+    .back a { color: #555; text-decoration: none; }
+    .back a:hover { text-decoration: underline; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 1rem 1.2rem;
+      background: #fafafa;
+    }
+    .card h2 {
+      font-size: 1rem;
+      color: #c00;
+      margin: 0 0 0.7rem 0;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #eee;
+    }
+    .card ul { list-style: none; padding: 0; margin: 0; }
+    .card li { margin: 5px 0; font-size: 0.92rem; }
+    .card a { color: #1a0dab; text-decoration: none; }
+    .card a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <p class="back"><a href="../index.html">← LEC — Séjours linguistiques</a></p>
-  <h1>LEC Colchester 2026</h1>
+  <h1>LEC — Colchester 2026</h1>
 
-  <h2>Teacher resources</h2>
-  <ul>
-    <li><a href="teacher_notes.html">Consolidated teacher notes (all days)</a></li>
-  </ul>
+  <div class="grid">
 
-  <h2>Planning</h2>
-  <ul>
-    <li><a href="recap_table.html">Weekly overview (FX + Rachel)</a></li>
-    <li><a href="familles_map.html">Host families map</a></li>
-  </ul>
+    <div class="card">
+      <h2>Teacher resources</h2>
+      <ul>
+        <li><a href="teacher_notes.html">Consolidated teacher notes (all days)</a></li>
+      </ul>
+    </div>
 
-  <h2>Before the trip</h2>
-  <ul>
-    <li><a href="bingo_train_lec.html">Bingo — train LEC</a></li>
-    <li><a href="bingo_train_lec_v2.html">Find Someone Who (v2 — test)</a></li>
-    <li><a href="bingo_aide_questions.html">Bingo — aide questions</a></li>
-    <li><a href="bingo_printable.html">Bingo — printable</a></li>
-    <li><a href="fiche_famille_accueil.html">Fiche famille d'accueil</a></li>
-  </ul>
+    <div class="card">
+      <h2>Planning</h2>
+      <ul>
+        <li><a href="recap_table.html">Weekly overview (FX + Rachel)</a></li>
+        <li><a href="familles_map.html">Host families map</a></li>
+      </ul>
+    </div>
 
-  <h2>Daily worksheets</h2>
-  <ul>
-    <li><a href="student_J1_who_am_i.html">Day 1 — Who am I?</a></li>
-    <li><a href="student_J1_roman_trail.html">Day 1 — Roman trail</a></li>
-    <li><a href="student_J2_castle.html">Day 2 — Castle</a></li>
-    <li><a href="student_J3_darts_intro.html">Day 3 — Darts</a></li>
-    <li><a href="student_J4_cambridge_prep.html">Day 4 — Cambridge</a></li>
-    <li><a href="Cambridge%20Hunt.pdf">Rachel's Cambridge Scavenger Hunt</a></li>
-    <li><a href="student_J5_crazygolf.html">Day 5 — Crazy golf</a></li>
-    <li><a href="student_J6_cinema.html">Day 6 — Cinema</a></li>
-    <li><a href="student_J7_swimming.html">Day 7 — Swimming</a></li>
-    <li><a href="student_J8_bowling.html">Day 8 — Bowling</a></li>
-  </ul>
+    <div class="card">
+      <h2>Before the trip</h2>
+      <ul>
+        <li><a href="bingo_train_lec.html">Bingo — train LEC</a></li>
+        <li><a href="bingo_train_lec_v2.html">Find Someone Who (v2 — test)</a></li>
+        <li><a href="bingo_aide_questions.html">Bingo — aide questions</a></li>
+        <li><a href="bingo_printable.html">Bingo — printable</a></li>
+        <li><a href="fiche_famille_accueil.html">Fiche famille d'accueil</a></li>
+      </ul>
+    </div>
 
-  <h2>Assessment</h2>
-  <ul>
-    <li><a href="evaluation_J6.html">Évaluation J6</a></li>
-  </ul>
+    <div class="card">
+      <h2>Daily worksheets</h2>
+      <ul>
+        <li><a href="student_J1_who_am_i.html">Day 1 — Who am I?</a></li>
+        <li><a href="student_J1_roman_trail.html">Day 1 — Roman trail</a></li>
+        <li><a href="student_J2_castle.html">Day 2 — Castle</a></li>
+        <li><a href="student_J3_darts_intro.html">Day 3 — Darts</a></li>
+        <li><a href="student_J4_cambridge_prep.html">Day 4 — Cambridge</a></li>
+        <li><a href="Cambridge%20Hunt.pdf">Rachel's Cambridge Scavenger Hunt</a></li>
+        <li><a href="student_J5_crazygolf.html">Day 5 — Crazy golf</a></li>
+        <li><a href="student_J6_cinema.html">Day 6 — Cinema</a></li>
+        <li><a href="student_J7_swimming.html">Day 7 — Swimming</a></li>
+        <li><a href="student_J8_bowling.html">Day 8 — Bowling</a></li>
+      </ul>
+    </div>
 
-  <h2>World Cup special</h2>
-  <ul>
-    <li><a href="student_worldcup.html">World Cup worksheet</a></li>
-    <li><a href="british_isles.pdf">British Isles map (PDF)</a></li>
-    <li><a href="FIFA_World_Cup_26_map.pdf">FIFA World Cup 2026 map (PDF)</a></li>
-  </ul>
+    <div class="card">
+      <h2>Castle visit</h2>
+      <ul>
+        <li><a href="student_castle_hunt.pdf">Castle Discovery Challenge (student sheet)</a></li>
+        <li><a href="castle_answer_key.html">Castle Discovery Challenge — Answer Key (teacher)</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Assessment</h2>
+      <ul>
+        <li><a href="evaluation_J6.html">Évaluation J6</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>World Cup special</h2>
+      <ul>
+        <li><a href="student_worldcup.html">World Cup worksheet</a></li>
+        <li><a href="british_isles.pdf">British Isles map (PDF)</a></li>
+        <li><a href="FIFA_World_Cup_26_map.pdf">FIFA World Cup 2026 map (PDF)</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Planning &amp; logistics</h2>
+      <ul>
+        <li><a href="Colchester_Depart_15juin.pdf">Departure checklist — 15 June</a></li>
+        <li><a href="Colchester_Verif_Documents.pdf">Documents verification checklist</a></li>
+      </ul>
+    </div>
+
+  </div>
 </body>
 </html>
