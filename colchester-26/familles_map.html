@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_24b46c07a1690669ecb4d22602d6e577 {
+                #map_5fa230dd2bef3f583eef8e95f238610b {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -68,19 +68,19 @@
 <b>Légende</b><br>
 <span style="color:#38ACFF">&#9632;</span> Famille d'accueil (élève)<br>
 <span style="color:#F09300">&#9632;</span> Famille d'accueil (intervenant)<br>
+<span style="color:#9B59B6">&#9632;</span> Organisatrice locale<br>
 <span style="color:#000000">&#9632;</span> Lieu des cours (Kingsland Church)<br>
-<span style="color:#71AF26">&#9632;</span> Point d'intérêt (château)<br>
-<span style="display:inline-block;background:#1A9E8C;color:white;border-radius:50%;width:16px;height:16px;text-align:center;line-height:16px;font-weight:bold;font-size:10px;vertical-align:middle;">1</span> Activité (programme LEC)
+<span style="color:#71AF26">&#9632;</span> Point d'intérêt (château)
 </div>
     
-            <div class="folium-map" id="map_24b46c07a1690669ecb4d22602d6e577" ></div>
+            <div class="folium-map" id="map_5fa230dd2bef3f583eef8e95f238610b" ></div>
         
 </body>
 <script>
     
     
-            var map_24b46c07a1690669ecb4d22602d6e577 = L.map(
-                "map_24b46c07a1690669ecb4d22602d6e577",
+            var map_5fa230dd2bef3f583eef8e95f238610b = L.map(
+                "map_5fa230dd2bef3f583eef8e95f238610b",
                 {
                     center: [51.889, 0.903],
                     crs: L.CRS.EPSG3857,
@@ -92,13 +92,13 @@
 
                 }
             );
-            L.control.scale().addTo(map_24b46c07a1690669ecb4d22602d6e577);
+            L.control.scale().addTo(map_5fa230dd2bef3f583eef8e95f238610b);
 
             
 
         
     
-            var tile_layer_4d82b4b7ae5820c6b3292e9013cbbc13 = L.tileLayer(
+            var tile_layer_c6bbbeb509ee9f22d175cea4dee72bbf = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -115,16 +115,65 @@
             );
         
     
-            tile_layer_4d82b4b7ae5820c6b3292e9013cbbc13.addTo(map_24b46c07a1690669ecb4d22602d6e577);
+            tile_layer_c6bbbeb509ee9f22d175cea4dee72bbf.addTo(map_5fa230dd2bef3f583eef8e95f238610b);
         
-            var marker_32c13c851e6b6cf6850a692f51ef1997 = L.marker(
+    
+            var marker_c73d6b509f0c60665d909b93324474de = L.marker(
+                [51.8753568, 0.7599033],
+                {
+}
+            ).addTo(map_5fa230dd2bef3f583eef8e95f238610b);
+        
+    
+            var icon_be2de6627f4479efc4c4b35b9dc4f9d6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b2e5aaf66a58c1f5dddb62e66cf56cc1 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_008562dcf8c82e00545c235fa15931fd = $(`<div id="html_008562dcf8c82e00545c235fa15931fd" style="width: 100.0%; height: 100.0%;">     <b>SPARKES Virginie</b><br>     <i>14 Norman Close, Marks Tey, Colchester CO6 1HJ, UK</i><br>     <b>Tél :</b> 07549 837204<br><br>     <b>Rôle :</b><br>&bull; Organisatrice locale     </div>`)[0];
+                popup_b2e5aaf66a58c1f5dddb62e66cf56cc1.setContent(html_008562dcf8c82e00545c235fa15931fd);
+            
+        
+
+        marker_c73d6b509f0c60665d909b93324474de.bindPopup(popup_b2e5aaf66a58c1f5dddb62e66cf56cc1)
+        ;
+
+        
+    
+    
+            marker_c73d6b509f0c60665d909b93324474de.bindTooltip(
+                `<div>
+                     SPARKES Virginie
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c73d6b509f0c60665d909b93324474de.setIcon(icon_be2de6627f4479efc4c4b35b9dc4f9d6);
+            
+    
+            var marker_cfa3675e63b183645384135c4b4c700b = L.marker(
                 [51.8882189, 0.8778595],
                 {
 }
-            ).addTo(map_24b46c07a1690669ecb4d22602d6e577);
+            ).addTo(map_5fa230dd2bef3f583eef8e95f238610b);
         
     
-            var icon_f02c7a3dca3b29351136fbaaa63c1f98 = L.AwesomeMarkers.icon(
+            var icon_f33d8aa4ad35851281621dde899cb750 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "orange",
   "iconColor": "white",
@@ -135,24 +184,24 @@
             );
         
     
-        var popup_b498ef27601415b05fb3301222646941 = L.popup({
+        var popup_134c17cd3cdffee6844c6a1cf811634a = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_bd157fadc2768f702b584625b4f08bd2 = $(`<div id="html_bd157fadc2768f702b584625b4f08bd2" style="width: 100.0%; height: 100.0%;">     <b>HODGKINSBROWN Allie</b><br>     <i>93 Lexden Rd, Colchester CO3 3RB, UK</i><br>     <b>Tél :</b> 07912 583157<br><br>     <b>Intervenant(s) :</b><br>&bull; PRIOUR François-Xavier (intervenant)     </div>`)[0];
-                popup_b498ef27601415b05fb3301222646941.setContent(html_bd157fadc2768f702b584625b4f08bd2);
+                var html_820d0a525056a733590fb3c8a6172ca2 = $(`<div id="html_820d0a525056a733590fb3c8a6172ca2" style="width: 100.0%; height: 100.0%;">     <b>HODGKINSBROWN Allie</b><br>     <i>93 Lexden Rd, Colchester CO3 3RB, UK</i><br>     <b>Tél :</b> 07912 583157<br><br>     <b>Intervenant(s) :</b><br>&bull; PRIOUR François-Xavier (intervenant)     </div>`)[0];
+                popup_134c17cd3cdffee6844c6a1cf811634a.setContent(html_820d0a525056a733590fb3c8a6172ca2);
             
         
 
-        marker_32c13c851e6b6cf6850a692f51ef1997.bindPopup(popup_b498ef27601415b05fb3301222646941)
+        marker_cfa3675e63b183645384135c4b4c700b.bindPopup(popup_134c17cd3cdffee6844c6a1cf811634a)
         ;
 
         
     
     
-            marker_32c13c851e6b6cf6850a692f51ef1997.bindTooltip(
+            marker_cfa3675e63b183645384135c4b4c700b.bindTooltip(
                 `<div>
                      HODGKINSBROWN Allie
                  </div>`,
@@ -162,17 +211,17 @@
             );
         
     
-                marker_32c13c851e6b6cf6850a692f51ef1997.setIcon(icon_f02c7a3dca3b29351136fbaaa63c1f98);
+                marker_cfa3675e63b183645384135c4b4c700b.setIcon(icon_f33d8aa4ad35851281621dde899cb750);
             
     
-            var marker_b1c8d0e15a7d5ad99ccce07e05674ce1 = L.marker(
+            var marker_9fdf3349e2034a562a7cf9c85697ded7 = L.marker(
                 [51.8932927, 0.8465028],
                 {
 }
-            ).addTo(map_24b46c07a1690669ecb4d22602d6e577);
+            ).addTo(map_5fa230dd2bef3f583eef8e95f238610b);
         
     
-            var icon_81d53de70ecc90c8e7132986101d6f65 = L.AwesomeMarkers.icon(
+            var icon_6d816d3fd22f101a09f50e9c99f55ebf = L.AwesomeMarkers.icon(
                 {
   "markerColor": "orange",
   "iconColor": "white",
@@ -183,24 +232,24 @@
             );
         
     
-        var popup_2da810582d4838c0b14ab8b7cd1ad46f = L.popup({
+        var popup_78b35e89d310aa21c1d8bc33a1335de9 = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_0cd53a103361c0c06b9cc6ac697f94b7 = $(`<div id="html_0cd53a103361c0c06b9cc6ac697f94b7" style="width: 100.0%; height: 100.0%;">     <b>DUAN Lu yu</b><br>     <i>6 Chitts Hill, Colchester CO3 9ST, UK</i><br>     <b>Tél :</b> 07508 208928<br><br>     <b>Intervenant(s) :</b><br>&bull; DUBOIS Malena (intervenant)     </div>`)[0];
-                popup_2da810582d4838c0b14ab8b7cd1ad46f.setContent(html_0cd53a103361c0c06b9cc6ac697f94b7);
+                var html_2f66ac1d0da936384f63d2849cb5ebae = $(`<div id="html_2f66ac1d0da936384f63d2849cb5ebae" style="width: 100.0%; height: 100.0%;">     <b>DUAN Lu yu</b><br>     <i>6 Chitts Hill, Colchester CO3 9ST, UK</i><br>     <b>Tél :</b> 07508 208928<br><br>     <b>Intervenant(s) :</b><br>&bull; DUBOIS Malena (intervenant)     </div>`)[0];
+                popup_78b35e89d310aa21c1d8bc33a1335de9.setContent(html_2f66ac1d0da936384f63d2849cb5ebae);
             
         
 
-        marker_b1c8d0e15a7d5ad99ccce07e05674ce1.bindPopup(popup_2da810582d4838c0b14ab8b7cd1ad46f)
+        marker_9fdf3349e2034a562a7cf9c85697ded7.bindPopup(popup_78b35e89d310aa21c1d8bc33a1335de9)
         ;
 
         
     
     
-            marker_b1c8d0e15a7d5ad99ccce07e05674ce1.bindTooltip(
+            marker_9fdf3349e2034a562a7cf9c85697ded7.bindTooltip(
                 `<div>
                      DUAN Lu yu
                  </div>`,
@@ -210,17 +259,17 @@
             );
         
     
-                marker_b1c8d0e15a7d5ad99ccce07e05674ce1.setIcon(icon_81d53de70ecc90c8e7132986101d6f65);
+                marker_9fdf3349e2034a562a7cf9c85697ded7.setIcon(icon_6d816d3fd22f101a09f50e9c99f55ebf);
             
     
-            var marker_0de25e724111090b6a24f70fe5c4f16f = L.marker(
+            var marker_6f9a598b4ab5627187ae997c5a7cb4fe = L.marker(
                 [51.895201, 0.8441475],
                 {
 }
-            ).addTo(map_24b46c07a1690669ecb4d22602d6e577);
+            ).addTo(map_5fa230dd2bef3f583eef8e95f238610b);
         
     
-            var icon_be6e8c763230a9aa00accc7c8522d144 = L.AwesomeMarkers.icon(
+            var icon_17c0c50d9685bd5fdf9181a48873bf62 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -231,24 +280,24 @@
             );
         
     
-        var popup_7b8a06b1bfd00ec034086027a7054d8b = L.popup({
+        var popup_af640548bf46fbb0aabbf40661fcbfa1 = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_c02b21814ef5c7aafb1b31a039b840ea = $(`<div id="html_c02b21814ef5c7aafb1b31a039b840ea" style="width: 100.0%; height: 100.0%;">     <b>ARBER Mary</b><br>     <i>1 Porter Drive, Stanway, Colchester CO3 9ST, UK</i><br>     <b>Tél :</b> 07940 331575<br><br>     <b>Étudiant(s) :</b><br>&bull; BEAUCERON Elouan<br>&bull; RENAULT-CAMPOURCY Hugo     </div>`)[0];
-                popup_7b8a06b1bfd00ec034086027a7054d8b.setContent(html_c02b21814ef5c7aafb1b31a039b840ea);
+                var html_1b8f8ee995329c5a757f9ef3532060b2 = $(`<div id="html_1b8f8ee995329c5a757f9ef3532060b2" style="width: 100.0%; height: 100.0%;">     <b>ARBER Mary</b><br>     <i>1 Porter Drive, Stanway, Colchester CO3 9ST, UK</i><br>     <b>Tél :</b> 07940 331575<br><br>     <b>Étudiant(s) :</b><br>&bull; BEAUCERON Elouan<br>&bull; RENAULT-CAMPOURCY Hugo     </div>`)[0];
+                popup_af640548bf46fbb0aabbf40661fcbfa1.setContent(html_1b8f8ee995329c5a757f9ef3532060b2);
             
         
 
-        marker_0de25e724111090b6a24f70fe5c4f16f.bindPopup(popup_7b8a06b1bfd00ec034086027a7054d8b)
+        marker_6f9a598b4ab5627187ae997c5a7cb4fe.bindPopup(popup_af640548bf46fbb0aabbf40661fcbfa1)
         ;
 
         
     
     
-            marker_0de25e724111090b6a24f70fe5c4f16f.bindTooltip(
+            marker_6f9a598b4ab5627187ae997c5a7cb4fe.bindTooltip(
                 `<div>
                      ARBER Mary
                  </div>`,
@@ -258,17 +307,17 @@
             );
         
     
-                marker_0de25e724111090b6a24f70fe5c4f16f.setIcon(icon_be6e8c763230a9aa00accc7c8522d144);
+                marker_6f9a598b4ab5627187ae997c5a7cb4fe.setIcon(icon_17c0c50d9685bd5fdf9181a48873bf62);
             
     
-            var marker_7f0ad99868912d309bac150d1f9e0db4 = L.marker(
+            var marker_7056e7b76ef639afb7e064891f782f65 = L.marker(
                 [51.8865891, 0.8820696],
                 {
 }
-            ).addTo(map_24b46c07a1690669ecb4d22602d6e577);
+            ).addTo(map_5fa230dd2bef3f583eef8e95f238610b);
         
     
-            var icon_ccc870e02421987f356c8fcc6a242a28 = L.AwesomeMarkers.icon(
+            var icon_4b18afc00d4dc5b03e8f96e8e6c09a23 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -279,24 +328,24 @@
             );
         
     
-        var popup_aef79455222d3772914bccd4ad740e62 = L.popup({
+        var popup_5106b9a7107bdfd63d45049a80bf4d6a = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_fadc9ecd8396683863b5854687c8ccfa = $(`<div id="html_fadc9ecd8396683863b5854687c8ccfa" style="width: 100.0%; height: 100.0%;">     <b>WITTON Barbara</b><br>     <i>21 The Avenue, Lexden, Colchester CO3 3PA, UK</i><br>     <b>Tél :</b> 07958 476269<br><br>     <b>Étudiant(s) :</b><br>&bull; BOUARAB Amine<br>&bull; GIBAULT Matthieu     </div>`)[0];
-                popup_aef79455222d3772914bccd4ad740e62.setContent(html_fadc9ecd8396683863b5854687c8ccfa);
+                var html_bda9d94937e4c51131468ebf3a174b44 = $(`<div id="html_bda9d94937e4c51131468ebf3a174b44" style="width: 100.0%; height: 100.0%;">     <b>WITTON Barbara</b><br>     <i>21 The Avenue, Lexden, Colchester CO3 3PA, UK</i><br>     <b>Tél :</b> 07958 476269<br><br>     <b>Étudiant(s) :</b><br>&bull; BOUARAB Amine<br>&bull; GIBAULT Matthieu     </div>`)[0];
+                popup_5106b9a7107bdfd63d45049a80bf4d6a.setContent(html_bda9d94937e4c51131468ebf3a174b44);
             
         
 
-        marker_7f0ad99868912d309bac150d1f9e0db4.bindPopup(popup_aef79455222d3772914bccd4ad740e62)
+        marker_7056e7b76ef639afb7e064891f782f65.bindPopup(popup_5106b9a7107bdfd63d45049a80bf4d6a)
         ;
 
         
     
     
-            marker_7f0ad99868912d309bac150d1f9e0db4.bindTooltip(
+            marker_7056e7b76ef639afb7e064891f782f65.bindTooltip(
                 `<div>
                      WITTON Barbara
                  </div>`,
@@ -306,17 +355,17 @@
             );
         
     
-                marker_7f0ad99868912d309bac150d1f9e0db4.setIcon(icon_ccc870e02421987f356c8fcc6a242a28);
+                marker_7056e7b76ef639afb7e064891f782f65.setIcon(icon_4b18afc00d4dc5b03e8f96e8e6c09a23);
             
     
-            var marker_5d8ab3919ac773d70a1cc20a5d19b699 = L.marker(
+            var marker_967a1b566cd735cc80f37bc4dc186986 = L.marker(
                 [51.9041726, 0.9364646],
                 {
 }
-            ).addTo(map_24b46c07a1690669ecb4d22602d6e577);
+            ).addTo(map_5fa230dd2bef3f583eef8e95f238610b);
         
     
-            var icon_b2cfdbc97fe004bcdf6e5559f4d70e32 = L.AwesomeMarkers.icon(
+            var icon_0216345bbfa7d583aeeb16282726c032 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -327,24 +376,24 @@
             );
         
     
-        var popup_0aeb25b9742ac80dae6678e789c91649 = L.popup({
+        var popup_e6a5cb78b6612ed3ef3a4635943b5629 = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_4303d0beb0e6270e5a0d2ae87cf98bb1 = $(`<div id="html_4303d0beb0e6270e5a0d2ae87cf98bb1" style="width: 100.0%; height: 100.0%;">     <b>KIZILOEZ / YOUNG Milan</b><br>     <i>30 Broad Oaks Park, Colchester CO4 0JY, UK</i><br>     <b>Tél :</b> 07488 371739<br><br>     <b>Étudiant(s) :</b><br>&bull; DELEGUE Clémence<br>&bull; HERMET Constance     </div>`)[0];
-                popup_0aeb25b9742ac80dae6678e789c91649.setContent(html_4303d0beb0e6270e5a0d2ae87cf98bb1);
+                var html_4f9ce3c5b676529b8182ba7e5280876b = $(`<div id="html_4f9ce3c5b676529b8182ba7e5280876b" style="width: 100.0%; height: 100.0%;">     <b>KIZILOEZ / YOUNG Milan</b><br>     <i>30 Broad Oaks Park, Colchester CO4 0JY, UK</i><br>     <b>Tél :</b> 07488 371739<br><br>     <b>Étudiant(s) :</b><br>&bull; DELEGUE Clémence<br>&bull; HERMET Constance     </div>`)[0];
+                popup_e6a5cb78b6612ed3ef3a4635943b5629.setContent(html_4f9ce3c5b676529b8182ba7e5280876b);
             
         
 
-        marker_5d8ab3919ac773d70a1cc20a5d19b699.bindPopup(popup_0aeb25b9742ac80dae6678e789c91649)
+        marker_967a1b566cd735cc80f37bc4dc186986.bindPopup(popup_e6a5cb78b6612ed3ef3a4635943b5629)
         ;
 
         
     
     
-            marker_5d8ab3919ac773d70a1cc20a5d19b699.bindTooltip(
+            marker_967a1b566cd735cc80f37bc4dc186986.bindTooltip(
                 `<div>
                      KIZILOEZ / YOUNG Milan
                  </div>`,
@@ -354,17 +403,17 @@
             );
         
     
-                marker_5d8ab3919ac773d70a1cc20a5d19b699.setIcon(icon_b2cfdbc97fe004bcdf6e5559f4d70e32);
+                marker_967a1b566cd735cc80f37bc4dc186986.setIcon(icon_0216345bbfa7d583aeeb16282726c032);
             
     
-            var marker_93c2ae8718755c7f2355512803950c56 = L.marker(
+            var marker_14dec7944fb66a4e34cad76416dcd89d = L.marker(
                 [51.8793153, 0.8784477],
                 {
 }
-            ).addTo(map_24b46c07a1690669ecb4d22602d6e577);
+            ).addTo(map_5fa230dd2bef3f583eef8e95f238610b);
         
     
-            var icon_d74fa74967864fc60bbd6fc958698cf3 = L.AwesomeMarkers.icon(
+            var icon_b0edf4d386990d18603b9a7ccd3d5ca3 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -375,24 +424,24 @@
             );
         
     
-        var popup_86e07fb6c587af818bda6764da73327b = L.popup({
+        var popup_d6d28d2bbaedc4b68537bf2b08808cd0 = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_931061fa04123fe229ffa9db40c138eb = $(`<div id="html_931061fa04123fe229ffa9db40c138eb" style="width: 100.0%; height: 100.0%;">     <b>GIULIUCCI Jeanina</b><br>     <i>76 Drury Rd, Colchester CO2 7XA, UK</i><br>     <b>Tél :</b> 07882 452837<br><br>     <b>Étudiant(s) :</b><br>&bull; FICAROL AUGIER DE MOUSSAC Adèle<br>&bull; VIRET Camille     </div>`)[0];
-                popup_86e07fb6c587af818bda6764da73327b.setContent(html_931061fa04123fe229ffa9db40c138eb);
+                var html_dedb01ca828ec142409e37206a65f0ec = $(`<div id="html_dedb01ca828ec142409e37206a65f0ec" style="width: 100.0%; height: 100.0%;">     <b>GIULIUCCI Jeanina</b><br>     <i>76 Drury Rd, Colchester CO2 7XA, UK</i><br>     <b>Tél :</b> 07882 452837<br><br>     <b>Étudiant(s) :</b><br>&bull; FICAROL AUGIER DE MOUSSAC Adèle<br>&bull; VIRET Camille     </div>`)[0];
+                popup_d6d28d2bbaedc4b68537bf2b08808cd0.setContent(html_dedb01ca828ec142409e37206a65f0ec);
             
         
 
-        marker_93c2ae8718755c7f2355512803950c56.bindPopup(popup_86e07fb6c587af818bda6764da73327b)
+        marker_14dec7944fb66a4e34cad76416dcd89d.bindPopup(popup_d6d28d2bbaedc4b68537bf2b08808cd0)
         ;
 
         
     
     
-            marker_93c2ae8718755c7f2355512803950c56.bindTooltip(
+            marker_14dec7944fb66a4e34cad76416dcd89d.bindTooltip(
                 `<div>
                      GIULIUCCI Jeanina
                  </div>`,
@@ -402,17 +451,17 @@
             );
         
     
-                marker_93c2ae8718755c7f2355512803950c56.setIcon(icon_d74fa74967864fc60bbd6fc958698cf3);
+                marker_14dec7944fb66a4e34cad76416dcd89d.setIcon(icon_b0edf4d386990d18603b9a7ccd3d5ca3);
             
     
-            var marker_e6f51ec97163eaaeb392196481250659 = L.marker(
+            var marker_372f41757516b8e59a7bfb188fb08ab6 = L.marker(
                 [51.9050932, 0.8973033],
                 {
 }
-            ).addTo(map_24b46c07a1690669ecb4d22602d6e577);
+            ).addTo(map_5fa230dd2bef3f583eef8e95f238610b);
         
     
-            var icon_ec4ea62cd90a9c5e97249bc694b6cdff = L.AwesomeMarkers.icon(
+            var icon_75d09be23664e5e92fb3672e99db1900 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -423,24 +472,24 @@
             );
         
     
-        var popup_8ed90584b8d10b3021c294f973480288 = L.popup({
+        var popup_d7fcfeb706f99a77bf5151e6d390f1f4 = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_91d671cde1b257cc842943ac7b6b3502 = $(`<div id="html_91d671cde1b257cc842943ac7b6b3502" style="width: 100.0%; height: 100.0%;">     <b>FUDGE Fiona</b><br>     <i>7 Bardsley Close, Colchester CO4 5GS, UK</i><br>     <b>Tél :</b> 07443 511624<br><br>     <b>Étudiant(s) :</b><br>&bull; HOCHARD Camille     </div>`)[0];
-                popup_8ed90584b8d10b3021c294f973480288.setContent(html_91d671cde1b257cc842943ac7b6b3502);
+                var html_47d87f642db3b6916574b5681e667a00 = $(`<div id="html_47d87f642db3b6916574b5681e667a00" style="width: 100.0%; height: 100.0%;">     <b>FUDGE Fiona</b><br>     <i>7 Bardsley Close, Colchester CO4 5GS, UK</i><br>     <b>Tél :</b> 07443 511624<br><br>     <b>Étudiant(s) :</b><br>&bull; HOCHARD Camille     </div>`)[0];
+                popup_d7fcfeb706f99a77bf5151e6d390f1f4.setContent(html_47d87f642db3b6916574b5681e667a00);
             
         
 
-        marker_e6f51ec97163eaaeb392196481250659.bindPopup(popup_8ed90584b8d10b3021c294f973480288)
+        marker_372f41757516b8e59a7bfb188fb08ab6.bindPopup(popup_d7fcfeb706f99a77bf5151e6d390f1f4)
         ;
 
         
     
     
-            marker_e6f51ec97163eaaeb392196481250659.bindTooltip(
+            marker_372f41757516b8e59a7bfb188fb08ab6.bindTooltip(
                 `<div>
                      FUDGE Fiona
                  </div>`,
@@ -450,17 +499,17 @@
             );
         
     
-                marker_e6f51ec97163eaaeb392196481250659.setIcon(icon_ec4ea62cd90a9c5e97249bc694b6cdff);
+                marker_372f41757516b8e59a7bfb188fb08ab6.setIcon(icon_75d09be23664e5e92fb3672e99db1900);
             
     
-            var marker_f812274ca1cf59398d4a455f76a1161b = L.marker(
+            var marker_2476ed2a8682ff22eed444f59a2693e5 = L.marker(
                 [51.8932927, 0.8460028],
                 {
 }
-            ).addTo(map_24b46c07a1690669ecb4d22602d6e577);
+            ).addTo(map_5fa230dd2bef3f583eef8e95f238610b);
         
     
-            var icon_1503c1d1cdbe1a3662d112d098ae0952 = L.AwesomeMarkers.icon(
+            var icon_9cbfdcf71a324c0d873468efbbe571ee = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -471,24 +520,24 @@
             );
         
     
-        var popup_7d2642197142cc5869e9000200e45388 = L.popup({
+        var popup_eb9952bb8722581b0e1ff0f043ed9355 = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_6989c5a3e4287ded8287dd48ff57a2e0 = $(`<div id="html_6989c5a3e4287ded8287dd48ff57a2e0" style="width: 100.0%; height: 100.0%;">     <b>GONSALVES Ronny</b><br>     <i>4 Chitts Hill, Colchester CO3 9ST, UK</i><br>     <b>Tél :</b> 07956 224655<br><br>     <b>Étudiant(s) :</b><br>&bull; JOFFE Emilien<br>&bull; LAMBERT Augustin     </div>`)[0];
-                popup_7d2642197142cc5869e9000200e45388.setContent(html_6989c5a3e4287ded8287dd48ff57a2e0);
+                var html_a69e4c893ec40858232258927b501375 = $(`<div id="html_a69e4c893ec40858232258927b501375" style="width: 100.0%; height: 100.0%;">     <b>GONSALVES Ronny</b><br>     <i>4 Chitts Hill, Colchester CO3 9ST, UK</i><br>     <b>Tél :</b> 07956 224655<br><br>     <b>Étudiant(s) :</b><br>&bull; JOFFE Emilien<br>&bull; LAMBERT Augustin     </div>`)[0];
+                popup_eb9952bb8722581b0e1ff0f043ed9355.setContent(html_a69e4c893ec40858232258927b501375);
             
         
 
-        marker_f812274ca1cf59398d4a455f76a1161b.bindPopup(popup_7d2642197142cc5869e9000200e45388)
+        marker_2476ed2a8682ff22eed444f59a2693e5.bindPopup(popup_eb9952bb8722581b0e1ff0f043ed9355)
         ;
 
         
     
     
-            marker_f812274ca1cf59398d4a455f76a1161b.bindTooltip(
+            marker_2476ed2a8682ff22eed444f59a2693e5.bindTooltip(
                 `<div>
                      GONSALVES Ronny
                  </div>`,
@@ -498,17 +547,17 @@
             );
         
     
-                marker_f812274ca1cf59398d4a455f76a1161b.setIcon(icon_1503c1d1cdbe1a3662d112d098ae0952);
+                marker_2476ed2a8682ff22eed444f59a2693e5.setIcon(icon_9cbfdcf71a324c0d873468efbbe571ee);
             
     
-            var marker_d453535e6e5ba486ceb11a0702896908 = L.marker(
+            var marker_aab1367ec0c180c8b70335f0a7040757 = L.marker(
                 [51.8545455, 0.9123074],
                 {
 }
-            ).addTo(map_24b46c07a1690669ecb4d22602d6e577);
+            ).addTo(map_5fa230dd2bef3f583eef8e95f238610b);
         
     
-            var icon_a3125feefdcb48d35f576cecd19e04c9 = L.AwesomeMarkers.icon(
+            var icon_6ffcee9408103084421ba26addc85d17 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -519,24 +568,24 @@
             );
         
     
-        var popup_a544f53cc8e156818db42c48c7711c46 = L.popup({
+        var popup_37a80236ef6f44e38bb8242e8187ba1b = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_6abbccf0db3274a4e2411fec5e9c0c23 = $(`<div id="html_6abbccf0db3274a4e2411fec5e9c0c23" style="width: 100.0%; height: 100.0%;">     <b>NELSON Dorrel</b><br>     <i>8 Boyles Court, Colchester CO2 0BJ, UK</i><br>     <b>Tél :</b> 07723 047935<br><br>     <b>Étudiant(s) :</b><br>&bull; LIONS-AUDIGANE Thomas<br>&bull; VIET Marc-Antoine     </div>`)[0];
-                popup_a544f53cc8e156818db42c48c7711c46.setContent(html_6abbccf0db3274a4e2411fec5e9c0c23);
+                var html_fc0a734c91e68fee89468ab586b98abf = $(`<div id="html_fc0a734c91e68fee89468ab586b98abf" style="width: 100.0%; height: 100.0%;">     <b>NELSON Dorrel</b><br>     <i>8 Boyles Court, Colchester CO2 0BJ, UK</i><br>     <b>Tél :</b> 07723 047935<br><br>     <b>Étudiant(s) :</b><br>&bull; LIONS-AUDIGANE Thomas<br>&bull; VIET Marc-Antoine     </div>`)[0];
+                popup_37a80236ef6f44e38bb8242e8187ba1b.setContent(html_fc0a734c91e68fee89468ab586b98abf);
             
         
 
-        marker_d453535e6e5ba486ceb11a0702896908.bindPopup(popup_a544f53cc8e156818db42c48c7711c46)
+        marker_aab1367ec0c180c8b70335f0a7040757.bindPopup(popup_37a80236ef6f44e38bb8242e8187ba1b)
         ;
 
         
     
     
-            marker_d453535e6e5ba486ceb11a0702896908.bindTooltip(
+            marker_aab1367ec0c180c8b70335f0a7040757.bindTooltip(
                 `<div>
                      NELSON Dorrel
                  </div>`,
@@ -546,17 +595,17 @@
             );
         
     
-                marker_d453535e6e5ba486ceb11a0702896908.setIcon(icon_a3125feefdcb48d35f576cecd19e04c9);
+                marker_aab1367ec0c180c8b70335f0a7040757.setIcon(icon_6ffcee9408103084421ba26addc85d17);
             
     
-            var marker_9a777f0cfbeed5088cba5749172c2862 = L.marker(
+            var marker_64109374595e8e4bba3bfa52aeb63d3e = L.marker(
                 [51.8756236, 0.7977981],
                 {
 }
-            ).addTo(map_24b46c07a1690669ecb4d22602d6e577);
+            ).addTo(map_5fa230dd2bef3f583eef8e95f238610b);
         
     
-            var icon_1334468f3d57a7e1c8eb674c11c7a448 = L.AwesomeMarkers.icon(
+            var icon_71b83f438fda5ad663f202134256e120 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -567,24 +616,24 @@
             );
         
     
-        var popup_48326e421ba73f06fa7c29994f56aaf8 = L.popup({
+        var popup_495602a8f4bc498f352e37d92b565283 = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_eaa2383252d2ad21fb2706c6f378c0c5 = $(`<div id="html_eaa2383252d2ad21fb2706c6f378c0c5" style="width: 100.0%; height: 100.0%;">     <b>LECLERCQ Rosalyn</b><br>     <i>47 School Rd, Copford, Colchester CO6 1BU, UK</i><br>     <b>Tél :</b> (01206) 693094 / 07967 398365<br><br>     <b>Étudiant(s) :</b><br>&bull; PAGE Solenne<br>&bull; TENEZE Lilian     </div>`)[0];
-                popup_48326e421ba73f06fa7c29994f56aaf8.setContent(html_eaa2383252d2ad21fb2706c6f378c0c5);
+                var html_a34670ebb1e201fef9569500c901c3f2 = $(`<div id="html_a34670ebb1e201fef9569500c901c3f2" style="width: 100.0%; height: 100.0%;">     <b>LECLERCQ Rosalyn</b><br>     <i>47 School Rd, Copford, Colchester CO6 1BU, UK</i><br>     <b>Tél :</b> (01206) 693094 / 07967 398365<br><br>     <b>Étudiant(s) :</b><br>&bull; PAGE Solenne<br>&bull; TENEZE Lilian     </div>`)[0];
+                popup_495602a8f4bc498f352e37d92b565283.setContent(html_a34670ebb1e201fef9569500c901c3f2);
             
         
 
-        marker_9a777f0cfbeed5088cba5749172c2862.bindPopup(popup_48326e421ba73f06fa7c29994f56aaf8)
+        marker_64109374595e8e4bba3bfa52aeb63d3e.bindPopup(popup_495602a8f4bc498f352e37d92b565283)
         ;
 
         
     
     
-            marker_9a777f0cfbeed5088cba5749172c2862.bindTooltip(
+            marker_64109374595e8e4bba3bfa52aeb63d3e.bindTooltip(
                 `<div>
                      LECLERCQ Rosalyn
                  </div>`,
@@ -594,17 +643,17 @@
             );
         
     
-                marker_9a777f0cfbeed5088cba5749172c2862.setIcon(icon_1334468f3d57a7e1c8eb674c11c7a448);
+                marker_64109374595e8e4bba3bfa52aeb63d3e.setIcon(icon_71b83f438fda5ad663f202134256e120);
             
     
-            var marker_be7c337a9c946805f74c6584c755795b = L.marker(
+            var marker_6b8a2abca46d6016d0b7d57d5dc0554e = L.marker(
                 [51.8896651, 0.8497648],
                 {
 }
-            ).addTo(map_24b46c07a1690669ecb4d22602d6e577);
+            ).addTo(map_5fa230dd2bef3f583eef8e95f238610b);
         
     
-            var icon_ae8fbb7b3aba6eb63f90a3e5f070e34d = L.AwesomeMarkers.icon(
+            var icon_3cdf20f5f7edab823ab7893eb7d7ab4e = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -615,24 +664,24 @@
             );
         
     
-        var popup_7d92ed6abae60b12886992328a6f126b = L.popup({
+        var popup_716802a83f3bb41074f064b046ca4ec4 = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_bfd5abc1e30b77a2cc147740f6e247a2 = $(`<div id="html_bfd5abc1e30b77a2cc147740f6e247a2" style="width: 100.0%; height: 100.0%;">     <b>LISSIMORE Sue</b><br>     <i>81 London Road, Stanway, Colchester CO3 0NX, UK</i><br>     <b>Tél :</b> 07540 328316<br><br>     <b>Étudiant(s) :</b><br>&bull; SENECHAL Clara<br>&bull; TREVISAN Justine     </div>`)[0];
-                popup_7d92ed6abae60b12886992328a6f126b.setContent(html_bfd5abc1e30b77a2cc147740f6e247a2);
+                var html_415105eddce1598d00a55ff2ed88466b = $(`<div id="html_415105eddce1598d00a55ff2ed88466b" style="width: 100.0%; height: 100.0%;">     <b>LISSIMORE Sue</b><br>     <i>81 London Road, Stanway, Colchester CO3 0NX, UK</i><br>     <b>Tél :</b> 07540 328316<br><br>     <b>Étudiant(s) :</b><br>&bull; SENECHAL Clara<br>&bull; TREVISAN Justine     </div>`)[0];
+                popup_716802a83f3bb41074f064b046ca4ec4.setContent(html_415105eddce1598d00a55ff2ed88466b);
             
         
 
-        marker_be7c337a9c946805f74c6584c755795b.bindPopup(popup_7d92ed6abae60b12886992328a6f126b)
+        marker_6b8a2abca46d6016d0b7d57d5dc0554e.bindPopup(popup_716802a83f3bb41074f064b046ca4ec4)
         ;
 
         
     
     
-            marker_be7c337a9c946805f74c6584c755795b.bindTooltip(
+            marker_6b8a2abca46d6016d0b7d57d5dc0554e.bindTooltip(
                 `<div>
                      LISSIMORE Sue
                  </div>`,
@@ -642,17 +691,17 @@
             );
         
     
-                marker_be7c337a9c946805f74c6584c755795b.setIcon(icon_ae8fbb7b3aba6eb63f90a3e5f070e34d);
+                marker_6b8a2abca46d6016d0b7d57d5dc0554e.setIcon(icon_3cdf20f5f7edab823ab7893eb7d7ab4e);
             
     
-            var marker_8306c3f1213e89cc847b393b2c561115 = L.marker(
+            var marker_a9478130ccab6a25913e8a1098dab45f = L.marker(
                 [51.878719870264334, 0.797140613411465],
                 {
 }
-            ).addTo(map_24b46c07a1690669ecb4d22602d6e577);
+            ).addTo(map_5fa230dd2bef3f583eef8e95f238610b);
         
     
-            var icon_6024e7fbd7430b7555544c469afff8bb = L.AwesomeMarkers.icon(
+            var icon_a066e4716ff718b47bddd494ef3a426a = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -663,24 +712,24 @@
             );
         
     
-        var popup_b9bbe2cde24b893f51a62c1d0c1cacb8 = L.popup({
+        var popup_f57dd0d66a71beda279b8e2020828f22 = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_6582cdfad96d4fadda76b66654efdd9c = $(`<div id="html_6582cdfad96d4fadda76b66654efdd9c" style="width: 100.0%; height: 100.0%;">     <b>THOMAS Helen</b><br>     <i>23 School Road, Copford, Colchester CO6 1BU, UK</i><br>     <b>Tél :</b> (01206) 210272 / 07508 362872<br><br>     <b>Étudiant(s) :</b><br>&bull; TESSIER-GUILLUT Marceau<br>&bull; ZORZUT Nicolas     </div>`)[0];
-                popup_b9bbe2cde24b893f51a62c1d0c1cacb8.setContent(html_6582cdfad96d4fadda76b66654efdd9c);
+                var html_8946289f30b926799f9713e8049128df = $(`<div id="html_8946289f30b926799f9713e8049128df" style="width: 100.0%; height: 100.0%;">     <b>THOMAS Helen</b><br>     <i>23 School Road, Copford, Colchester CO6 1BU, UK</i><br>     <b>Tél :</b> (01206) 210272 / 07508 362872<br><br>     <b>Étudiant(s) :</b><br>&bull; TESSIER-GUILLUT Marceau<br>&bull; ZORZUT Nicolas     </div>`)[0];
+                popup_f57dd0d66a71beda279b8e2020828f22.setContent(html_8946289f30b926799f9713e8049128df);
             
         
 
-        marker_8306c3f1213e89cc847b393b2c561115.bindPopup(popup_b9bbe2cde24b893f51a62c1d0c1cacb8)
+        marker_a9478130ccab6a25913e8a1098dab45f.bindPopup(popup_f57dd0d66a71beda279b8e2020828f22)
         ;
 
         
     
     
-            marker_8306c3f1213e89cc847b393b2c561115.bindTooltip(
+            marker_a9478130ccab6a25913e8a1098dab45f.bindTooltip(
                 `<div>
                      THOMAS Helen
                  </div>`,
@@ -690,17 +739,17 @@
             );
         
     
-                marker_8306c3f1213e89cc847b393b2c561115.setIcon(icon_6024e7fbd7430b7555544c469afff8bb);
+                marker_a9478130ccab6a25913e8a1098dab45f.setIcon(icon_a066e4716ff718b47bddd494ef3a426a);
             
     
-            var marker_4514914d911f6291fa1cbd531a79d278 = L.marker(
+            var marker_c7c902f7f0cb73f7f091859644e5ad24 = L.marker(
                 [51.8888902, 0.8481872],
                 {
 }
-            ).addTo(map_24b46c07a1690669ecb4d22602d6e577);
+            ).addTo(map_5fa230dd2bef3f583eef8e95f238610b);
         
     
-            var icon_fc47141fee7873bc0dfd98c0ab67deed = L.AwesomeMarkers.icon(
+            var icon_e7193a2744e6571239949a393a4e824d = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -711,24 +760,24 @@
             );
         
     
-        var popup_d7bfa35fce4b47d1bd7d804c04f46624 = L.popup({
+        var popup_12a74c721f89b9f2c5a84eb228e6939a = L.popup({
   "maxWidth": 320,
 });
 
         
             
-                var html_ff03942cba5038d82723209e88f4e914 = $(`<div id="html_ff03942cba5038d82723209e88f4e914" style="width: 100.0%; height: 100.0%;">     <b>BARNHAM Leander</b><br>     <i>3 Collingwood Road, Colchester CO3 9BH, UK</i><br>     <b>Tél :</b> 07776 183616<br><br>     <b>Étudiant(s) :</b><br>&bull; ZELLNER Mila     </div>`)[0];
-                popup_d7bfa35fce4b47d1bd7d804c04f46624.setContent(html_ff03942cba5038d82723209e88f4e914);
+                var html_b22b010c5cd4c76f4387ac8fdf8f9aa0 = $(`<div id="html_b22b010c5cd4c76f4387ac8fdf8f9aa0" style="width: 100.0%; height: 100.0%;">     <b>BARNHAM Leander</b><br>     <i>3 Collingwood Road, Colchester CO3 9BH, UK</i><br>     <b>Tél :</b> 07776 183616<br><br>     <b>Étudiant(s) :</b><br>&bull; ZELLNER Mila     </div>`)[0];
+                popup_12a74c721f89b9f2c5a84eb228e6939a.setContent(html_b22b010c5cd4c76f4387ac8fdf8f9aa0);
             
         
 
-        marker_4514914d911f6291fa1cbd531a79d278.bindPopup(popup_d7bfa35fce4b47d1bd7d804c04f46624)
+        marker_c7c902f7f0cb73f7f091859644e5ad24.bindPopup(popup_12a74c721f89b9f2c5a84eb228e6939a)
         ;
 
         
     
     
-            marker_4514914d911f6291fa1cbd531a79d278.bindTooltip(
+            marker_c7c902f7f0cb73f7f091859644e5ad24.bindTooltip(
                 `<div>
                      BARNHAM Leander
                  </div>`,
@@ -738,16 +787,17 @@
             );
         
     
-                marker_4514914d911f6291fa1cbd531a79d278.setIcon(icon_fc47141fee7873bc0dfd98c0ab67deed);
+                marker_c7c902f7f0cb73f7f091859644e5ad24.setIcon(icon_e7193a2744e6571239949a393a4e824d);
             
-            var marker_12812170f84b0cb074579c569b9a3808 = L.marker(
+    
+            var marker_ed83b95f27237bbc9e792236b926e1dc = L.marker(
                 [51.8892434, 0.8523375],
                 {
 }
-            ).addTo(map_24b46c07a1690669ecb4d22602d6e577);
+            ).addTo(map_5fa230dd2bef3f583eef8e95f238610b);
         
     
-            var icon_23cfc7d0d26120d12bc7fd3cb14529d2 = L.AwesomeMarkers.icon(
+            var icon_ac30b229e84e3ee8e1b901a2992cad0c = L.AwesomeMarkers.icon(
                 {
   "markerColor": "black",
   "iconColor": "white",
@@ -758,24 +808,24 @@
             );
         
     
-        var popup_34b649edb9492e0939477371f1bb9c58 = L.popup({
+        var popup_ca3f5da333404d44cd2457f5669dcb3e = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_34311bf19ad1ede9f78c101b16f1f2b4 = $(`<div id="html_34311bf19ad1ede9f78c101b16f1f2b4" style="width: 100.0%; height: 100.0%;"><b>Kingsland Church</b><br>86 London Road, Colchester CO3 9DW<br><i>Lieu des cours LEC</i></div>`)[0];
-                popup_34b649edb9492e0939477371f1bb9c58.setContent(html_34311bf19ad1ede9f78c101b16f1f2b4);
+                var html_d5c69291363064b2554d7aa73a48c81a = $(`<div id="html_d5c69291363064b2554d7aa73a48c81a" style="width: 100.0%; height: 100.0%;"><b>Kingsland Church</b><br>86 London Road, Colchester CO3 9DW<br><i>Lieu des cours LEC</i></div>`)[0];
+                popup_ca3f5da333404d44cd2457f5669dcb3e.setContent(html_d5c69291363064b2554d7aa73a48c81a);
             
         
 
-        marker_12812170f84b0cb074579c569b9a3808.bindPopup(popup_34b649edb9492e0939477371f1bb9c58)
+        marker_ed83b95f27237bbc9e792236b926e1dc.bindPopup(popup_ca3f5da333404d44cd2457f5669dcb3e)
         ;
 
         
     
     
-            marker_12812170f84b0cb074579c569b9a3808.bindTooltip(
+            marker_ed83b95f27237bbc9e792236b926e1dc.bindTooltip(
                 `<div>
                      Kingsland Church – lieu des cours
                  </div>`,
@@ -785,17 +835,17 @@
             );
         
     
-                marker_12812170f84b0cb074579c569b9a3808.setIcon(icon_23cfc7d0d26120d12bc7fd3cb14529d2);
+                marker_ed83b95f27237bbc9e792236b926e1dc.setIcon(icon_ac30b229e84e3ee8e1b901a2992cad0c);
             
     
-            var marker_b9e259b8085bc2b1d7b7986e4f21d6df = L.marker(
+            var marker_7459056b88d2143fd77b7f8782734cc3 = L.marker(
                 [51.8900722, 0.904463],
                 {
 }
-            ).addTo(map_24b46c07a1690669ecb4d22602d6e577);
+            ).addTo(map_5fa230dd2bef3f583eef8e95f238610b);
         
     
-            var icon_d73ff5da2584b3b828091a04ed1465ae = L.AwesomeMarkers.icon(
+            var icon_e6d83c4f2c2f1bb6622922f4e46c3c67 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -806,24 +856,24 @@
             );
         
     
-        var popup_b62f82959faf91be7f72fae009c9fd37 = L.popup({
+        var popup_55dc7efb3994910fc26e919f39130058 = L.popup({
   "maxWidth": 300,
 });
 
         
             
-                var html_4a56c899d24b55ca2031820e576245a4 = $(`<div id="html_4a56c899d24b55ca2031820e576245a4" style="width: 100.0%; height: 100.0%;"><b>Colchester Castle</b><br>Castle Park, Colchester CO1 1TJ<br><i>Point d'intérêt touristique</i></div>`)[0];
-                popup_b62f82959faf91be7f72fae009c9fd37.setContent(html_4a56c899d24b55ca2031820e576245a4);
+                var html_34624e8bf0814e123ee50b259b4e3789 = $(`<div id="html_34624e8bf0814e123ee50b259b4e3789" style="width: 100.0%; height: 100.0%;"><b>Colchester Castle</b><br>Castle Park, Colchester CO1 1TJ<br><i>Point d'intérêt touristique</i></div>`)[0];
+                popup_55dc7efb3994910fc26e919f39130058.setContent(html_34624e8bf0814e123ee50b259b4e3789);
             
         
 
-        marker_b9e259b8085bc2b1d7b7986e4f21d6df.bindPopup(popup_b62f82959faf91be7f72fae009c9fd37)
+        marker_7459056b88d2143fd77b7f8782734cc3.bindPopup(popup_55dc7efb3994910fc26e919f39130058)
         ;
 
         
     
     
-            marker_b9e259b8085bc2b1d7b7986e4f21d6df.bindTooltip(
+            marker_7459056b88d2143fd77b7f8782734cc3.bindTooltip(
                 `<div>
                      Colchester Castle
                  </div>`,
@@ -833,41 +883,7 @@
             );
         
     
-                marker_b9e259b8085bc2b1d7b7986e4f21d6df.setIcon(icon_d73ff5da2584b3b828091a04ed1465ae);
-
-
-    // -----------------------------------------------------------------------
-    // Activity pins — numbered teal circles (programme LEC)
-    // -----------------------------------------------------------------------
-    function activityIcon(num) {
-        return L.divIcon({
-            className: '',
-            html: '<div style="background:#1A9E8C;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:13px;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,0.5);">' + num + '</div>',
-            iconSize: [28, 28],
-            iconAnchor: [14, 14],
-            popupAnchor: [0, -18]
-        });
-    }
-
-    var lec_activities = [
-        {n: 1, label: "Mardi 16 juin — Roman trail / quiz en ville",           lat: 51.8895,  lon: 0.9035},
-        {n: 2, label: "Mercredi 17 juin — Firstsite gallery (expo Donkor + dessin)", lat: 51.8879,  lon: 0.8987},
-        {n: 3, label: "Vendredi 19 juin — Darts (The Boardroom, 71 Crouch St)", lat: 51.8862,  lon: 0.8876},
-        {n: 4, label: "Lundi 22 juin — Crazy golf (Putt in the Park, Castle Park)", lat: 51.8882,  lon: 0.9022},
-        {n: 5, label: "Mardi 23 juin — Cinéma Toy Story 5 (ODEON, Head Street)", lat: 51.8884,  lon: 0.8990},
-        {n: 6, label: "Mercredi 24 juin — Natation (Leisure World, Cowdray Ave)", lat: 51.8951,  lon: 0.9055},
-        {n: 7, label: "Jeudi 25 juin — Bowling (Tenpin, Cowdray Ave)",          lat: 51.8955,  lon: 0.9063}
-    ];
-
-    lec_activities.forEach(function(act) {
-        var am = L.marker([act.lat, act.lon], {icon: activityIcon(act.n)})
-            .addTo(map_24b46c07a1690669ecb4d22602d6e577);
-        am.bindPopup(
-            '<div style="font-size:14px;line-height:1.5;"><b>' + act.label + '</b></div>',
-            {maxWidth: 300}
-        );
-        am.bindTooltip(act.label, {sticky: true});
-    });
-
+                marker_7459056b88d2143fd77b7f8782734cc3.setIcon(icon_e6d83c4f2c2f1bb6622922f4e46c3c67);
+            
 </script>
 </html>

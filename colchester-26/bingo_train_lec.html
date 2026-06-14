@@ -62,6 +62,12 @@ button.primary:hover{opacity:.85}
 <h1>Find someone who… 🎯</h1>
 <p class="sub">Ask in English — write their name (and answer, if relevant). Fill the whole grid to win!</p>
 
+<div style="margin-bottom:14px">
+  <label style="font-size:12px;color:#888;display:block;margin-bottom:4px">Your name (as other students will write it)</label>
+  <input type="text" id="student-name" placeholder="e.g. Sophie" maxlength="30" autocomplete="off"
+    style="padding:8px 12px;font-size:14px;border:0.5px solid #ccc;border-radius:8px;background:#fff;color:#1a1a18;width:220px"/>
+</div>
+
 <div class="stats">
   <div class="stat"><div class="n" id="cnt">0</div><div class="l">found</div></div>
   <div class="stat"><div class="n" id="rem">16</div><div class="l">to go</div></div>
@@ -76,7 +82,9 @@ button.primary:hover{opacity:.85}
 <div class="btn-row-main">
   <button class="primary" onclick="shuffleCards()">New game 🔀</button>
   <button onclick="resetAll()">Reset names</button>
+  <button onclick="exportCSV()" style="background:#4a6fa5;color:#fff;border-color:transparent">Report 📋</button>
 </div>
+<div id="report-msg" style="font-size:11px;color:#2d7a4f;margin-top:6px;display:none">✓ Copied to clipboard — paste into WhatsApp!</div>
 <p class="tip">★ = easier &nbsp;|&nbsp; ★★ = a bit harder &nbsp;|&nbsp; Tap a filled square to edit or undo it.</p>
 
 <div class="modal-bg" id="modal" style="display:none">
@@ -132,6 +140,50 @@ function startTimer(){
   timerID=setInterval(()=>{
     if(!done){seconds++;document.getElementById('clock').textContent=fmt(seconds);}
   },1000);
+}
+
+function exportCSV(){
+  const studentName=document.getElementById('student-name').value.trim()||'(no name)';
+  const found=cards.filter(c=>c.found);
+  if(found.length===0){
+    showMsg('⚠ No answers yet — fill in at least one square first.','#c0392b',3000);
+    return;
+  }
+  const time=document.getElementById('clock').textContent;
+  const total=found.length;
+
+  // Header: Student, Found, Time, then C0/P0/A0 ... C15/P15/A15
+  const hCols=['Student','Found','Time'];
+  for(let i=0;i<16;i++) hCols.push('C'+i,'P'+i,'A'+i);
+
+  // Data: one long row
+  const row=[`"${studentName.replace(/"/g,'""')}"`,total,time];
+  cards.forEach((c,i)=>{
+    // stable code = index in ALL array
+    const code=ALL.findIndex(a=>a.q===c.q);
+    const person=c.found?(c.name||''):'';
+    const answer=c.found?(c.answer||''):'';
+    row.push(code,`"${person.replace(/"/g,'""')}"`,`"${answer.replace(/"/g,'""')}"`);
+  });
+
+  const csv=hCols.join(',')+'\n'+row.join(',');
+  navigator.clipboard.writeText(csv).then(()=>{
+    showMsg('✓ Copied! Paste into WhatsApp or a spreadsheet.','#2d7a4f',4000);
+  }).catch(()=>{
+    // fallback for file:// protocol
+    const ta=document.createElement('textarea');
+    ta.value=csv;
+    ta.style.cssText='width:100%;height:80px;font-size:10px;margin-top:8px;font-family:monospace';
+    document.getElementById('report-msg').after(ta);
+    ta.select();
+    showMsg('⚠ Select all text in the box below and copy manually.','#c0392b',0);
+  });
+}
+
+function showMsg(text,color,duration){
+  const msg=document.getElementById('report-msg');
+  msg.textContent=text;msg.style.color=color;msg.style.display='block';
+  if(duration) setTimeout(()=>msg.style.display='none',duration);
 }
 
 function pick16(){
