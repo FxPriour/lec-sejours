@@ -92,7 +92,7 @@ textarea:focus{outline:none;border-color:#888}
 <div class="nav-bar">
   <button id="btn-prev" onclick="navigate(-1)" disabled>← Prev</button>
   <button id="btn-next" onclick="navigate(1)" class="primary">Next →</button>
-  <button class="report" onclick="exportCSV()">Report 📋</button>
+  <button class="report" onclick="exportSummary()">Report 📋</button>
 </div>
 
 <div class="report-msg" id="report-msg"></div>
@@ -288,17 +288,65 @@ function getAnswerStr(id){
   return v||'';
 }
 
-function exportCSV(){
+function exportSummary(){
   const group = getGroupName();
   const doneCount = done.filter(Boolean).length;
-  const row = `"${group.replace(/"/g,'""')}",${doneCount},${STOPS.flatMap(s=>s.tasks.filter(t=>t.type!=='discussion').map(t=>`"${getAnswerStr(t.id).replace(/"/g,'""')}"`)).join(',')}`;
-  const csv = row;
 
-  navigator.clipboard.writeText(csv).then(()=>{
-    showMsg('✓ Copied! Paste into WhatsApp or a spreadsheet.','#2d7a4f');
+  const stopLabels = [
+    "Stop 1 · Outside the Castle",
+    "Stop 2 · Roman Foundations",
+    "Stop 3 · Boudica and the Revolt",
+    "Stop 4 · Norman Power",
+    "Stop 5 · The Prison Cells",
+    "Stop 6 · Final Reflection",
+  ];
+
+  let lines = [];
+  lines.push(`🏰 Colchester Castle — Group ${group} (${doneCount}/6 stops)`);
+  lines.push('');
+
+  STOPS.forEach((s, si) => {
+    lines.push(stopLabels[si]);
+    s.tasks.forEach(t => {
+      if(t.type === 'discussion') return;
+      const v = state[t.id];
+      if(t.type === 'checks'){
+        const ticked = t.items.filter((_, i) => v[i]);
+        if(ticked.length) lines.push('✓ ' + ticked.join(', '));
+      } else if(t.type === 'radio'){
+        if(v) lines.push('→ ' + v);
+      } else if(t.type === 'text'){
+        const trimmed = (v||'').trim();
+        if(trimmed) lines.push('"' + trimmed + '"');
+      } else if(t.type === 'photo'){
+        const trimmed = (v||'').trim();
+        if(trimmed) lines.push('"' + trimmed + '"');
+        else lines.push('📸 drawing');
+      } else if(t.type === 'object'){
+        const parts = [v.name, v.material, v.use].map(x=>(x||'').trim()).filter(Boolean);
+        if(parts.length) lines.push('Object: ' + parts.join(' / '));
+      } else if(t.type === 'twotext'){
+        const parts = (v||[]).map(x=>(x||'').trim()).filter(Boolean);
+        if(parts.length) lines.push(parts.join(' | '));
+      } else if(t.type === 'list4'){
+        const items = (v||[]).map((x,i)=>x.trim()?`${i+1}. ${x.trim()}`:'').filter(Boolean);
+        if(items.length) lines.push(items.join(' | '));
+      } else if(t.type === 'sentences'){
+        const items = (v||[]).map(x=>(x||'').trim()).filter(Boolean);
+        if(items.length) lines.push(items.join(' | '));
+      }
+    });
+    lines.push('');
+  });
+
+  const summary = lines.join('\n').trim();
+
+  navigator.clipboard.writeText(summary).then(()=>{
+    showMsg('✓ Copied! Paste into WhatsApp.','#2d7a4f');
   }).catch(()=>{
     const ta=document.createElement('textarea');
-    ta.value=csv;ta.style.cssText='position:fixed;top:80px;left:16px;right:16px;height:120px;font-size:10px;font-family:monospace;z-index:200';
+    ta.value=summary;
+    ta.style.cssText='position:fixed;top:80px;left:16px;right:16px;height:200px;font-size:11px;font-family:monospace;z-index:200;border-radius:8px;padding:8px';
     document.body.appendChild(ta);ta.select();
     showMsg('⚠ Select text in the box and copy manually.','#c0392b');
   });
