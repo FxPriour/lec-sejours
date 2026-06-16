@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colchester Castle — Discovery Challenge</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#f5f4f0;color:#1a1a18;min-height:100vh;padding:0}
+.header{background:#fff;border-bottom:0.5px solid #ddd;padding:14px 16px}
+.header h1{font-size:17px;font-weight:500;margin-bottom:2px}
+.header .sub{font-size:12px;color:#888}
+.name-bar{background:#fff;border-bottom:0.5px solid #ddd;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.name-bar label{font-size:12px;color:#888;white-space:nowrap}
+.name-bar input{flex:1;padding:7px 10px;font-size:13px;border:0.5px solid #ccc;border-radius:8px;background:#fff;color:#1a1a18;max-width:220px}
+.progress-bar{background:#fff;border-bottom:0.5px solid #ddd;padding:10px 16px}
+.progress-label{font-size:11px;color:#888;margin-bottom:6px;display:flex;justify-content:space-between}
+.progress-track{background:#eee;border-radius:4px;height:6px}
+.progress-fill{background:#5bab7a;height:6px;border-radius:4px;transition:width .3s}
+.stop-dots{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.dot{width:28px;height:28px;border-radius:50%;background:#eee;border:0.5px solid #ddd;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;color:#888}
+.dot.done{background:#5bab7a;color:#fff;border-color:#5bab7a}
+.dot.active{background:#1a1a18;color:#fff;border-color:#1a1a18}
+.stop-container{padding:16px}
+.stop-card{background:#fff;border-radius:12px;border:0.5px solid #ddd;overflow:hidden}
+.stop-header{padding:12px 16px;border-bottom:0.5px solid #eee}
+.stop-header .stop-num{font-size:11px;font-weight:500;color:#888;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px}
+.stop-header .stop-title{font-size:15px;font-weight:500}
+.stop-header .stop-sub{font-size:11px;color:#888;margin-top:2px;font-style:italic}
+.stop-body{padding:14px 16px}
+.task{margin-bottom:14px;padding-bottom:14px;border-bottom:0.5px solid #f0f0f0}
+.task:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.task-title{font-size:12px;font-weight:500;margin-bottom:6px;display:flex;align-items:baseline;gap:6px}
+.stars{color:#b06c00;font-size:11px}
+.task-body{font-size:12px;color:#333;line-height:1.5}
+.check-item{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:12px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.check-item input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:#1a1a18;flex-shrink:0}
+textarea{width:100%;border:0.5px solid #ccc;border-radius:8px;padding:8px 10px;font-size:12px;font-family:inherit;resize:none;background:#fff;color:#1a1a18;margin-top:6px;line-height:1.5}
+textarea:focus{outline:none;border-color:#888}
+.photo-nudge{background:#f5f4f0;border-radius:6px;padding:8px 10px;font-size:11px;color:#888;margin-top:6px;text-align:center}
+.tip{font-size:11px;color:#b06c00;font-style:italic;margin-top:5px}
+.discussion{background:#eef4ff;border-left:3px solid #4a6fa5;border-radius:0 6px 6px 0;padding:8px 10px;font-size:12px;margin-top:8px;line-height:1.5}
+.warn{background:#fff3e0;border-left:3px solid #e8a020;border-radius:0 6px 6px 0;padding:7px 10px;font-size:11px;margin-bottom:10px;font-style:italic;color:#7a4a00}
+.obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.obj-field label{font-size:10px;color:#888;display:block;margin-bottom:3px}
+.nav-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:0.5px solid #ddd;padding:10px 16px;display:flex;gap:8px;align-items:center}
+.nav-bar button{flex:1;padding:10px;font-size:13px;border:0.5px solid #ccc;border-radius:8px;background:#fff;color:#1a1a18;cursor:pointer;font-family:inherit}
+.nav-bar button:active{background:#f0f0ee}
+.nav-bar button.primary{background:#1a1a18;color:#fff;border-color:transparent}
+.nav-bar button.report{background:#4a6fa5;color:#fff;border-color:transparent;flex:0 0 auto;padding:10px 14px}
+.nav-bar button:disabled{opacity:.35;cursor:default}
+.stop-container{padding:16px;padding-bottom:80px}
+.mark-done{width:100%;padding:10px;font-size:13px;border:0.5px solid #5bab7a;border-radius:8px;background:#e8f5ee;color:#2d7a4f;cursor:pointer;font-family:inherit;margin-top:14px;font-weight:500}
+.mark-done.done{background:#5bab7a;color:#fff}
+.report-msg{position:fixed;top:16px;left:16px;right:16px;background:#1a1a18;color:#fff;border-radius:10px;padding:12px 16px;font-size:13px;text-align:center;z-index:100;display:none}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Colchester Castle 🏰</h1>
+  <div class="sub">Discovery Challenge · Work in pairs · Speak English throughout!</div>
+</div>
+
+<div class="name-bar">
+  <label>Group</label>
+  <select id="group-name" onchange="handleGroupSelect(this.value)" style="flex:1;padding:7px 10px;font-size:13px;border:0.5px solid #ccc;border-radius:8px;background:#fff;color:#1a1a18;max-width:200px">
+    <option value="">— pick your group —</option>
+    <option value="Claudius">Claudius</option>
+    <option value="Boudica">Boudica</option>
+    <option value="Camulodunum">Camulodunum</option>
+    <option value="Centurion">Centurion</option>
+    <option value="Gladiator">Gladiator</option>
+    <option value="Maximus">Maximus</option>
+    <option value="custom">✏ Invent our own…</option>
+  </select>
+  <input type="text" id="group-custom" placeholder="Your group name…" maxlength="30" autocomplete="off"
+    style="display:none;flex:1;padding:7px 10px;font-size:13px;border:0.5px solid #ccc;border-radius:8px;background:#fff;color:#1a1a18;max-width:200px"/>
+</div>
+
+<div class="progress-bar">
+  <div class="progress-label">
+    <span id="progress-text">0 of 6 stops completed</span>
+    <span id="progress-pct">0%</span>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+  <div class="stop-dots" id="stop-dots"></div>
+</div>
+
+<div class="stop-container" id="stop-container"></div>
+
+<div class="nav-bar">
+  <button id="btn-prev" onclick="navigate(-1)" disabled>← Prev</button>
+  <button id="btn-next" onclick="navigate(1)" class="primary">Next →</button>
+  <button class="report" onclick="exportCSV()">Report 📋</button>
+</div>
+
+<div class="report-msg" id="report-msg"></div>
+
+<script>
+const STOPS = [
+  {
+    num: 1, title: "Outside the Castle", sub: "Before entering",
+    tasks: [
+      { id:"s1_hunt", type:"checks", star:1, title:"Scavenger hunt — find and tick:", items:[
+        "An arch","A tower","A Roman brick (look for thin, reddish bricks mixed into the walls)"
+      ]},
+      { id:"s1_draw", type:"photo", star:1, title:"Draw one thing you can see", label:"Describe or sketch what you see (or take a photo 📸)" },
+      { id:"s1_q1", type:"text", star:2, title:"Q1. What material is the castle mainly made from?", rows:2 },
+      { id:"s1_q2", type:"radio", star:2, title:"Q2. How old is the castle approximately?", items:["200 years","500 years","900 years","2,000 years"] },
+      { id:"s1_q3", type:"text", star:3, title:"Q3. Why do you think the castle was built to look so strong?", rows:3 },
+    ]
+  },
+  {
+    num: 2, title: "The Roman Foundations", sub: "Colchester was once the Roman capital of Britain",
+    tasks: [
+      { id:"s2_hunt", type:"checks", star:1, title:"Scavenger hunt — find these objects and tick:", items:["A coin","A helmet or weapon","A piece of pottery"] },
+      { id:"s2_fav", type:"text", star:1, title:"My favourite object:", rows:1, tip:"It is __________ (old / beautiful / strange / interesting)." },
+      { id:"s2_q4", type:"text", star:2, title:"Q4. What was the Roman name of Colchester?", rows:1 },
+      { id:"s2_q5", type:"text", star:2, title:"Q5. Why was this city important to the Romans?", rows:3 },
+      { id:"s2_q6", type:"object", star:3, title:"Q6. Find one Roman object and describe it." },
+      { id:"s2_q6b", type:"text", star:3, title:"Challenge: find the oldest thing in this room. What is it?", rows:1 },
+    ]
+  },
+  {
+    num: 3, title: "Boudica and the Revolt", sub: "Read the information panels about Boudica",
+    tasks: [
+      { id:"s3_q7", type:"radio", star:1, title:"Q7. Who was Boudica?", items:["A Roman empress","A British queen who fought the Romans","A Norman knight"] },
+      { id:"s3_q8", type:"text", star:2, title:"Q8. Why did she attack Colchester?", rows:3 },
+      { id:"s3_q9", type:"text", star:3, title:"Q9. Do you think her rebellion was justified? Why?", rows:3 },
+      { id:"s3_disc", type:"discussion", text:"Would you call Boudica a hero or a rebel? Discuss with your partner — you don't have to agree!" },
+    ]
+  },
+  {
+    num: 4, title: "Norman Power", sub: "After 1066",
+    tasks: [
+      { id:"s4_draw", type:"photo", star:1, title:"Find and draw one Norman feature (an arch, a column, a carved stone)", label:"Describe or sketch what you see (or take a photo 📸)" },
+      { id:"s4_q10", type:"text", star:2, title:"Q10. Who ordered the building of the castle?", rows:1 },
+      { id:"s4_q11", type:"checks", star:2, title:"Q11. Why did the Normans build castles in England? Tick 2:", items:["To defend against attack","To show power","To grow food","To control people"] },
+      { id:"s4_q12", type:"twotext", star:3, title:"Q12. How is Norman architecture different from Roman architecture?",
+        labels:["Roman example","Norman example"] },
+    ]
+  },
+  {
+    num: 5, title: "The Prison Cells", sub: "Explore the prison area",
+    tasks: [
+      { id:"s5_hunt", type:"checks", star:1, title:"Find and tick:", items:["A prison door","Something that would make prison life difficult"] },
+      { id:"s5_q13", type:"text", star:2, title:"Q13. How were prisoners treated?", rows:3 },
+      { id:"s5_q14", type:"text", star:2, title:"Q14. Would you like to spend one night here? Explain in 2–3 sentences.", rows:3 },
+      { id:"s5_q15", type:"text", star:3, title:"Q15. Find one surprising fact about prison life here:", rows:2 },
+      { id:"s5_disc", type:"discussion", text:"Was justice fair in the past? What has changed since then?" },
+    ]
+  },
+  {
+    num: 6, title: "Final Reflection", sub: "The castle from outside",
+    warn: "The roof is not accessible today. Answer from ground level or the highest point you can reach inside.",
+    tasks: [
+      { id:"s6_q16", type:"text", star:2, title:"Q16. Why was this castle built in this location?", rows:3 },
+      { id:"s6_q17", type:"list4", star:2, title:"Q17. What do you think you would be able to see from the top? List 4 things:" },
+      { id:"s6_q18", type:"text", star:3, title:"Q18. If you were a Norman king or queen, would you choose this castle as your base? Why?", rows:3 },
+      { id:"s6_complete", type:"sentences", star:1, title:"Complete these sentences:",
+        sentences:["The castle is __________ (big / enormous / impressive / ancient).","My favourite part of the visit was ","One thing I did not know before today: "] },
+    ]
+  }
+];
+
+// State
+const state = {};
+STOPS.forEach(s => s.tasks.forEach(t => {
+  if(t.type==='checks') state[t.id] = new Array(t.items.length).fill(false);
+  else if(t.type==='radio') state[t.id] = null;
+  else if(t.type==='object') state[t.id] = {name:'',material:'',use:''};
+  else if(t.type==='twotext') state[t.id] = ['',''];
+  else if(t.type==='list4') state[t.id] = ['','','',''];
+  else if(t.type==='sentences') state[t.id] = new Array(t.sentences.length).fill('');
+  else if(t.type==='discussion'||t.type==='photo') state[t.id] = '';
+  else state[t.id] = '';
+}));
+
+const done = new Array(6).fill(false);
+let current = 0;
+
+function renderDots(){
+  const el = document.getElementById('stop-dots');
+  el.innerHTML = STOPS.map((s,i)=>`<div class="dot${done[i]?' done':''}${i===current?' active':''}" onclick="goTo(${i})">${i+1}</div>`).join('');
+}
+
+function updateProgress(){
+  const n = done.filter(Boolean).length;
+  document.getElementById('progress-text').textContent = n+' of 6 stops completed';
+  document.getElementById('progress-pct').textContent = Math.round(n/6*100)+'%';
+  document.getElementById('progress-fill').style.width = (n/6*100)+'%';
+  renderDots();
+}
+
+function buildTask(t){
+  let html = `<div class="task" id="task-${t.id}">`;
+  if(t.type!=='discussion'){
+    html+=`<div class="task-title"><span class="stars">${'★'.repeat(t.star)}</span>${t.title}</div>`;
+  }
+  html+='<div class="task-body">';
+  if(t.type==='checks'){
+    t.items.forEach((item,i)=>{
+      const checked = state[t.id][i] ? 'checked' : '';
+      html+=`<label class="check-item"><input type="checkbox" ${checked} onchange="updateCheck('${t.id}',${i},this.checked)"> ${item}</label>`;
+    });
+  } else if(t.type==='radio'){
+    t.items.forEach((item,i)=>{
+      const checked = state[t.id]===item ? 'checked' : '';
+      html+=`<label class="check-item"><input type="radio" name="${t.id}" value="${item}" ${checked} onchange="updateState('${t.id}',this.value)" style="width:18px;height:18px;accent-color:#1a1a18;flex-shrink:0"> ${item}</label>`;
+    });
+  } else if(t.type==='text'){
+    html+=`<textarea rows="${t.rows||2}" placeholder="Write your answer here…" onchange="updateState('${t.id}',this.value)" oninput="updateState('${t.id}',this.value)">${state[t.id]||''}</textarea>`;
+    if(t.tip) html+=`<div class="tip">${t.tip}</div>`;
+  } else if(t.type==='photo'){
+    html+=`<div class="photo-nudge">✏ Draw this on paper — then take a photo of your drawing 📸</div>`;
+    html+=`<textarea rows="2" placeholder="Any notes…" onchange="updateState('${t.id}',this.value)" oninput="updateState('${t.id}',this.value)">${state[t.id]||''}</textarea>`;
+  } else if(t.type==='object'){
+    html+=`<div class="obj-grid">
+      <div class="obj-field"><label>Object name</label><textarea rows="1" onchange="updateObj('${t.id}','name',this.value)" oninput="updateObj('${t.id}','name',this.value)">${state[t.id].name||''}</textarea></div>
+      <div class="obj-field"><label>Material</label><textarea rows="1" onchange="updateObj('${t.id}','material',this.value)" oninput="updateObj('${t.id}','material',this.value)">${state[t.id].material||''}</textarea></div>
+    </div>
+    <div class="obj-field" style="margin-top:6px"><label>What it was used for</label><textarea rows="1" onchange="updateObj('${t.id}','use',this.value)" oninput="updateObj('${t.id}','use',this.value)">${state[t.id].use||''}</textarea></div>`;
+  } else if(t.type==='twotext'){
+    t.labels.forEach((lbl,i)=>{
+      html+=`<div class="obj-field" style="margin-top:6px"><label>${lbl}</label><textarea rows="2" onchange="updateArr('${t.id}',${i},this.value)" oninput="updateArr('${t.id}',${i},this.value)">${state[t.id][i]||''}</textarea></div>`;
+    });
+  } else if(t.type==='list4'){
+    [1,2,3,4].forEach((n,i)=>{
+      html+=`<div style="display:flex;align-items:center;gap:6px;margin-top:6px"><span style="font-weight:500;min-width:16px">${n}.</span><textarea rows="1" style="flex:1" onchange="updateArr('${t.id}',${i},this.value)" oninput="updateArr('${t.id}',${i},this.value)">${state[t.id][i]||''}</textarea></div>`;
+    });
+  } else if(t.type==='sentences'){
+    t.sentences.forEach((s,i)=>{
+      html+=`<div style="margin-top:8px;font-size:12px">${s}<textarea rows="1" onchange="updateArr('${t.id}',${i},this.value)" oninput="updateArr('${t.id}',${i},this.value)">${state[t.id][i]||''}</textarea></div>`;
+    });
+  } else if(t.type==='discussion'){
+    html+=`<div class="discussion">💬 <b>Discussion:</b> ${t.text}</div>`;
+  }
+  html+='</div></div>';
+  return html;
+}
+
+function renderStop(){
+  const s = STOPS[current];
+  let html = `<div class="stop-card">
+    <div class="stop-header">
+      <div class="stop-num">Stop ${s.num} of 6</div>
+      <div class="stop-title">${s.title}</div>
+      ${s.sub?`<div class="stop-sub">${s.sub}</div>`:''}
+    </div>
+    <div class="stop-body">`;
+  if(s.warn) html+=`<div class="warn">⚠ ${s.warn}</div>`;
+  s.tasks.forEach(t=>{ html+=buildTask(t); });
+  html+=`<button class="mark-done${done[current]?' done':''}" onclick="toggleDone()">
+    ${done[current]?'✓ Stop completed':'Mark stop as done ✓'}
+  </button>`;
+  html+=`</div></div>`;
+  document.getElementById('stop-container').innerHTML = html;
+  document.getElementById('btn-prev').disabled = current===0;
+  document.getElementById('btn-next').disabled = current===5;
+  document.getElementById('btn-next').textContent = current===5 ? 'Done ✓' : 'Next →';
+  renderDots();
+  window.scrollTo(0,0);
+}
+
+function updateState(id,val){ state[id]=val; }
+function updateCheck(id,i,val){ state[id][i]=val; }
+function updateObj(id,key,val){ state[id][key]=val; }
+function updateArr(id,i,val){ state[id][i]=val; }
+
+function toggleDone(){
+  done[current]=!done[current];
+  updateProgress();
+  renderStop();
+}
+
+function navigate(dir){
+  current = Math.max(0, Math.min(5, current+dir));
+  renderStop();
+}
+
+function goTo(i){ current=i; renderStop(); }
+
+function getAnswerStr(id){
+  const v = state[id];
+  if(Array.isArray(v)) return v.join(' | ');
+  if(typeof v === 'object') return `${v.name} / ${v.material} / ${v.use}`;
+  return v||'';
+}
+
+function exportCSV(){
+  const group = getGroupName();
+  const doneCount = done.filter(Boolean).length;
+  const header = `Group,Stops completed,${STOPS.flatMap(s=>s.tasks.filter(t=>t.type!=='discussion').map(t=>`"${t.id}"`)).join(',')}`;
+  const row = `"${group.replace(/"/g,'""')}",${doneCount},${STOPS.flatMap(s=>s.tasks.filter(t=>t.type!=='discussion').map(t=>`"${getAnswerStr(t.id).replace(/"/g,'""')}"`)).join(',')}`;
+  const csv = header+'\n'+row;
+
+  navigator.clipboard.writeText(csv).then(()=>{
+    showMsg('✓ Copied! Paste into WhatsApp or a spreadsheet.','#2d7a4f');
+  }).catch(()=>{
+    const ta=document.createElement('textarea');
+    ta.value=csv;ta.style.cssText='position:fixed;top:80px;left:16px;right:16px;height:120px;font-size:10px;font-family:monospace;z-index:200';
+    document.body.appendChild(ta);ta.select();
+    showMsg('⚠ Select text in the box and copy manually.','#c0392b');
+  });
+}
+
+function showMsg(text,color){
+  const el=document.getElementById('report-msg');
+  el.textContent=text;el.style.background=color==='#2d7a4f'?'#1a1a18':'#c0392b';
+  el.style.display='block';
+  setTimeout(()=>el.style.display='none',3500);
+}
+
+function handleGroupSelect(val){
+  const custom = document.getElementById('group-custom');
+  if(val==='custom'){
+    custom.style.display='block';
+    custom.focus();
+  } else {
+    custom.style.display='none';
+  }
+}
+
+function getGroupName(){
+  const sel = document.getElementById('group-name').value;
+  if(sel==='custom') return document.getElementById('group-custom').value.trim()||'(no name)';
+  return sel||'(no name)';
+}
+renderDots();
+updateProgress();
+renderStop();
+</script>
+</body>
+</html>
