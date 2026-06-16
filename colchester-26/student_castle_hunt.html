@@ -291,9 +291,8 @@ function getAnswerStr(id){
 function exportCSV(){
   const group = getGroupName();
   const doneCount = done.filter(Boolean).length;
-  const header = `Group,Stops completed,${STOPS.flatMap(s=>s.tasks.filter(t=>t.type!=='discussion').map(t=>`"${t.id}"`)).join(',')}`;
   const row = `"${group.replace(/"/g,'""')}",${doneCount},${STOPS.flatMap(s=>s.tasks.filter(t=>t.type!=='discussion').map(t=>`"${getAnswerStr(t.id).replace(/"/g,'""')}"`)).join(',')}`;
-  const csv = header+'\n'+row;
+  const csv = row;
 
   navigator.clipboard.writeText(csv).then(()=>{
     showMsg('✓ Copied! Paste into WhatsApp or a spreadsheet.','#2d7a4f');
