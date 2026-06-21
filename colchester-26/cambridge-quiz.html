@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cambridge Trip Quiz</title>
+<style>
+  :root{
+    --ink:#1e2a52;          /* academic blue-black */
+    --ink-soft:#3a4a7a;
+    --stone:#f3efe5;        /* warm stone background */
+    --paper:#ffffff;
+    --gold:#c8a24a;         /* corpus clock gold */
+    --green:#1f7a45;
+    --green-bg:#e3f2e8;
+    --red:#b3261e;
+    --red-bg:#fbe6e4;
+    --line:#d9d2c2;
+    --shadow:0 6px 24px rgba(30,42,82,.10);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:Georgia,"Times New Roman",serif;
+    background:var(--stone);
+    color:var(--ink);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:24px 18px 60px;}
+
+  header{text-align:center;padding:18px 0 8px;}
+  .eyebrow{
+    font-size:12px;letter-spacing:3px;text-transform:uppercase;
+    color:var(--ink-soft);font-family:Arial,Helvetica,sans-serif;
+  }
+  h1{font-size:30px;margin:6px 0 4px;letter-spacing:-.5px;}
+  .sub{color:var(--ink-soft);font-style:italic;font-size:15px;margin:0;}
+  .clock{font-size:34px;display:block;margin-bottom:2px;}
+
+  .progress{
+    height:6px;background:var(--line);border-radius:6px;overflow:hidden;margin:22px 0 18px;
+  }
+  .progress > i{display:block;height:100%;background:var(--gold);width:0;transition:width .35s ease;}
+
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    box-shadow:var(--shadow);padding:22px 20px;
+  }
+  .qcount{
+    font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:1.5px;
+    text-transform:uppercase;color:var(--gold);font-weight:bold;
+  }
+  .qtext{font-size:20px;margin:8px 0 18px;}
+  .opt{
+    display:block;width:100%;text-align:left;cursor:pointer;
+    background:var(--paper);border:2px solid var(--line);border-radius:10px;
+    padding:13px 15px;margin:9px 0;font-family:inherit;font-size:16px;color:var(--ink);
+    transition:border-color .15s, background .15s, transform .05s;
+  }
+  .opt:hover{border-color:var(--ink-soft);}
+  .opt:active{transform:scale(.995);}
+  .opt:focus-visible{outline:3px solid var(--gold);outline-offset:2px;}
+  .opt .letter{
+    display:inline-block;width:26px;height:26px;line-height:26px;text-align:center;
+    border-radius:50%;background:var(--stone);color:var(--ink);font-weight:bold;
+    margin-right:10px;font-family:Arial,Helvetica,sans-serif;font-size:14px;
+  }
+  .opt.correct{border-color:var(--green);background:var(--green-bg);}
+  .opt.correct .letter{background:var(--green);color:#fff;}
+  .opt.wrong{border-color:var(--red);background:var(--red-bg);}
+  .opt.wrong .letter{background:var(--red);color:#fff;}
+  .opt:disabled{cursor:default;}
+
+  .feedback{
+    margin-top:14px;padding:12px 14px;border-radius:10px;background:var(--stone);
+    font-size:14px;color:var(--ink-soft);display:none;
+  }
+  .feedback.show{display:block;}
+  .feedback b{color:var(--ink);}
+
+  .next{
+    margin-top:18px;display:none;width:100%;cursor:pointer;
+    background:var(--ink);color:#fff;border:none;border-radius:10px;
+    padding:14px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;
+    letter-spacing:.5px;transition:background .15s;
+  }
+  .next:hover{background:var(--ink-soft);}
+  .next.show{display:block;}
+
+  /* results */
+  .results{display:none;}
+  .results.show{display:block;}
+  .score-badge{
+    text-align:center;background:var(--paper);border:1px solid var(--line);
+    border-radius:14px;box-shadow:var(--shadow);padding:26px 20px;margin-bottom:20px;
+  }
+  .score-num{font-size:52px;font-weight:bold;line-height:1;color:var(--ink);}
+  .score-num small{font-size:24px;color:var(--ink-soft);}
+  .score-msg{margin-top:8px;font-style:italic;color:var(--ink-soft);}
+  .recap-title{
+    font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--ink-soft);margin:0 0 10px;text-align:center;
+  }
+  .recap-item{
+    background:var(--paper);border:1px solid var(--line);border-left-width:5px;
+    border-radius:10px;padding:12px 14px;margin:8px 0;
+  }
+  .recap-item.ok{border-left-color:var(--green);}
+  .recap-item.no{border-left-color:var(--red);}
+  .recap-q{font-size:15px;margin:0 0 6px;font-weight:bold;}
+  .recap-line{font-size:14px;margin:2px 0;display:flex;gap:8px;align-items:flex-start;}
+  .tick{font-weight:bold;}
+  .ok .tick{color:var(--green);}
+  .no .yourtick{color:var(--red);}
+  .recap-line .lbl{
+    font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:1px;
+    text-transform:uppercase;color:var(--ink-soft);min-width:64px;
+  }
+  .restart{
+    margin:20px auto 0;display:block;cursor:pointer;background:none;
+    border:2px solid var(--ink);color:var(--ink);border-radius:10px;
+    padding:12px 22px;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;
+  }
+  .restart:hover{background:var(--ink);color:#fff;}
+
+  footer{text-align:center;margin-top:28px;font-size:12px;color:var(--ink-soft);
+    font-family:Arial,Helvetica,sans-serif;letter-spacing:.5px;}
+
+  /* start screen */
+  .start-card{text-align:center;}
+  .start-card label{
+    display:block;font-family:Arial,Helvetica,sans-serif;font-size:13px;
+    letter-spacing:1px;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px;
+  }
+  .start-card input{
+    width:100%;max-width:320px;padding:13px 15px;font-family:inherit;font-size:17px;
+    color:var(--ink);background:var(--stone);border:2px solid var(--line);border-radius:10px;
+    text-align:center;
+  }
+  .start-card input:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-color:var(--ink-soft);}
+  .start-card .next{display:inline-block;width:auto;min-width:200px;margin-top:18px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="clock" aria-hidden="true">🦗</span>
+    <div class="eyebrow">LEC · Colchester · Trip Debrief</div>
+    <h1>Cambridge Quiz</h1>
+    <p class="sub">Show your screen at the end to see your score in red &amp; green.</p>
+  </header>
+
+  <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+
+  <main id="quiz" class="card" aria-live="polite"></main>
+
+  <section id="results" class="results" aria-live="polite"></section>
+
+  <footer>Cambridge scavenger hunt · 8 questions + 1 tie-breaker</footer>
+</div>
+
+<script>
+const QUESTIONS = [
+  {
+    q:'The scavenger hunt took you to a famous museum in Cambridge. Which one?',
+    options:['The Fitzwilliam Museum','The Museum of Cambridge','The British Museum','The Sedgwick Museum'],
+    answer:0,
+    fb:'We were also meant to visit the <b>Sedgwick</b> (fossils &amp; dinosaurs) but ran out of time.'
+  },
+  {
+    q:'The Mathematical Bridge is famous for a legend. What does the legend say?',
+    options:['It was built without any nails or bolts','It was designed by a king','It can move up and down','It is made of gold'],
+    answer:0,
+    fb:'Legend says clever geometry held it together; in reality it always had bolts.'
+  },
+  {
+    q:'The golden grasshopper on the Corpus Clock seems to "eat" time. What is its nickname?',
+    options:['The Chronophage','The Timekeeper','The Hungry Hopper','The Cambridge Cricket'],
+    answer:0,
+    fb:'<b>Chronophage</b> = Greek <i>chronos</i> (time) + <i>phagein</i> (to eat): "time-eater".'
+  },
+  {
+    q:'At the Corn Exchange you saw people in black gowns and pink scarves. Who were they?',
+    options:['University students celebrating their degrees','Famous actors','Church priests','Football players'],
+    answer:0,
+    fb:'Graduates! Cambridge has <b>two</b> universities – the ancient one and modern Anglia Ruskin, whose colour is pink.'
+  },
+  {
+    q:'What is "punting," which you saw on the River Cam?',
+    options:['Moving a flat boat with a long pole','A type of rowing race','Swimming across the river','Fishing for swans'],
+    answer:0,
+    fb:'The boat is a <b>punt</b>; the person with the pole is the <b>punter</b>.'
+  },
+  {
+    q:'On the worksheet you looked for wildlife on "The Backs." What are The Backs?',
+    options:['The green areas behind the riverside colleges','The back doors of the museums','A football team','A shopping street'],
+    answer:0,
+    fb:'They lie <b>behind</b> the colleges, along the river – hence "the Backs".'
+  },
+  {
+    q:'A "swan" is a large white water bird. Which animal did the hunt also ask you to spot?',
+    options:['A duck','A penguin','An eagle','A parrot'],
+    answer:0,
+    fb:'The checklist was: <b>duck, swan, cow</b>.'
+  },
+  {
+    q:'Around the colleges and streets, what is the most common student transport?',
+    options:['Bicycles','Cars','Trams','Boats'],
+    answer:0,
+    fb:'Cambridge is one of the most <b>cycle-heavy</b> cities in the UK.'
+  },
+  {
+    q:'TIE-BREAKER: Roughly how many colleges make up the University of Cambridge?',
+    options:['31','8','12','55'],
+    answer:0,
+    fb:'There are <b>31</b> colleges, each with its own buildings and traditions.'
+  }
+];
+const LETTERS = ['A','B','C','D'];
+
+let current = 0;
+let score = 0;
+let playerName = '';
+const record = []; // {qi, chosenOriginalIndex}
+
+const quizEl = document.getElementById('quiz');
+const resultsEl = document.getElementById('results');
+const bar = document.getElementById('bar');
+
+// Fisher-Yates: returns a shuffled array of original option indices
+function shuffledOrder(n){
+  const a = Array.from({length:n}, (_,i)=>i);
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+// pre-compute a display order for each question (stable for this attempt)
+let orders = QUESTIONS.map(q => shuffledOrder(q.options.length));
+
+function escapeHtml(s){
+  return s.replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[c]));
+}
+
+function renderStart(){
+  bar.style.width = '0%';
+  quizEl.innerHTML =
+    '<div class="start-card">'+
+      '<label for="nameInput">Your name</label>'+
+      '<input id="nameInput" type="text" autocomplete="off" maxlength="24" '+
+        'placeholder="e.g. Marie" aria-label="Your name">'+
+      '<button class="next show" id="startBtn">Start the quiz →</button>'+
+    '</div>';
+  const input = document.getElementById('nameInput');
+  const go = ()=>{
+    playerName = input.value.trim();
+    current = 0; score = 0; record.length = 0;
+    orders = QUESTIONS.map(q => shuffledOrder(q.options.length));
+    renderQuestion();
+    window.scrollTo({top:0, behavior:'smooth'});
+  };
+  document.getElementById('startBtn').addEventListener('click', go);
+  input.addEventListener('keydown', e=>{ if(e.key==='Enter') go(); });
+  input.focus();
+}
+
+function renderQuestion(){
+  const item = QUESTIONS[current];
+  const order = orders[current];
+  bar.style.width = (current / QUESTIONS.length * 100) + '%';
+  let html = '';
+  html += '<div class="qcount">Question '+(current+1)+' / '+QUESTIONS.length+'</div>';
+  html += '<p class="qtext">'+item.q+'</p>';
+  order.forEach((origIndex,pos)=>{
+    html += '<button class="opt" data-orig="'+origIndex+'">'+
+              '<span class="letter">'+LETTERS[pos]+'</span>'+item.options[origIndex]+
+            '</button>';
+  });
+  html += '<div class="feedback" id="fb"><b>Why:</b> '+item.fb+'</div>';
+  html += '<button class="next" id="next">'+
+            (current===QUESTIONS.length-1?'See my results →':'Next question →')+
+          '</button>';
+  quizEl.innerHTML = html;
+
+  quizEl.querySelectorAll('.opt').forEach(btn=>{
+    btn.addEventListener('click', onChoose);
+  });
+  document.getElementById('next').addEventListener('click', onNext);
+}
+
+function onChoose(e){
+  const chosen = parseInt(e.currentTarget.dataset.orig,10);
+  const item = QUESTIONS[current];
+  record.push({qi:current, chosen});
+  if(chosen===item.answer) score++;
+
+  quizEl.querySelectorAll('.opt').forEach(btn=>{
+    const i = parseInt(btn.dataset.orig,10);
+    btn.disabled = true;
+    if(i===item.answer) btn.classList.add('correct');
+    if(i===chosen && chosen!==item.answer) btn.classList.add('wrong');
+  });
+  document.getElementById('fb').classList.add('show');
+  document.getElementById('next').classList.add('show');
+  document.getElementById('next').focus();
+}
+
+function onNext(){
+  if(current < QUESTIONS.length-1){
+    current++;
+    renderQuestion();
+    window.scrollTo({top:0, behavior:'smooth'});
+  } else {
+    showResults();
+  }
+}
+
+function showResults(){
+  bar.style.width = '100%';
+  quizEl.style.display = 'none';
+  const pct = Math.round(score/QUESTIONS.length*100);
+  let msg;
+  if(pct===100) msg = 'Perfect – a true Cambridge scholar!';
+  else if(pct>=75) msg = 'Excellent recall of the trip.';
+  else if(pct>=50) msg = 'Good effort – a few details to revisit.';
+  else msg = 'Let\u2019s look back at the trip together.';
+
+  let html = '';
+  html += '<div class="score-badge">'+
+            '<div class="score-num">'+score+'<small> / '+QUESTIONS.length+'</small></div>'+
+            '<div class="score-msg">'+msg+'</div>'+
+          '</div>';
+  html += '<p class="recap-title">'+(playerName ? escapeHtml(playerName)+'\u2019s answers' : 'Your answers')+'</p>';
+
+  record.forEach(r=>{
+    const item = QUESTIONS[r.qi];
+    const order = orders[r.qi];
+    const ok = r.chosen===item.answer;
+    const chosenPos = order.indexOf(r.chosen);
+    const answerPos = order.indexOf(item.answer);
+    html += '<div class="recap-item '+(ok?'ok':'no')+'">';
+    html += '<p class="recap-q">'+(r.qi+1)+'. '+item.q+'</p>';
+    html += '<div class="recap-line"><span class="lbl">You</span>'+
+              '<span class="'+(ok?'tick':'yourtick')+'">'+(ok?'✓':'✗')+'</span>'+
+              '<span>'+LETTERS[chosenPos]+') '+item.options[r.chosen]+'</span></div>';
+    if(!ok){
+      html += '<div class="recap-line"><span class="lbl">Answer</span>'+
+                '<span class="tick" style="color:var(--green)">✓</span>'+
+                '<span>'+LETTERS[answerPos]+') '+item.options[item.answer]+'</span></div>';
+    }
+    html += '</div>';
+  });
+
+  html += '<button class="restart" id="restart">Start again</button>';
+  resultsEl.innerHTML = html;
+  resultsEl.classList.add('show');
+  document.getElementById('restart').addEventListener('click', restart);
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function restart(){
+  resultsEl.classList.remove('show');
+  resultsEl.innerHTML = '';
+  quizEl.style.display = '';
+  renderStart();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+renderStart();
+</script>
+</body>
+</html>
