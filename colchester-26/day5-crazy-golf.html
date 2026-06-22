@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 5 · Saving the Planet · LEC Colchester</title>
+<style>
+  :root{
+    --ink:#1c2b22;
+    --paper:#f7f5ef;
+    --moss:#3f6b4c;
+    --moss-light:#e3ecdf;
+    --clay:#c2683a;
+    --gold:#d9a441;
+    --line:#cdd3c7;
+    --shadow:0 2px 8px rgba(28,43,34,.08);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Iowan Old Style",Georgia,"Times New Roman",serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.55;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:1rem 1.1rem 4rem;}
+
+  header.hero{
+    background:linear-gradient(160deg,var(--moss),#2e503a);
+    color:#f7f5ef;
+    border-radius:14px;
+    padding:1.4rem 1.3rem;
+    margin:.6rem 0 1.4rem;
+    box-shadow:var(--shadow);
+  }
+  header.hero .day{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    opacity:.85;margin-bottom:.4rem;
+  }
+  header.hero h1{margin:0;font-size:1.7rem;line-height:1.15;}
+  header.hero .meta{
+    margin-top:.6rem;font-size:.85rem;opacity:.92;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+  }
+
+  section{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:1.1rem 1.1rem 1.2rem;
+    margin-bottom:1.1rem;
+    box-shadow:var(--shadow);
+  }
+  h2{
+    font-size:1.15rem;margin:.1rem 0 .8rem;
+    display:flex;align-items:center;gap:.5rem;
+    border-bottom:2px solid var(--moss-light);
+    padding-bottom:.45rem;
+  }
+  h2 .badge{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:.62rem;font-weight:700;letter-spacing:.1em;
+    background:var(--moss);color:#fff;padding:.18rem .5rem;border-radius:20px;
+    text-transform:uppercase;white-space:nowrap;
+  }
+  h3{font-size:1rem;margin:1rem 0 .5rem;color:var(--moss);}
+  p{margin:.5rem 0;}
+  .reading p{text-align:justify;}
+  .src{font-size:.78rem;font-style:italic;opacity:.7;margin-top:.6rem;}
+
+  .stars{color:var(--gold);font-weight:700;}
+  .q{margin:.7rem 0;}
+  .q .lvl{color:var(--gold);font-weight:700;margin-right:.3rem;}
+
+  textarea,input[type=text]{
+    width:100%;font-family:inherit;font-size:1rem;color:var(--ink);
+    border:1px solid var(--line);border-radius:8px;padding:.55rem .65rem;
+    background:#fbfbf8;resize:vertical;
+  }
+  textarea:focus,input:focus{outline:2px solid var(--moss);border-color:var(--moss);}
+  .wc{font-size:.75rem;opacity:.7;text-align:right;margin-top:.2rem;
+      font-family:"Helvetica Neue",Arial,sans-serif;}
+
+  /* vocab match */
+  .vocab-row{display:flex;align-items:center;gap:.6rem;margin:.5rem 0;flex-wrap:wrap;}
+  .vocab-row .word{font-weight:700;min-width:120px;}
+  .vocab-row select{
+    font-family:inherit;font-size:.95rem;padding:.35rem .5rem;border-radius:7px;
+    border:1px solid var(--line);background:#fbfbf8;flex:1;min-width:160px;
+  }
+  .ok{border-color:var(--moss)!important;background:var(--moss-light)!important;}
+  .no{border-color:var(--clay)!important;background:#f6e3da!important;}
+
+  /* mcq */
+  .opts label{
+    display:block;border:1px solid var(--line);border-radius:8px;
+    padding:.5rem .65rem;margin:.35rem 0;cursor:pointer;background:#fbfbf8;
+  }
+  .opts label:hover{border-color:var(--moss);}
+  .opts input{margin-right:.5rem;}
+  .feedback{font-size:.85rem;margin-top:.5rem;font-weight:600;min-height:1.2em;
+            font-family:"Helvetica Neue",Arial,sans-serif;}
+  .feedback.good{color:var(--moss);}
+  .feedback.bad{color:var(--clay);}
+
+  button{
+    font-family:"Helvetica Neue",Arial,sans-serif;font-size:.9rem;font-weight:700;
+    border:none;border-radius:8px;padding:.55rem 1rem;cursor:pointer;
+    background:var(--moss);color:#fff;letter-spacing:.02em;
+  }
+  button:hover{background:#2e503a;}
+  button.ghost{background:#fff;color:var(--moss);border:1.5px solid var(--moss);}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:.5rem 0;}
+  th,td{border:1px solid var(--line);padding:.4rem .55rem;text-align:left;vertical-align:top;}
+  th{background:var(--moss-light);font-family:"Helvetica Neue",Arial,sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;}
+
+  .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:.4rem 0;}
+  .chip{background:var(--moss-light);color:var(--moss);border-radius:20px;
+        padding:.25rem .7rem;font-size:.85rem;font-weight:600;
+        font-family:"Helvetica Neue",Arial,sans-serif;}
+
+  .note{background:var(--moss-light);border-left:4px solid var(--moss);
+        border-radius:0 8px 8px 0;padding:.6rem .8rem;font-size:.88rem;margin:.6rem 0;}
+
+  .toolbar{
+    position:sticky;top:0;z-index:10;display:flex;gap:.6rem;justify-content:flex-end;
+    background:var(--paper);padding:.6rem 0;margin-bottom:.4rem;
+  }
+
+  @media print{
+    .toolbar,.checkbtn{display:none!important;}
+    body{background:#fff;}
+    section,header.hero{box-shadow:none;break-inside:avoid;}
+    header.hero{background:var(--moss)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    textarea{border:none;border-bottom:1px solid #999;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="toolbar">
+    <button class="ghost" onclick="checkAll()">Check my answers</button>
+    <button onclick="window.print()">Save as PDF</button>
+  </div>
+
+  <header class="hero">
+    <div class="day">Day 5 · Session 1</div>
+    <h1>Saving the planet</h1>
+    <div class="meta">Monday 22 June · Theme: Environment · Grammar: modal verbs · Written assessment this session</div>
+  </header>
+
+  <!-- VOCAB -->
+  <section>
+    <h2>Vocabulary check <span class="badge">match</span></h2>
+    <p style="font-size:.88rem;opacity:.8;">Match each word to its meaning, then tap <em>Check my answers</em>.</p>
+    <div id="vocab"></div>
+  </section>
+
+  <!-- WARM UP -->
+  <section>
+    <h2>Warm-up — Weekend debrief</h2>
+    <p>Round the class — one sentence each:</p>
+    <p><em>"This weekend I [activity]. It was [adjective] because [reason]."</em></p>
+    <p><span class="stars">★★★</span> Add a comparison: <em>"It was more [adjective] than I expected because…"</em></p>
+    <textarea rows="2" placeholder="Your sentence…" oninput="count(this)"></textarea>
+    <div class="wc"></div>
+  </section>
+
+  <!-- READING -->
+  <section class="reading">
+    <h2>Reading <span class="badge">green spaces</span></h2>
+    <p>Britain has a long tradition of public parks and green spaces. In the Victorian era, city planners believed that access to nature was essential for the mental and physical health of urban populations. Today, scientists agree: studies show that spending just 20 minutes in a green space significantly reduces stress levels.</p>
+    <p>But green spaces are under threat. Urban expansion, climate change, and budget cuts have led to the loss of parks and wild areas across the UK. Campaigners argue that local authorities must protect these spaces — not only for human wellbeing, but for biodiversity. "We cannot afford to lose what little nature remains in our cities," said one environmental activist in a recent BBC report.</p>
+    <p>Crazy golf courses, like the one you are visiting today, might seem frivolous — but they are part of the green space tradition. They bring people outdoors, away from screens, and into contact with nature. In a small way, they are part of the answer to our mental health crisis.</p>
+    <p class="src">Adapted from BBC News / The Guardian / Public Health England</p>
+
+    <h3>Comprehension</h3>
+
+    <div class="q">
+      <p><span class="lvl">★</span> What do scientists say about green spaces and stress?</p>
+      <div class="opts" data-answer="b">
+        <label><input type="radio" name="r1" value="a"> Green spaces have no effect on stress.</label>
+        <label><input type="radio" name="r1" value="b"> 20 minutes in a green space significantly reduces stress.</label>
+        <label><input type="radio" name="r1" value="c"> Only Victorian parks reduce stress.</label>
+      </div>
+      <div class="feedback" id="f-r1"></div>
+    </div>
+
+    <div class="q">
+      <p><span class="lvl">★★</span> Find the modal verb in the activist's quote. What does it express?</p>
+      <div class="opts" data-answer="c">
+        <label><input type="radio" name="r2" value="a"> "must" — advice</label>
+        <label><input type="radio" name="r2" value="b"> "should" — possibility</label>
+        <label><input type="radio" name="r2" value="c"> "cannot / can't" — impossibility</label>
+      </div>
+      <div class="feedback" id="f-r2"></div>
+    </div>
+
+    <div class="q">
+      <p><span class="lvl">★★★</span> The last paragraph links crazy golf to mental health. Do you find this argument convincing? Why or why not?</p>
+      <textarea rows="3" placeholder="Give your opinion and a reason…" oninput="count(this)"></textarea>
+      <div class="wc"></div>
+    </div>
+  </section>
+
+  <!-- GRAMMAR -->
+  <section>
+    <h2>Grammar revision — Modal verbs</h2>
+    <table>
+      <tr><th>Modal</th><th>Use</th><th>Example</th></tr>
+      <tr><td>must</td><td>strong obligation / certainty</td><td>"We must protect green spaces."</td></tr>
+      <tr><td>should</td><td>recommendation</td><td>"Governments should invest in parks."</td></tr>
+      <tr><td>could</td><td>possibility / suggestion</td><td>"Cities could plant more trees."</td></tr>
+      <tr><td>might</td><td>uncertain possibility</td><td>"This might help reduce pollution."</td></tr>
+      <tr><td>can't</td><td>impossibility</td><td>"We can't afford to lose nature."</td></tr>
+    </table>
+
+    <h3>Choose the right modal</h3>
+    <div class="q">
+      <p>1. The forecast is uncertain — it ___ rain this afternoon.</p>
+      <div class="opts" data-answer="b">
+        <label><input type="radio" name="g1" value="a"> must</label>
+        <label><input type="radio" name="g1" value="b"> might</label>
+        <label><input type="radio" name="g1" value="c"> can't</label>
+      </div>
+      <div class="feedback" id="f-g1"></div>
+    </div>
+    <div class="q">
+      <p>2. Cities ___ protect green spaces — it is an obligation.</p>
+      <div class="opts" data-answer="a">
+        <label><input type="radio" name="g2" value="a"> must</label>
+        <label><input type="radio" name="g2" value="b"> could</label>
+        <label><input type="radio" name="g2" value="c"> might</label>
+      </div>
+      <div class="feedback" id="f-g2"></div>
+    </div>
+    <div class="q">
+      <p>3. We ___ afford to lose what little nature remains.</p>
+      <div class="opts" data-answer="c">
+        <label><input type="radio" name="g3" value="a"> should</label>
+        <label><input type="radio" name="g3" value="b"> must</label>
+        <label><input type="radio" name="g3" value="c"> can't</label>
+      </div>
+      <div class="feedback" id="f-g3"></div>
+    </div>
+    <div class="q">
+      <p>4. You ___ try the new park — it is a friendly recommendation.</p>
+      <div class="opts" data-answer="a">
+        <label><input type="radio" name="g4" value="a"> should</label>
+        <label><input type="radio" name="g4" value="b"> can't</label>
+        <label><input type="radio" name="g4" value="c"> must</label>
+      </div>
+      <div class="feedback" id="f-g4"></div>
+    </div>
+
+    <div class="note">
+      <strong>Connectors for your writing:</strong>
+      <div class="chips">
+        <span class="chip">However</span><span class="chip">In addition</span>
+        <span class="chip">As a result</span><span class="chip">For example</span>
+        <span class="chip">On the other hand</span>
+      </div>
+      <span class="stars">★</span> Focus on: but · because · so · and
+    </div>
+  </section>
+
+  <!-- ASSESSMENT -->
+  <section>
+    <h2>📝 Written assessment <span class="badge">45 min</span></h2>
+    <p>Your teacher will hand out a separate assessment sheet. <strong>Documents not allowed.</strong></p>
+    <h3>Vocabulary — 10 words of the day</h3>
+    <div class="chips">
+      <span class="chip">biodiversity</span><span class="chip">campaign</span><span class="chip">urban</span>
+      <span class="chip">wellbeing</span><span class="chip">sustainable</span><span class="chip">threat</span>
+      <span class="chip">expansion</span><span class="chip">authority</span><span class="chip">reduce</span>
+      <span class="chip">essential</span>
+    </div>
+  </section>
+
+  <!-- SESSION 2 -->
+  <header class="hero" style="background:linear-gradient(160deg,var(--clay),#a04f28);">
+    <div class="day">Day 5 · Session 2</div>
+    <h1>Green spaces &amp; sustainable leisure</h1>
+    <div class="meta">Monday 22 June · After crazy golf · Assessment feedback + oral production</div>
+  </header>
+
+  <section>
+    <h2><span class="stars">★★</span> Design a sustainable leisure space</h2>
+    <p>Groups of 3–4. You are urban planners. Propose a sustainable leisure project for Colchester. Present your idea to the class in 2 minutes.</p>
+    <div class="note">
+      <strong>Your presentation must include</strong>
+      <ol style="margin:.4rem 0 0;padding-left:1.2rem;">
+        <li>What it is (describe the space / activity)</li>
+        <li>Why it is good for people (health, social, cultural)</li>
+        <li>Why it is good for the environment</li>
+        <li>One challenge and how to solve it</li>
+      </ol>
+    </div>
+    <p><span class="stars">★</span> 3 sentences and a drawing is fine. &nbsp; <span class="stars">★★★</span> Use at least 3 different modal verbs.</p>
+    <textarea rows="5" placeholder="Notes for your group presentation…" oninput="count(this)"></textarea>
+    <div class="wc"></div>
+  </section>
+
+  <!-- JOURNAL -->
+  <section>
+    <h2>📔 Journal — Day 5 <span class="badge">halfway through</span></h2>
+    <p><strong>What I've learnt</strong></p>
+    <p><span class="stars">★</span> 3 sentences using: <em>"I have learnt… / I have visited… / I have spoken English with…"</em></p>
+    <p><span class="stars">★★</span> 60 words. One strong point, one thing to improve, one surprise from the first week.</p>
+    <p><span class="stars">★★★</span> 80–100 words. A letter to a friend in France. Tell them about the week, compare Colchester with what you imagined, and mention what you still want to do.</p>
+    <textarea rows="8" placeholder="Your journal entry…" oninput="count(this)"></textarea>
+    <div class="wc"></div>
+  </section>
+
+  <p style="text-align:center;font-size:.78rem;opacity:.55;font-family:'Helvetica Neue',Arial,sans-serif;">LEC Colchester · Summer séjour · F-X Priour</p>
+
+</div>
+
+<script>
+// ---- Vocabulary matching ----
+const vocab = [
+  {word:"college",     def:"a place of higher education"},
+  {word:"founded",     def:"established / set up (in the past)"},
+  {word:"chapel",      def:"a small place of worship"},
+  {word:"rivalry",     def:"competition between two sides"},
+  {word:"prestigious", def:"highly respected and admired"}
+];
+const defs = vocab.map(v=>v.def).sort(()=>Math.random()-0.5);
+const vbox = document.getElementById('vocab');
+vocab.forEach((v,i)=>{
+  const row=document.createElement('div');
+  row.className='vocab-row';
+  let opts='<option value="">— choose —</option>';
+  defs.forEach(d=>opts+=`<option value="${d}">${d}</option>`);
+  row.innerHTML=`<span class="word">${v.word}</span><select data-correct="${v.def}">${opts}</select>`;
+  vbox.appendChild(row);
+});
+
+function count(el){
+  const n = el.value.trim().split(/\s+/).filter(Boolean).length;
+  el.nextElementSibling.textContent = n + (n===1?' word':' words');
+}
+
+function checkAll(){
+  // vocab
+  document.querySelectorAll('#vocab select').forEach(s=>{
+    s.classList.remove('ok','no');
+    if(!s.value) return;
+    s.classList.add(s.value===s.dataset.correct?'ok':'no');
+  });
+  // mcq groups
+  document.querySelectorAll('.opts').forEach(box=>{
+    const name=box.querySelector('input').name;
+    const ans=box.dataset.answer;
+    const sel=box.querySelector('input:checked');
+    const fb=document.getElementById('f-'+name);
+    if(!sel){ fb.textContent='— pick an answer —'; fb.className='feedback'; return;}
+    if(sel.value===ans){ fb.textContent='✓ Correct'; fb.className='feedback good'; }
+    else { fb.textContent='✗ Not quite — try again'; fb.className='feedback bad'; }
+  });
+  const first=document.querySelector('.no, .feedback.bad, #vocab select.ok');
+  if(first) first.scrollIntoView({behavior:'smooth',block:'center'});
+}
+</script>
+</body>
+</html>
