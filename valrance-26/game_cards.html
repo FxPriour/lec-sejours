@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>World Cup 2026 — Valrance · Printable game cards</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;color:#1a1a18}
+.page{width:100%;min-height:96vh;padding:12mm;page-break-after:always;display:flex;flex-direction:column}
+.page:last-child{page-break-after:auto}
+.sec-title{font-size:13px;font-weight:600;color:#888;margin-bottom:8px;letter-spacing:.02em}
+.hint{font-size:10px;color:#aaa;font-style:italic;margin-bottom:10px}
+/* big corner / nation signs: one per page, huge */
+.sign{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid #1a1a18;border-radius:14px;text-align:center}
+.sign .big{font-size:64px;font-weight:700;line-height:1.05}
+.sign .sub{font-size:20px;color:#555;margin-top:10px}
+.sign.usa{border-color:#3c3b6e}.sign.mex{border-color:#006847}.sign.can{border-color:#d52b1e}
+.sign.c1{border-color:#2f8b5a}.sign.c2{border-color:#5bab7a}.sign.c3{border-color:#e8a020}.sign.c4{border-color:#c0392b}
+.flag{font-size:80px;margin-bottom:6px}
+/* nation cards: 2 per page for the Human Map */
+.ncard{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px dashed #4a6fa5;border-radius:14px;text-align:center;margin-bottom:8mm}
+.ncard:last-child{margin-bottom:0}
+.ncard .nname{font-size:44px;font-weight:700}
+.ncard .ntag{font-size:18px;margin-top:8px;padding:3px 12px;border-radius:20px;color:#fff}
+.tag-uk{background:#c0392b}.tag-out{background:#2f8b5a}
+.ncard .nnote{font-size:13px;color:#777;margin-top:8px}
+/* Would You Rather bank: normal flow */
+.wyr-wrap{font-size:12px;line-height:1.7}
+.wyr{border-left:3px solid #e8a020;background:#fff8e8;border-radius:6px;padding:8px 11px;margin-bottom:7px;break-inside:avoid}
+.wyr .q{font-weight:600}
+.wyr .lvl{font-size:9px;font-weight:700;color:#b06c00;text-transform:uppercase;letter-spacing:.04em}
+.wyr .frame{font-size:10px;color:#888;font-style:italic;margin-top:2px}
+.legend{font-size:10px;color:#888;margin-top:10px;line-height:1.5}
+@media print{
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ SET A — FOUR CORNERS: HOST COUNTRIES (Day 1) ============ -->
+<div class="page"><div class="sec-title">Set A · Four Corners — Host countries (Day 1)</div>
+<div class="hint">Print these 3 (+ the "Not sure" sign) and tape one in each corner. Call out a host city; pupils run to the right country.</div>
+<div class="sign usa"><div class="flag">🇺🇸</div><div class="big">USA</div><div class="sub">11 host cities</div></div>
+</div>
+<div class="page"><div class="sign mex"><div class="flag">🇲🇽</div><div class="big">MEXICO</div><div class="sub">3 host cities</div></div></div>
+<div class="page"><div class="sign can"><div class="flag">🇨🇦</div><div class="big">CANADA</div><div class="sub">2 host cities</div></div></div>
+<div class="page"><div class="sign"><div class="big">NOT SURE</div><div class="sub">…ask in English!</div></div></div>
+
+<!-- ============ SET B — FOUR CORNERS: CERTAINTY (Day 2) ============ -->
+<div class="page"><div class="sec-title">Set B · Four Corners — How sure are you? (Day 2)</div>
+<div class="hint">A2–B1 wording. Name an upcoming match; pupils stand by their level of certainty and predict aloud. (For B1–B2 use Set B-bis below.)</div>
+<div class="sign c1"><div class="big">DEFINITELY</div><div class="sub">"They will win."</div></div></div>
+<div class="page"><div class="sign c2"><div class="big">PROBABLY</div><div class="sub">"They are going to win."</div></div></div>
+<div class="page"><div class="sign c3"><div class="big">MAYBE</div><div class="sub">"They might win."</div></div></div>
+<div class="page"><div class="sign c4"><div class="big">NO WAY</div><div class="sub">"They won't win."</div></div></div>
+
+<!-- ============ SET B-bis — FOUR CORNERS: HEDGING (Day 2, B1-B2) ============ -->
+<div class="page"><div class="sec-title">Set B-bis · Four Corners — Calibrated certainty (Day 2 · B1–B2)</div>
+<div class="hint">Pupils place themselves and phrase a prediction whose language matches the corner.</div>
+<div class="sign c1"><div class="big">LIKELY</div><div class="sub">"They are likely to win." / "They may well win."</div></div></div>
+<div class="page"><div class="sign c2"><div class="big">POSSIBLE</div><div class="sub">"They could win." / "They might just do it."</div></div></div>
+<div class="page"><div class="sign c3"><div class="big">UNLIKELY</div><div class="sub">"I doubt they'll win." / "They're unlikely to."</div></div></div>
+<div class="page"><div class="sign c4"><div class="big">NO IDEA</div><div class="sub">"It's impossible to call."</div></div></div>
+
+<!-- ============ SET C — HUMAN MAP NATION CARDS (Day 3) ============ -->
+<div class="page"><div class="sec-title">Set C · Human Map — Nation cards (Day 3)</div>
+<div class="hint">Print &amp; cut. Give one to each of 5 pupils. They group themselves: "inside the UK" vs "outside", and "on Great Britain" vs "on the island of Ireland". Tags below are the teacher's key — fold them under before handing out if you want pupils to work it out.</div>
+<div class="ncard"><div class="nname">ENGLAND</div><div class="ntag tag-uk">in the UK · on Great Britain</div><div class="nnote">Capital: London (also the UK capital)</div></div>
+<div class="ncard"><div class="nname">SCOTLAND</div><div class="ntag tag-uk">in the UK · on Great Britain</div><div class="nnote">Own football team since the 19th c.</div></div>
+</div>
+<div class="page">
+<div class="ncard"><div class="nname">WALES</div><div class="ntag tag-uk">in the UK · on Great Britain</div><div class="nnote">Own football team</div></div>
+<div class="ncard"><div class="nname">NORTHERN<br>IRELAND</div><div class="ntag tag-uk">in the UK · on the island of Ireland</div><div class="nnote">The tricky one: UK, but not on Great Britain</div></div>
+</div>
+<div class="page">
+<div class="ncard"><div class="nname">REPUBLIC OF<br>IRELAND</div><div class="ntag tag-out">NOT in the UK · independent</div><div class="nnote">A separate country. Capital: Dublin.</div></div>
+<div class="ncard" style="border-style:solid;border-color:#bbb"><div class="nname" style="font-size:30px;color:#777">(spare / optional)</div><div class="nnote">Add "GREAT BRITAIN" &amp; "UNITED KINGDOM" zone labels for the floor if you like.</div></div>
+</div>
+
+<!-- ============ SET D — WOULD YOU RATHER BANK ============ -->
+<div class="page" style="page-break-after:auto">
+<div class="sec-title">Set D · "Would You Rather" — football question bank</div>
+<div class="hint">Read one aloud; pupils walk to their side of the room and justify. Levels marked — pick to suit the group.</div>
+<div class="wyr-wrap">
+
+<div class="wyr"><span class="lvl">A1–A2</span><br><span class="q">Would you rather win 1–0 or win 5–4?</span><div class="frame">Frame: "I think ___ is better because…"</div></div>
+<div class="wyr"><span class="lvl">A1–A2</span><br><span class="q">Would you rather support the favourite or the underdog?</span></div>
+<div class="wyr"><span class="lvl">A1–A2</span><br><span class="q">Would you rather watch the match at the stadium or on TV?</span></div>
+<div class="wyr"><span class="lvl">A1–A2</span><br><span class="q">Would you rather be a striker or a goalkeeper?</span></div>
+
+<div class="wyr"><span class="lvl">A2–B1</span><br><span class="q">Would you rather win on penalties or lose 3–0?</span><div class="frame">Use will / might to justify your choice.</div></div>
+<div class="wyr"><span class="lvl">A2–B1</span><br><span class="q">Would you rather your team scored a lucky goal or played beautifully and drew?</span></div>
+<div class="wyr"><span class="lvl">A2–B1</span><br><span class="q">Would you rather host the World Cup in your country or win it abroad?</span></div>
+<div class="wyr"><span class="lvl">A2–B1</span><br><span class="q">Would you rather take the last penalty or save the last penalty?</span></div>
+
+<div class="wyr"><span class="lvl">B1–B2</span><br><span class="q">Would you rather your team won ugly or lost beautifully?</span><div class="frame">Build a 30-second case; expect a rebuttal.</div></div>
+<div class="wyr"><span class="lvl">B1–B2</span><br><span class="q">Would you rather abolish penalty shoot-outs or keep them, knowing they can feel like a lottery?</span></div>
+<div class="wyr"><span class="lvl">B1–B2</span><br><span class="q">Would you rather a 48-team World Cup with more upsets, or the old 32-team version with higher quality?</span></div>
+<div class="wyr"><span class="lvl">B1–B2</span><br><span class="q">Would you rather every region had its own national team, or only sovereign states?</span><div class="frame">Links to the Day 3 four-nations debate.</div></div>
+
+</div>
+<div class="legend">Tip: for "Vote with your feet", any of these also works as a two-sided split. For a quick energiser, read a statement and have pupils move to "agree / disagree" before arguing.</div>
+</div>
+
+</body>
+</html>
