@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sports Toolkit Quiz</title>
+<style>
+  :root{
+    --green:#2e7d32;
+    --green-bg:#e8f5e9;
+    --red:#c62828;
+    --red-bg:#ffebee;
+    --blue:#1565c0;
+    --card:#ffffff;
+    --bg:#f4f6f8;
+    --ink:#1c1c1c;
+    --muted:#6b7280;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    padding-bottom:60px;
+  }
+  header{
+    background:#fff;
+    padding:18px 16px 14px;
+    text-align:center;
+    border-bottom:1px solid #e5e7eb;
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  header h1{
+    margin:0 0 4px;
+    font-size:1.3rem;
+  }
+  header p{
+    margin:0;
+    color:var(--muted);
+    font-size:0.9rem;
+  }
+  #progress{
+    margin-top:10px;
+    font-weight:600;
+    font-size:0.95rem;
+    color:var(--blue);
+  }
+  nav{
+    display:flex;
+    gap:8px;
+    padding:12px 16px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  nav button{
+    border:2px solid transparent;
+    background:#fff;
+    border-radius:999px;
+    padding:10px 16px;
+    font-size:0.95rem;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 1px 3px rgba(0,0,0,0.08);
+  }
+  nav button.active{
+    border-color:var(--blue);
+    color:var(--blue);
+  }
+  main{
+    max-width:560px;
+    margin:0 auto;
+    padding:0 16px;
+  }
+  .sport-section{
+    display:none;
+  }
+  .sport-section.active{
+    display:block;
+  }
+  .sport-header{
+    text-align:center;
+    margin:14px 0 18px;
+  }
+  .sport-header .emoji{
+    font-size:2.4rem;
+  }
+  .sport-header h2{
+    margin:4px 0 2px;
+  }
+  .sport-score{
+    color:var(--muted);
+    font-size:0.9rem;
+  }
+  .question{
+    background:var(--card);
+    border-radius:14px;
+    padding:16px;
+    margin-bottom:14px;
+    box-shadow:0 1px 4px rgba(0,0,0,0.08);
+  }
+  .question p.prompt{
+    margin:0 0 12px;
+    font-size:1.05rem;
+  }
+  .question p.prompt strong{
+    color:var(--blue);
+  }
+  .options{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .options button{
+    text-align:left;
+    padding:12px 14px;
+    border-radius:10px;
+    border:1.5px solid #d1d5db;
+    background:#fff;
+    font-size:0.95rem;
+    cursor:pointer;
+  }
+  .options button:disabled{
+    cursor:default;
+  }
+  .options button.correct{
+    background:var(--green-bg);
+    border-color:var(--green);
+    color:var(--green);
+    font-weight:600;
+  }
+  .options button.wrong{
+    background:var(--red-bg);
+    border-color:var(--red);
+    color:var(--red);
+  }
+  .options button.dim{
+    opacity:0.55;
+  }
+  .done-banner{
+    text-align:center;
+    background:var(--green-bg);
+    color:var(--green);
+    border-radius:14px;
+    padding:16px;
+    font-weight:600;
+    margin:20px 0;
+    display:none;
+  }
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:0.85rem;
+    padding:20px 16px 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🏅 Sports Toolkit Quiz</h1>
+  <p>Horse riding · Tennis · Basketball — check what you remember</p>
+  <div id="progress">0 / 24 correct</div>
+</header>
+
+<nav>
+  <button class="tab active" data-sport="horse">🐴 Horse riding</button>
+  <button class="tab" data-sport="tennis">🎾 Tennis</button>
+  <button class="tab" data-sport="basketball">🏀 Basketball</button>
+</nav>
+
+<main>
+
+  <section class="sport-section active" id="horse">
+    <div class="sport-header">
+      <div class="emoji">🐴</div>
+      <h2>Horse riding</h2>
+      <div class="sport-score" data-score-for="horse">0 / 8 correct</div>
+    </div>
+    <div class="questions" data-sport-questions="horse"></div>
+  </section>
+
+  <section class="sport-section" id="tennis">
+    <div class="sport-header">
+      <div class="emoji">🎾</div>
+      <h2>Tennis</h2>
+      <div class="sport-score" data-score-for="tennis">0 / 8 correct</div>
+    </div>
+    <div class="questions" data-sport-questions="tennis"></div>
+  </section>
+
+  <section class="sport-section" id="basketball">
+    <div class="sport-header">
+      <div class="emoji">🏀</div>
+      <h2>Basketball</h2>
+      <div class="sport-score" data-score-for="basketball">0 / 8 correct</div>
+    </div>
+    <div class="questions" data-sport-questions="basketball"></div>
+  </section>
+
+  <div class="done-banner" id="doneBanner">🎉 All done! Well played — show your teacher your score.</div>
+
+</main>
+
+<footer>LEC – St Mary's Calne 2026 · Sports toolkit quiz · Works offline, no login needed</footer>
+
+<script>
+const DATA = {
+  horse: [
+    ["reins", "the straps you hold to guide the horse", ["the seat on the horse's back", "where you put your feet"]],
+    ["stirrups", "where you put your feet", ["the straps around the horse's head", "the hair on the horse's neck"]],
+    ["helmet", "protects your head — always worn", ["rope/strap used to lead the horse", "the fenced area where you ride"]],
+    ["mount", "to get on the horse", ["to get off the horse", "to clean and brush the horse"]],
+    ["dismount", "to get off the horse", ["to get on the horse", "to stop"]],
+    ["canter", "faster than a trot, smoother", ["the slowest pace", "the fastest pace"]],
+    ["halt", "to stop", ["the person who teaches you", "the person on the horse"]],
+    ["arena", "the fenced area where you ride", ["the animal you ride", "the horse's foot"]]
+  ],
+  tennis: [
+    ["serve", "the shot that starts a point", ["hitting the ball before it bounces", "the back line of the court"]],
+    ["forehand", "hit with your palm facing forward", ["hit across your body", "the movement of your arm and racket"]],
+    ["backhand", "hit across your body", ["hit with your palm facing forward", "how you move your feet"]],
+    ["volley", "hitting the ball before it bounces", ["several shots back and forth", "when the ball hits the ground"]],
+    ["deuce", "a tied score (40-40)", ["zero points", "a serve nobody can return"]],
+    ["love", "zero points", ["a tied score (40-40)", "the point that wins the match"]],
+    ["rally", "several shots back and forth", ["a serve that lands outside the box", "how you hold the racket"]],
+    ["baseline", "the back line of the court", ["the playing area", "divides the court in two"]]
+  ],
+  basketball: [
+    ["dribble", "bouncing the ball as you move", ["throwing the ball to a teammate", "throwing the ball at the hoop"]],
+    ["rebound", "catching the ball after a missed shot", ["illegal contact with another player", "an uncontested shot after a foul"]],
+    ["foul", "illegal contact with another player", ["a violation — moving without dribbling", "turning on one foot while holding the ball"]],
+    ["free throw", "an uncontested shot after a foul", ["a shot from far away, worth 3 points", "a close-range shot near the basket"]],
+    ["three-pointer", "a shot from far away, worth 3 points", ["a close-range shot near the basket", "an uncontested shot after a foul"]],
+    ["pivot", "turning on one foot while holding the ball", ["how the game starts", "to defend a player closely"]],
+    ["layup", "a close-range shot near the basket", ["a shot from far away, worth 3 points", "to stop a shot with your hand"]],
+    ["travel", "a violation — moving without dribbling", ["illegal contact with another player", "catching the ball after a missed shot"]]
+  ]
+};
+
+let totalCorrect = 0;
+const TOTAL_QUESTIONS = 24;
+const sportCorrect = { horse: 0, tennis: 0, basketball: 0 };
+const sportAnswered = { horse: 0, tennis: 0, basketball: 0 };
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function buildQuestions(sport){
+  const container = document.querySelector(`[data-sport-questions="${sport}"]`);
+  DATA[sport].forEach(([word, correct, distractors], idx) => {
+    const options = shuffle([correct, ...distractors]);
+    const qDiv = document.createElement('div');
+    qDiv.className = 'question';
+    const prompt = document.createElement('p');
+    prompt.className = 'prompt';
+    prompt.innerHTML = `${idx + 1}. What does <strong>${word}</strong> mean?`;
+    qDiv.appendChild(prompt);
+    const optDiv = document.createElement('div');
+    optDiv.className = 'options';
+    options.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.textContent = opt;
+      btn.addEventListener('click', () => handleAnswer(btn, optDiv, opt, correct, sport));
+      optDiv.appendChild(btn);
+    });
+    qDiv.appendChild(optDiv);
+    container.appendChild(qDiv);
+  });
+}
+
+function handleAnswer(btn, optDiv, chosen, correct, sport){
+  const buttons = optDiv.querySelectorAll('button');
+  buttons.forEach(b => { b.disabled = true; if(b !== btn && b.textContent !== correct) b.classList.add('dim'); });
+
+  if(chosen === correct){
+    btn.classList.add('correct');
+    totalCorrect++;
+    sportCorrect[sport]++;
+  } else {
+    btn.classList.add('wrong');
+    buttons.forEach(b => { if(b.textContent === correct) b.classList.add('correct'); });
+  }
+  sportAnswered[sport]++;
+  updateScores(sport);
+}
+
+function updateScores(sport){
+  document.querySelector(`[data-score-for="${sport}"]`).textContent = `${sportCorrect[sport]} / 8 correct`;
+  document.getElementById('progress').textContent = `${totalCorrect} / ${TOTAL_QUESTIONS} correct`;
+  const totalAnswered = sportAnswered.horse + sportAnswered.tennis + sportAnswered.basketball;
+  if(totalAnswered === TOTAL_QUESTIONS){
+    document.getElementById('doneBanner').style.display = 'block';
+  }
+}
+
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.sport-section').forEach(s => s.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.sport).classList.add('active');
+  });
+});
+
+buildQuestions('horse');
+buildQuestions('tennis');
+buildQuestions('basketball');
+</script>
+
+</body>
+</html>
