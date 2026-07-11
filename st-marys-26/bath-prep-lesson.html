@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bath & The Romans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --stone: #E9E1CA;
+    --stone-deep: #D8CBA3;
+    --ink: #2B281E;
+    --teal: #2F6B5E;
+    --teal-deep: #1F4A40;
+    --teal-pale: #CFE3DD;
+    --gold: #B8892B;
+    --brick: #A85B34;
+    --card: #FBF8EF;
+  }
+  *{ box-sizing: border-box; }
+  body{
+    margin:0;
+    background: var(--stone);
+    color: var(--ink);
+    font-family: 'Source Sans 3', -apple-system, sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3{ font-family: 'Cinzel', serif; color: var(--teal-deep); margin:0 0 8px; }
+  .hero{
+    background: linear-gradient(180deg, var(--teal-deep), var(--teal) 70%);
+    color: var(--stone);
+    padding: 40px 22px 54px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero h1{ color:#fff; font-size: clamp(28px,7vw,44px); letter-spacing:.02em; }
+  .hero .eyebrow{
+    font-size:11px; text-transform:uppercase; letter-spacing:.18em; color: var(--gold);
+    font-weight:700; margin-bottom:10px;
+  }
+  .hero p{ max-width:520px; margin:12px auto 0; color: var(--teal-pale); font-size:15px; }
+  .ripple{
+    position:absolute; left:0; right:0; bottom:-1px; height:36px;
+  }
+  main{ max-width: 640px; margin: -26px auto 60px; padding: 0 16px; position:relative; }
+  .card{
+    background: var(--card);
+    border-radius: 14px;
+    padding: 24px 22px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(43,40,30,0.08);
+    border: 1px solid var(--stone-deep);
+  }
+  .card p{ margin: 8px 0; }
+  .fact{
+    background: var(--teal-pale);
+    border-left: 4px solid var(--teal);
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin: 14px 0;
+    font-size: 15px;
+  }
+  .fact b{ color: var(--teal-deep); }
+  .glossary{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px,1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .gloss-item{
+    background: var(--stone);
+    border-radius: 10px;
+    padding: 14px 12px;
+    text-align:center;
+  }
+  .gloss-item .emoji{ font-size: 28px; display:block; margin-bottom:6px; }
+  .gloss-item .word{ font-weight:700; color: var(--teal-deep); font-size:14px; }
+  .gloss-item .def{ font-size:12.5px; color:#5a5645; margin-top:2px; }
+  .quiz-item{
+    background: var(--stone);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .quiz-q{ font-weight:600; margin-bottom:8px; }
+  .quiz-btns{ display:flex; gap:8px; }
+  .quiz-btns button{
+    flex:1;
+    padding: 9px 0;
+    border-radius: 8px;
+    border: 1.5px solid var(--teal);
+    background: var(--card);
+    color: var(--teal-deep);
+    font-weight:600;
+    font-family:inherit;
+    font-size:14px;
+    cursor:pointer;
+  }
+  .quiz-feedback{ margin-top:8px; font-size:13.5px; font-weight:600; min-height:18px; }
+  .quiz-feedback.correct{ color: var(--teal-deep); }
+  .quiz-feedback.wrong{ color: var(--brick); }
+  .star-card{
+    background: #FBF3E3;
+    border: 1.5px solid var(--gold);
+  }
+  .star-card h2{ color: var(--brick); }
+  .star-card h2::before{ content:"⭐ "; }
+  .bridge{
+    background: var(--teal-deep);
+    color: var(--stone);
+    text-align:center;
+    padding: 20px;
+  }
+  .bridge p{ margin:0; font-size:14.5px; }
+  ul.simple{ padding-left: 20px; margin: 8px 0; }
+  ul.simple li{ margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="eyebrow">Before tomorrow</div>
+  <h1>Bath &amp; The Romans</h1>
+  <p>We won't have a lesson before the trip, so read this whenever you can — on the coach, tonight, whenever. Ten minutes is enough.</p>
+  <svg class="ripple" viewBox="0 0 500 40" preserveAspectRatio="none"><path d="M0,20 Q60,0 120,20 T240,20 T360,20 T480,20 T600,20 V40 H0 Z" fill="#E9E1CA"></path></svg>
+</div>
+
+<main>
+
+  <div class="card">
+    <h2>Where are we going?</h2>
+    <p><b>Bath</b> is a city in England, famous for its old golden-stone buildings and, most of all, for something the Romans built almost 2,000 years ago: a huge bathing complex fed by a natural hot spring.</p>
+    <p>In the morning, we'll visit <b>The Roman Baths</b>. In the afternoon, a guided tour continues the Roman theme around the city.</p>
+  </div>
+
+  <div class="card">
+    <h2>The Romans and the magic water</h2>
+    <p>Long before the Romans arrived, local people believed a goddess called <b>Sulis</b> lived in a spring of hot water that bubbled up from the ground. When the Romans came, they connected Sulis to their own goddess, <b>Minerva</b> — so the site became sacred to <b>Sulis Minerva</b>, goddess of wisdom.</p>
+    <div class="fact">🔥 <b>Fun fact:</b> the spring water comes out of the ground at <b>46°C</b> — hotter than the bath you take at home!</div>
+    <p>The Romans built a temple and bathing complex around the spring. People travelled long distances to bathe there, pray to the goddess, and ask her for help.</p>
+    <div class="fact">🪙 <b>Fun fact:</b> Romans threw coins, jewellery, and even little notes into the water as gifts to the goddess. Some notes asked her to punish someone who had stolen something from them — we call these <b>curses</b>!</div>
+  </div>
+
+  <div class="card">
+    <h2>Key words</h2>
+    <div class="glossary">
+      <div class="gloss-item"><span class="emoji">♨️</span><div class="word">hot spring</div><div class="def">hot water from the ground</div></div>
+      <div class="gloss-item"><span class="emoji">🏛️</span><div class="word">temple</div><div class="def">a building for worship</div></div>
+      <div class="gloss-item"><span class="emoji">✨</span><div class="word">goddess</div><div class="def">a female god</div></div>
+      <div class="gloss-item"><span class="emoji">🪙</span><div class="word">coin</div><div class="def">metal money</div></div>
+      <div class="gloss-item"><span class="emoji">🗿</span><div class="word">statue</div><div class="def">a stone/metal figure</div></div>
+      <div class="gloss-item"><span class="emoji">🏺</span><div class="word">ancient</div><div class="def">very, very old</div></div>
+      <div class="gloss-item"><span class="emoji">🪨</span><div class="word">ruins</div><div class="def">what's left of old buildings</div></div>
+      <div class="gloss-item"><span class="emoji">💧</span><div class="word">bath / pool</div><div class="def">where the Romans bathed</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Quick check</h2>
+    <p style="font-size:13.5px; color:#5a5645; margin-top:-4px;">Tap true or false for each one.</p>
+
+    <div class="quiz-item">
+      <div class="quiz-q">1. The hot spring water is colder than your bath at home.</div>
+      <div class="quiz-btns">
+        <button onclick="check(this,false)">True</button>
+        <button onclick="check(this,true)">False</button>
+      </div>
+      <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q">2. The goddess of the spring is called Sulis Minerva.</div>
+      <div class="quiz-btns">
+        <button onclick="check(this,true)">True</button>
+        <button onclick="check(this,false)">False</button>
+      </div>
+      <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q">3. Romans threw coins into the spring as gifts to the goddess.</div>
+      <div class="quiz-btns">
+        <button onclick="check(this,true)">True</button>
+        <button onclick="check(this,false)">False</button>
+      </div>
+      <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-q">4. The Roman Baths were built about 100 years ago.</div>
+      <div class="quiz-btns">
+        <button onclick="check(this,false)">True</button>
+        <button onclick="check(this,true)">False</button>
+      </div>
+      <div class="quiz-feedback"></div>
+    </div>
+  </div>
+
+  <div class="card star-card">
+    <h2>For stronger students</h2>
+    <p>A few extra details you can look out for and mention in the debrief tomorrow:</p>
+    <ul class="simple">
+      <li><b>Aquae Sulis</b> — the Roman name for Bath. It means "the waters of Sulis."</li>
+      <li><b>Curse tablets</b> — notes to the goddess, written on thin sheets of lead, sometimes written backwards so only she could read them.</li>
+      <li><b>The Gorgon's head</b> — a huge stone carving of a face with a moustache, above the entrance to the temple. Nobody is completely sure who it represents.</li>
+      <li><b>Hypocaust</b> — the Roman underfloor heating system: hot air moved under raised floors to heat the rooms.</li>
+    </ul>
+  </div>
+
+</main>
+
+<div class="bridge">
+  <p>Tomorrow, look out for as many of these things as you can — you'll get a scavenger hunt to help. We'll compare notes in the debrief the day after!</p>
+</div>
+
+<script>
+function check(btn, isCorrect){
+  const item = btn.closest('.quiz-item');
+  const feedback = item.querySelector('.quiz-feedback');
+  const buttons = item.querySelectorAll('button');
+  buttons.forEach(b => b.disabled = true);
+  if(isCorrect){
+    feedback.textContent = "✓ Correct!";
+    feedback.className = "quiz-feedback correct";
+    btn.style.background = "#CFE3DD";
+  } else {
+    feedback.textContent = "✗ Not quite — read the section again.";
+    feedback.className = "quiz-feedback wrong";
+    btn.style.background = "#F0DAC9";
+  }
+}
+</script>
+
+</body>
+</html>
