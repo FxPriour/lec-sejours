@@ -81,15 +81,28 @@
   .item .label{ font-weight:600; font-size:15px; }
   .item .hint{ font-size:12px; color:#6a6650; margin-top:1px; }
   .item.found .label{ text-decoration: line-through; opacity:0.7; }
-  .photo-tag{
-    display:inline-block;
-    background: var(--gold);
-    color:#fff;
-    font-size:10.5px;
-    font-weight:700;
-    padding: 2px 7px;
-    border-radius: 999px;
-    margin-top: 4px;
+
+  .photo-banner{
+    background: #FBF3E3;
+    border: 1.5px solid var(--gold);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+    line-height:1.5;
+  }
+  .photo-banner b{ color: var(--brick); }
+
+  .group-field{
+    margin-bottom: 16px;
+  }
+  .group-field label{
+    display:block; font-size:12px; text-transform:uppercase; letter-spacing:.08em;
+    color: var(--teal-deep); font-weight:700; margin-bottom:5px;
+  }
+  .group-field input{
+    width:100%; padding:10px 12px; border-radius:8px; border:1.5px solid var(--stone-deep);
+    font-family:inherit; font-size:15px; background: var(--card);
   }
 
   .street{
@@ -149,6 +162,29 @@
   footer{
     text-align:center; font-size:13px; color:#6a6650; padding: 10px 20px 30px;
   }
+  .submit-block{
+    background: var(--teal-deep);
+    border-radius: 12px;
+    padding: 18px;
+    margin: 10px 0 16px;
+    text-align:center;
+  }
+  .submit-block p{
+    color: var(--teal-pale);
+    font-size: 12.5px;
+    margin: 0 0 12px;
+  }
+  .submit-btn{
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 13px 28px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+  }
 </style>
 </head>
 <body>
@@ -160,18 +196,25 @@
 </div>
 
 <main>
+  <div class="group-field">
+    <label for="groupname">Your names / group</label>
+    <input type="text" id="groupname" placeholder="e.g. Emma, Lucy, Alfred">
+  </div>
+
   <div class="section-label">At The Roman Baths</div>
 
-  <div class="item" onclick="toggle(this)"><div class="box"></div><div class="emoji">💧</div><div><div class="label">The Great Bath</div><div class="hint">the big open-air green pool</div><div class="photo-tag">📷 Take a photo!</div></div></div>
+  <div class="photo-banner">📷 <b>For every item below:</b> when you spot it, take a photo that includes at least one member of your team in it — not just the object on its own. You'll show these photos to your teacher separately.</div>
+
+  <div class="item" onclick="toggle(this)"><div class="box"></div><div class="emoji">💧</div><div><div class="label">The Great Bath</div><div class="hint">the big open-air green pool</div></div></div>
   <div class="item" onclick="toggle(this)"><div class="box"></div><div class="emoji">♨️</div><div><div class="label">The Sacred Spring</div><div class="hint">bubbling hot water, sometimes steaming</div></div></div>
   <div class="item" onclick="toggle(this)"><div class="box"></div><div class="emoji">🪙</div><div><div class="label">A Roman coin</div><div class="hint">on display in the museum</div></div></div>
-  <div class="item" onclick="toggle(this)"><div class="box"></div><div class="emoji">🗿</div><div><div class="label">A carved stone face</div><div class="hint">the Gorgon's head, or the goddess Minerva</div><div class="photo-tag">📷 Take a photo!</div></div></div>
+  <div class="item" onclick="toggle(this)"><div class="box"></div><div class="emoji">🗿</div><div><div class="label">A carved stone face</div><div class="hint">the Gorgon's head, or the goddess Minerva</div></div></div>
   <div class="item" onclick="toggle(this)"><div class="box"></div><div class="emoji">📜</div><div><div class="label">A curse tablet</div><div class="hint">a note to the goddess, written on metal</div></div></div>
   <div class="item" onclick="toggle(this)"><div class="box"></div><div class="emoji">🏛️</div><div><div class="label">Stone columns</div><div class="hint">tall round pillars</div></div></div>
   <div class="item" onclick="toggle(this)"><div class="box"></div><div class="emoji">🔤</div><div><div class="label">The word "Sulis" or "Minerva"</div><div class="hint">written somewhere in the museum</div></div></div>
   <div class="item" onclick="toggle(this)"><div class="box"></div><div class="emoji">🟩</div><div><div class="label">Green water</div><div class="hint">algae makes the Great Bath look green</div></div></div>
-  <div class="item" onclick="toggle(this)"><div class="box"></div><div class="emoji">🧱</div><div><div class="label">The Pump Room</div><div class="hint">an elegant 18th-century room by the baths</div><div class="photo-tag">📷 Take a photo!</div></div></div>
-  <div class="item" onclick="toggle(this)"><div class="box"></div><div class="emoji">🏺</div><div><div class="label">A statue on the terrace</div><div class="hint">figures standing above the Great Bath</div><div class="photo-tag">📷 Take a photo!</div></div></div>
+  <div class="item" onclick="toggle(this)"><div class="box"></div><div class="emoji">🧱</div><div><div class="label">The Pump Room</div><div class="hint">an elegant 18th-century room by the baths</div></div></div>
+  <div class="item" onclick="toggle(this)"><div class="box"></div><div class="emoji">🏺</div><div><div class="label">A statue on the terrace</div><div class="hint">figures standing above the Great Bath</div></div></div>
 
   <div class="section-label">Ask someone in Bath!</div>
   <div class="street">
@@ -179,35 +222,35 @@
     <div class="safety">🙂 No photos of the person you ask — just the question and their answer. Only speak to people in public, in sight of your teacher.</div>
 
     <div class="mcq-q">1. Who is the Prime Minister of the UK right now?</div>
-    <div class="mcq-options">
+    <div class="mcq-options" data-q="PM">
       <button onclick="pick(this)">Keir Starmer</button>
       <button onclick="pick(this)">Andy Burnham</button>
       <button onclick="pick(this)">Rishi Sunak</button>
     </div>
 
     <div class="mcq-q">2. About how many people live in Bath?</div>
-    <div class="mcq-options">
+    <div class="mcq-options" data-q="Population">
       <button onclick="pick(this)">9,000</button>
       <button onclick="pick(this)">90,000</button>
       <button onclick="pick(this)">900,000</button>
     </div>
 
     <div class="mcq-q">3. What is the name of the river that flows through Bath?</div>
-    <div class="mcq-options">
+    <div class="mcq-options" data-q="River">
       <button onclick="pick(this)">The Thames</button>
       <button onclick="pick(this)">The Avon</button>
       <button onclick="pick(this)">The Severn</button>
     </div>
 
     <div class="mcq-q">4. About how long ago did the Romans build the baths?</div>
-    <div class="mcq-options">
+    <div class="mcq-options" data-q="How long ago">
       <button onclick="pick(this)">~1,950 years ago</button>
       <button onclick="pick(this)">~950 years ago</button>
       <button onclick="pick(this)">~250 years ago</button>
     </div>
 
     <div class="mcq-q">5. Besides the Roman Baths, what is Bath most famous for?</div>
-    <div class="mcq-options">
+    <div class="mcq-options" data-q="Also famous for">
       <button onclick="pick(this)">Georgian architecture</button>
       <button onclick="pick(this)">Skyscrapers</button>
       <button onclick="pick(this)">Volcanoes</button>
@@ -217,11 +260,17 @@
   <div class="bonus">
     <h2>Bonus — for highly-motivated students</h2>
     <div class="bonus-q">1. Find the number: what temperature is the spring water?</div>
-    <textarea placeholder="Write your answer here..."></textarea>
+    <textarea id="bonus1" placeholder="Write your answer here..."></textarea>
     <div class="bonus-q">2. Why did the Romans throw coins and curses into the water? Write one sentence.</div>
-    <textarea placeholder="Write your answer here..." style="min-height:76px;"></textarea>
+    <textarea id="bonus2" placeholder="Write your answer here..." style="min-height:76px;"></textarea>
     <div class="bonus-q">3. Describe one thing you saw today, in English, in your own words.</div>
-    <textarea placeholder="Write your answer here..." style="min-height:76px;"></textarea>
+    <textarea id="bonus3" placeholder="Write your answer here..." style="min-height:76px;"></textarea>
+  </div>
+
+  <div class="submit-block" id="submitBlock">
+    <p>When you're finished, tap this to lock your answers with a timestamp — then show your screen to your teacher.</p>
+    <button class="submit-btn" id="saveBtn" onclick="saveHunt()">🔒 Finish &amp; Save</button>
+    <div id="savedStamp" style="display:none; color:#fff; font-weight:700; margin-top:12px; font-size:14px;"></div>
   </div>
 </main>
 
@@ -241,6 +290,43 @@ function pick(btn){
   btn.classList.add('selected');
 }
 document.getElementById('total').textContent = document.querySelectorAll('.item').length;
+
+function saveHunt(){
+  // Lock the checklist items
+  document.querySelectorAll('.item').forEach(item => {
+    item.onclick = null;
+    item.style.cursor = 'default';
+    item.style.opacity = '0.85';
+  });
+  // Lock the MCQ buttons
+  document.querySelectorAll('.mcq-options button').forEach(btn => {
+    btn.onclick = null;
+    btn.style.cursor = 'default';
+    btn.disabled = true;
+  });
+  // Lock the group name field and textareas
+  document.getElementById('groupname').disabled = true;
+  document.getElementById('bonus1').disabled = true;
+  document.getElementById('bonus2').disabled = true;
+  document.getElementById('bonus3').disabled = true;
+
+  // Show timestamp
+  const now = new Date();
+  const stamp = now.toLocaleString('en-GB', { weekday:'short', day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' });
+  const stampEl = document.getElementById('savedStamp');
+  stampEl.textContent = `✓ Saved and locked — ${stamp}`;
+  stampEl.style.display = 'block';
+
+  // Lock the save button itself
+  const btn = document.getElementById('saveBtn');
+  btn.disabled = true;
+  btn.textContent = '🔒 Locked';
+  btn.style.opacity = '0.7';
+  btn.style.cursor = 'default';
+
+  document.getElementById('submitBlock').querySelector('p').textContent =
+    "Saved! Show this screen to your teacher — don't refresh or close this page.";
+}
 </script>
 
 </body>
