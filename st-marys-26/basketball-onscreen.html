@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Basketball – Understanding Your Coach (interactive)</title>
+<style>
+  :root {
+    --green: #1F4E3D;
+    --maroon: #8A2E3B;
+    --gold: #C9A227;
+    --cream: #F1EEE3;
+    --stripe: #F7F5EE;
+    --ok-bg: #E3F3E6; --ok-bd: #2E7D32;
+    --bad-bg: #FDECEA; --bad-bd: #C62828;
+    --rev-bg: #FFF8E1; --rev-bd: #C9A227;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", Calibri, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #222;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 28px 80px;
+    background: #fff;
+  }
+  h1 { color: var(--green); font-size: 2em; margin-bottom: 4px; }
+  .subtitle { font-style: italic; color: #555; margin-top: 0; margin-bottom: 24px; }
+  h2 {
+    color: var(--green);
+    font-size: 1.3em;
+    border-bottom: 2px solid var(--green);
+    padding-bottom: 6px;
+    margin-top: 46px;
+  }
+  h3.task { color: var(--maroon); font-size: 1.05em; margin: 4px 0 14px; }
+  .callout {
+    background: var(--cream);
+    border: 1px solid var(--gold);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 18px 0;
+  }
+  .wordbank {
+    background: var(--cream);
+    border-top: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    padding: 14px 18px;
+    margin: 14px 0 20px;
+  }
+  .wordbank strong { color: var(--maroon); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  th {
+    background: var(--green);
+    color: #fff;
+    font-size: 0.9em;
+  }
+  tr:nth-child(even) td { background: var(--stripe); }
+  td.num { width: 42px; text-align: center; color: #666; }
+  td.meaning { width: 46%; }
+  input.blank-cell, input.blank-inline {
+    font-family: inherit;
+    font-size: 1em;
+    padding: 6px 8px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    width: 100%;
+  }
+  input.blank-inline {
+    width: 150px;
+    text-align: center;
+    margin: 0 3px;
+  }
+  input.correct { background: var(--ok-bg); border-color: var(--ok-bd); }
+  input.incorrect { background: var(--bad-bg); border-color: var(--bad-bd); }
+  input.revealed { background: var(--rev-bg); border-color: var(--rev-bd); font-style: italic; }
+  .toolbar { margin: 10px 0 4px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  button {
+    font-family: inherit;
+    font-size: 0.85em;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    background: var(--green);
+  }
+  button.secondary { background: var(--maroon); }
+  button.tertiary { background: #777; }
+  button:hover { opacity: 0.88; }
+  .score { font-weight: bold; color: var(--green); }
+  .reading {
+    font-size: 1.05em;
+    line-height: 2.1;
+  }
+  footer { margin-top: 60px; color: #888; font-size: 0.8em; text-align: center; }
+</style>
+</head>
+<body>
+
+  <h1>Basketball – Understanding Your Coach</h1>
+  <p class="subtitle">Interactive on-screen version – project this page and fill it in as a class.</p>
+
+  <div class="callout">
+    <strong>False friend: "basket"</strong><br>
+    In English, you never shorten "basketball" to "basket." You play <strong>basketball</strong>.
+    "A basket" means a successful shot – or, informally, the hoop/net itself.
+  </div>
+
+  <!-- ===================== SECTION 1 ===================== -->
+  <h2>1. Vocabulary – the rules (10 words)</h2>
+  <h3 class="task">Match each word from the bank to its definition, then write the French translation.</h3>
+
+  <div class="wordbank">
+    <strong>Word bank:</strong>
+    double dribble &nbsp;·&nbsp; dribble &nbsp;·&nbsp; foul &nbsp;·&nbsp; jump shot &nbsp;·&nbsp; layup &nbsp;·&nbsp;
+    out of bounds / sideline &nbsp;·&nbsp; possession &nbsp;·&nbsp; rebound &nbsp;·&nbsp; traveling &nbsp;·&nbsp; turnover
+  </div>
+
+  <table id="table-rules">
+    <thead>
+      <tr><th style="width:42px;">#</th><th style="width:20%;">Word</th><th>Meaning</th><th style="width:24%;">French translation</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="num">1</td><td><input class="blank-cell" data-answer="traveling"></td><td class="meaning">carrying the ball for more than two steps without dribbling</td><td><input class="blank-cell"></td></tr>
+      <tr><td class="num">2</td><td><input class="blank-cell" data-answer="double dribble"></td><td class="meaning">stopping your dribble, then starting to dribble again</td><td><input class="blank-cell"></td></tr>
+      <tr><td class="num">3</td><td><input class="blank-cell" data-answer="foul"></td><td class="meaning">illegal contact with a player who has the ball</td><td><input class="blank-cell"></td></tr>
+      <tr><td class="num">4</td><td><input class="blank-cell" data-answer="turnover"></td><td class="meaning">losing possession of the ball to the other team</td><td><input class="blank-cell"></td></tr>
+      <tr><td class="num">5</td><td><input class="blank-cell" data-answer="possession"></td><td class="meaning">which team currently controls the ball</td><td><input class="blank-cell"></td></tr>
+      <tr><td class="num">6</td><td><input class="blank-cell" data-answer="out of bounds||sideline||out of bounds / sideline||sideline / out of bounds||sideline/out of bounds||out of bounds/sideline"></td><td class="meaning">the line marking the edge of the court – step over it with the ball and you lose possession</td><td><input class="blank-cell"></td></tr>
+      <tr><td class="num">7</td><td><input class="blank-cell" data-answer="layup"></td><td class="meaning">a moving shot taken very close to the basket, while still moving toward it</td><td><input class="blank-cell"></td></tr>
+      <tr><td class="num">8</td><td><input class="blank-cell" data-answer="jump shot"></td><td class="meaning">a shot taken after dribbling and stopping – can be from anywhere on the court</td><td><input class="blank-cell"></td></tr>
+      <tr><td class="num">9</td><td><input class="blank-cell" data-answer="rebound"></td><td class="meaning">gaining possession of the ball after a missed shot</td><td><input class="blank-cell"></td></tr>
+      <tr><td class="num">10</td><td><input class="blank-cell" data-answer="dribble"></td><td class="meaning">bouncing the ball continuously with one hand while moving</td><td><input class="blank-cell"></td></tr>
+    </tbody>
+  </table>
+  <div class="toolbar">
+    <button onclick="checkSection('table-rules')">Check words</button>
+    <button class="secondary" onclick="revealSection('table-rules')">Show answers</button>
+    <button class="tertiary" onclick="resetSection('table-rules')">Reset</button>
+    <span class="score" id="score-table-rules"></span>
+  </div>
+
+  <!-- ===================== SECTION 2 ===================== -->
+  <h2>2. Vocabulary – coaching language (10 words)</h2>
+  <h3 class="task">Same task: match each word from the bank to its definition, then translate it.</h3>
+
+  <div class="wordbank">
+    <strong>Word bank:</strong>
+    assist &nbsp;·&nbsp; block &nbsp;·&nbsp; court &nbsp;·&nbsp; defense &nbsp;·&nbsp; free throw &nbsp;·&nbsp;
+    hoop / net &nbsp;·&nbsp; offense &nbsp;·&nbsp; pass &nbsp;·&nbsp; pivot &nbsp;·&nbsp; shoot
+  </div>
+
+  <table id="table-coaching">
+    <thead>
+      <tr><th style="width:42px;">#</th><th style="width:20%;">Word</th><th>Meaning</th><th style="width:24%;">French translation</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="num">11</td><td><input class="blank-cell" data-answer="pass"></td><td class="meaning">throwing the ball to a teammate</td><td><input class="blank-cell"></td></tr>
+      <tr><td class="num">12</td><td><input class="blank-cell" data-answer="shoot"></td><td class="meaning">attempting to score</td><td><input class="blank-cell"></td></tr>
+      <tr><td class="num">13</td><td><input class="blank-cell" data-answer="defense"></td><td class="meaning">trying to stop the other team scoring</td><td><input class="blank-cell"></td></tr>
+      <tr><td class="num">14</td><td><input class="blank-cell" data-answer="offense"></td><td class="meaning">trying to score</td><td><input class="blank-cell"></td></tr>
+      <tr><td class="num">15</td><td><input class="blank-cell" data-answer="hoop||net||hoop / net||net / hoop||hoop/net||net/hoop"></td><td class="meaning">the raised ring and net you shoot into (never "basket" on its own)</td><td><input class="blank-cell"></td></tr>
+      <tr><td class="num">16</td><td><input class="blank-cell" data-answer="pivot"></td><td class="meaning">keeping one foot planted and turning on it while holding the ball</td><td><input class="blank-cell"></td></tr>
+      <tr><td class="num">17</td><td><input class="blank-cell" data-answer="block"></td><td class="meaning">stopping an opponent's shot by touching the ball</td><td><input class="blank-cell"></td></tr>
+      <tr><td class="num">18</td><td><input class="blank-cell" data-answer="assist"></td><td class="meaning">a pass that directly leads to a teammate scoring</td><td><input class="blank-cell"></td></tr>
+      <tr><td class="num">19</td><td><input class="blank-cell" data-answer="free throw"></td><td class="meaning">an unopposed shot awarded after certain fouls</td><td><input class="blank-cell"></td></tr>
+      <tr><td class="num">20</td><td><input class="blank-cell" data-answer="court"></td><td class="meaning">the marked playing area</td><td><input class="blank-cell"></td></tr>
+    </tbody>
+  </table>
+  <div class="toolbar">
+    <button onclick="checkSection('table-coaching')">Check words</button>
+    <button class="secondary" onclick="revealSection('table-coaching')">Show answers</button>
+    <button class="tertiary" onclick="resetSection('table-coaching')">Reset</button>
+    <span class="score" id="score-table-coaching"></span>
+  </div>
+
+  <!-- ===================== SECTION 3 ===================== -->
+  <h2>3. Reading – B1-B2 version</h2>
+  <h3 class="task">Fill in the blanks as you read (no word bank this time).</h3>
+
+  <p class="reading" id="reading-b1b2">
+    Basketball has a few core rules that come up in almost every game. The first is traveling – if you're
+    holding the ball and take more than two
+    <input class="blank-inline" data-answer="steps">
+    without dribbling, the other team gets the ball. The second is double dribble: once you stop dribbling
+    and hold the ball, you can't start dribbling again. Step outside the lines of the court while you have
+    the ball, and that's out of bounds – another way to lose
+    <input class="blank-inline" data-answer="possession">.
+    <input class="blank-inline" data-answer="contact">
+    with an opponent who has the ball is a foul. As for scoring, there are two main shots: a layup, taken
+    right next to the basket while you're still
+    <input class="blank-inline" data-answer="moving">,
+    and a jump shot, taken after you've
+    <input class="blank-inline" data-answer="stopped">,
+    which can be from anywhere on the court. If a shot
+    <input class="blank-inline" data-answer="misses||miss">
+    and you grab the ball back, that's called a rebound.
+  </p>
+  <div class="toolbar">
+    <button onclick="checkSection('reading-b1b2')">Check answers</button>
+    <button class="secondary" onclick="revealSection('reading-b1b2')">Show answers</button>
+    <button class="tertiary" onclick="resetSection('reading-b1b2')">Reset</button>
+    <span class="score" id="score-reading-b1b2"></span>
+  </div>
+
+  <!-- ===================== SECTION 4 ===================== -->
+  <h2>4. Reading – A1/A2 version (easier)</h2>
+  <h3 class="task">Fill in the blanks as you read (no word bank this time).</h3>
+
+  <p class="reading" id="reading-a1a2">
+    In basketball, you
+    <input class="blank-inline" data-answer="bounce">
+    the ball – this is called dribbling. If you
+    <input class="blank-inline" data-answer="walk||walking">
+    with the ball without dribbling, this is "traveling" – it's not allowed. You can pass the ball to a
+    <input class="blank-inline" data-answer="teammate">,
+    or shoot to try to
+    <input class="blank-inline" data-answer="score">.
+    A
+    <input class="blank-inline" data-answer="successful">
+    shot is called a basket. If you
+    <input class="blank-inline" data-answer="touch">
+    another player who has the ball, that's a foul.
+  </p>
+  <div class="toolbar">
+    <button onclick="checkSection('reading-a1a2')">Check answers</button>
+    <button class="secondary" onclick="revealSection('reading-a1a2')">Show answers</button>
+    <button class="tertiary" onclick="resetSection('reading-a1a2')">Reset</button>
+    <span class="score" id="score-reading-a1a2"></span>
+  </div>
+
+  <footer>LEC – St Mary's Calne 2026</footer>
+
+<script>
+  function normalize(s) {
+    return (s || "")
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ")
+      .replace(/["'.,!?]/g, "");
+  }
+
+  function isCorrect(input) {
+    const answerAttr = input.getAttribute("data-answer");
+    if (!answerAttr) return null; // no answer defined (e.g. French column) -> not checkable
+    const accepted = answerAttr.split("||").map(normalize);
+    return accepted.includes(normalize(input.value));
+  }
+
+  function checkSection(sectionId) {
+    const root = document.getElementById(sectionId);
+    const inputs = root.querySelectorAll("input[data-answer]");
+    let correct = 0;
+    inputs.forEach(function (input) {
+      input.classList.remove("revealed");
+      const ok = isCorrect(input);
+      input.classList.toggle("correct", ok === true);
+      input.classList.toggle("incorrect", ok === false);
+      if (ok) correct++;
+    });
+    const scoreEl = document.getElementById("score-" + sectionId);
+    if (scoreEl) scoreEl.textContent = correct + " / " + inputs.length + " correct";
+  }
+
+  function revealSection(sectionId) {
+    const root = document.getElementById(sectionId);
+    const inputs = root.querySelectorAll("input[data-answer]");
+    inputs.forEach(function (input) {
+      input.classList.remove("correct", "incorrect");
+      input.classList.add("revealed");
+      input.value = input.getAttribute("data-answer").split("||")[0];
+    });
+    const scoreEl = document.getElementById("score-" + sectionId);
+    if (scoreEl) scoreEl.textContent = "answers shown";
+  }
+
+  function resetSection(sectionId) {
+    const root = document.getElementById(sectionId);
+    const inputs = root.querySelectorAll("input");
+    inputs.forEach(function (input) {
+      input.value = "";
+      input.classList.remove("correct", "incorrect", "revealed");
+    });
+    const scoreEl = document.getElementById("score-" + sectionId);
+    if (scoreEl) scoreEl.textContent = "";
+  }
+</script>
+</body>
+</html>
