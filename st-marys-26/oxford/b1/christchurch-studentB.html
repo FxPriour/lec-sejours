@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oxford Workshop — Christ Church College — Student B</title>
+<style>
+  :root{
+    --stone:#E9E1CA; --stone-deep:#D8CBA3; --ink:#2B281E;
+    --teal:#2F6B5E; --teal-deep:#1F4A40; --teal-pale:#CFE3DD;
+    --gold:#B8892B; --brick:#A85B34; --card:#FBF8EF;
+    --good:#2F6B5E; --bad:#A83434; --known:#E4EFE8;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; background:var(--stone); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    line-height:1.5; padding-bottom:60px;
+  }
+  h1,h2,h3{ font-family:Georgia,'Times New Roman',serif; color:var(--teal-deep); margin:0 0 8px; }
+  .hero{ background:linear-gradient(180deg, var(--teal-deep), var(--teal) 75%); color:#fff; padding:26px 20px 20px; text-align:center; }
+  .hero h1{ color:#fff; font-size:clamp(20px,6vw,27px); margin-bottom:4px; }
+  .hero .badge{ display:inline-block; background:var(--gold); color:#fff; font-weight:700; border-radius:999px; padding:4px 14px; font-size:13px; margin-bottom:8px; }
+  .hero p{ color:var(--teal-pale); font-size:13px; max-width:480px; margin:6px auto 0; }
+  main{ max-width:560px; margin:0 auto; padding:18px 16px; }
+  .card{ background:var(--card); border:1px solid var(--stone-deep); border-radius:14px; padding:20px 18px; margin-bottom:16px; }
+  .warn{ background:#FBF3E3; border:1.5px solid var(--gold); border-radius:10px; padding:12px 14px; font-size:13px; margin-bottom:16px; }
+  .warn b{ color:var(--brick); }
+  .known-facts{ background:var(--teal-pale); border-left:4px solid var(--teal); border-radius:8px; padding:14px 16px; margin-bottom:16px; font-size:14px; }
+  .part-label{ font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--teal-deep); font-weight:700; margin:16px 0 8px; }
+  .q-row{ margin-bottom:12px; }
+  .q-row label{ display:block; font-size:14px; font-weight:600; margin-bottom:5px; }
+  .q-row input[type=text]{ width:100%; padding:9px 11px; border-radius:8px; border:1.5px solid var(--stone-deep); font-family:inherit; font-size:14.5px; background:#fff; }
+  .q-row input.known{ background:var(--known); border-color:var(--teal); }
+  .q-row input.correct{ border-color:var(--good); background:#EAF4F1; }
+  .q-row input.incorrect{ border-color:var(--bad); background:#FBEAEA; }
+  .feedback{ font-size:12.5px; margin-top:4px; font-weight:600; }
+  .feedback.correct{ color:var(--good); }
+  .feedback.incorrect{ color:var(--bad); }
+  .feedback.model{ color:var(--brick); font-weight:400; font-style:italic; }
+  .crossword-wrap{ overflow-x:auto; margin:10px 0; }
+  table.crossword{ border-collapse:collapse; margin:0 auto; }
+  table.crossword td{ width:34px; height:34px; text-align:center; padding:0; }
+  table.crossword input{ width:32px; height:32px; text-align:center; text-transform:uppercase; font-size:16px; font-weight:700; border:1.5px solid var(--ink); border-radius:4px; font-family:inherit; padding:0; }
+  table.crossword input.known{ background:var(--known); border-color:var(--teal); }
+  table.crossword input.correct{ background:#CFE3DD; border-color:var(--good); }
+  table.crossword input.incorrect{ background:#F5D6D6; border-color:var(--bad); }
+  .clue{ font-size:13px; margin:4px 0; }
+  .check-btn{ background:var(--teal-deep); color:#fff; border:none; border-radius:999px; padding:12px 26px; font-weight:700; font-size:15px; font-family:inherit; cursor:pointer; display:block; margin:16px auto 0; }
+  .legend{ font-size:11.5px; color:#5a5645; margin-bottom:10px; }
+  .legend span{ display:inline-block; width:12px; height:12px; border-radius:3px; background:var(--known); border:1px solid var(--teal); vertical-align:middle; margin-right:4px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">Student B</div>
+  <h1>Christ Church College</h1>
+  <p>This is YOUR fact file for your group's topic. Don't show this screen to your teammates — tell them what you know, and ask them what you don't.</p>
+</div>
+
+<main>
+  <div class="warn"><b>Keep this private.</b> Everyone in your group has a different file with different information. The only way to finish the worksheet is by talking to each other.</div>
+
+  <div class="known-facts">
+    <b>What you already know:</b><br><br>
+    <b>Core fact:</b> Oxford is about 50 miles from St Mary's Calne. Oxford is about 57 miles from London.<br><br>
+    <b>Topic fact:</b> A teacher named Charles Dodgson worked at Christ Church. He told stories to a girl called Alice. Alice's father had a job at the college: he was the Dean. Dodgson wrote the stories using a different name: Lewis Carroll. The stories became the book Alice in Wonderland.
+  </div>
+
+  <div class="card">
+    <p class="legend"><span></span> = you already know this one. Everything else — ask your group.</p>
+
+    <div class="part-label">Part 1 — Core Facts (same for every group)</div>
+    <div class="q-row">
+    <label>About how many people live in Oxford today?</label>
+    <input type="text" id="core-0" class="" >
+    <div class="feedback" id="fb-core-0"></div>
+  </div><div class="q-row">
+    <label>Is that bigger or smaller than Bath (about 90,000 people)?</label>
+    <input type="text" id="core-1" class="" >
+    <div class="feedback" id="fb-core-1"></div>
+  </div><div class="q-row">
+    <label>About how many miles is it from Oxford to St Mary's Calne?</label>
+    <input type="text" id="core-2" class="known" value="about 50 miles">
+    <div class="feedback" id="fb-core-2"></div>
+  </div><div class="q-row">
+    <label>About how many miles is it from Oxford to London?</label>
+    <input type="text" id="core-3" class="known" value="about 57 miles">
+    <div class="feedback" id="fb-core-3"></div>
+  </div><div class="q-row">
+    <label>About how many miles is it from Oxford to Cambridge?</label>
+    <input type="text" id="core-4" class="" >
+    <div class="feedback" id="fb-core-4"></div>
+  </div><div class="q-row">
+    <label>More than how many Nobel Prize winners have studied or worked at Oxford?</label>
+    <input type="text" id="core-5" class="" >
+    <div class="feedback" id="fb-core-5"></div>
+  </div><div class="q-row">
+    <label>In what year did teaching begin at Oxford?</label>
+    <input type="text" id="core-6" class="" >
+    <div class="feedback" id="fb-core-6"></div>
+  </div><div class="q-row">
+    <label>In what year was Cambridge started, and why?</label>
+    <input type="text" id="core-7" class="" >
+    <div class="feedback" id="fb-core-7"></div>
+  </div>
+
+    <div class="part-label">Part 2 — Christ Church College</div>
+    <div class="q-row">
+    <label>Who started Christ Church, and in what year?</label>
+    <input type="text" id="topic-0" class="" >
+    <div class="feedback" id="fb-topic-0"></div>
+  </div><div class="q-row">
+    <label>What is the name of the girl who inspired Alice in Wonderland?</label>
+    <input type="text" id="topic-1" class="known" value="Alice">
+    <div class="feedback" id="fb-topic-1"></div>
+  </div><div class="q-row">
+    <label>What job did her father have at the college?</label>
+    <input type="text" id="topic-2" class="known" value="Dean">
+    <div class="feedback" id="fb-topic-2"></div>
+  </div><div class="q-row">
+    <label>What Harry Potter scene was filmed on the college's staircase?</label>
+    <input type="text" id="topic-3" class="" >
+    <div class="feedback" id="fb-topic-3"></div>
+  </div><div class="q-row">
+    <label>What do students still do in the "Hall" every day?</label>
+    <input type="text" id="topic-4" class="" >
+    <div class="feedback" id="fb-topic-4"></div>
+  </div>
+
+    <div class="part-label">Part 3 — Mini crossword</div>
+    <p class="clue"><b>Across:</b> Where students eat their meals (4 letters)</p>
+    <p class="clue"><b>Down:</b> The job Alice's father had at the college (4 letters)</p>
+    <div class="crossword-wrap"><table class="crossword"><tr><td></td><td><input maxlength="1" id="cw-0-1" data-answer="D" class="known" value="D"></td><td></td><td></td></tr><tr><td></td><td><input maxlength="1" id="cw-1-1" data-answer="E" class="known" value="E"></td><td></td><td></td></tr><tr><td><input maxlength="1" id="cw-2-0" data-answer="H" class="" ></td><td><input maxlength="1" id="cw-2-1" data-answer="A" class="known" value="A"></td><td><input maxlength="1" id="cw-2-2" data-answer="L" class="" ></td><td><input maxlength="1" id="cw-2-3" data-answer="L" class="" ></td></tr><tr><td></td><td><input maxlength="1" id="cw-3-1" data-answer="N" class="known" value="N"></td><td></td><td></td></tr></table></div>
+
+    <button class="check-btn" onclick="checkAll()">✓ Check answers</button>
+  </div>
+</main>
+
+<script>
+const CORE_ITEMS = [{"q": "About how many people live in Oxford today?", "check": ["165"], "model": null, "knows": "A", "prefill": "about 165,000"}, {"q": "Is that bigger or smaller than Bath (about 90,000 people)?", "check": ["bigger"], "model": null, "knows": "A", "prefill": "bigger"}, {"q": "About how many miles is it from Oxford to St Mary's Calne?", "check": ["50"], "model": null, "knows": "B", "prefill": "about 50 miles"}, {"q": "About how many miles is it from Oxford to London?", "check": ["57"], "model": null, "knows": "B", "prefill": "about 57 miles"}, {"q": "About how many miles is it from Oxford to Cambridge?", "check": ["80"], "model": null, "knows": "C", "prefill": "about 80 miles"}, {"q": "More than how many Nobel Prize winners have studied or worked at Oxford?", "check": ["70"], "model": null, "knows": "C", "prefill": "more than 70"}, {"q": "In what year did teaching begin at Oxford?", "check": ["1096"], "model": null, "knows": "D", "prefill": "1096"}, {"q": "In what year was Cambridge started, and why?", "check": ["1209"], "model": "1209 \u2014 after a fight between students and townspeople in Oxford.", "knows": "D", "prefill": "1209, after a fight with the townspeople"}];
+const TOPIC_ITEMS = [{"q": "Who started Christ Church, and in what year?", "check": ["wolsey", "1525"], "model": null, "knows": "A", "prefill": "Cardinal Wolsey, 1525"}, {"q": "What is the name of the girl who inspired Alice in Wonderland?", "check": ["alice"], "model": null, "knows": "B", "prefill": "Alice"}, {"q": "What job did her father have at the college?", "check": ["dean"], "model": null, "knows": "B", "prefill": "Dean"}, {"q": "What Harry Potter scene was filmed on the college's staircase?", "check": ["mcgonagall"], "model": null, "knows": "C", "prefill": "McGonagall meeting Harry, Ron and Hermione"}, {"q": "What do students still do in the \"Hall\" every day?", "check": ["eat"], "model": null, "knows": "D", "prefill": "eat their meals"}];
+
+function normalize(s){ return (s || '').toLowerCase().replace(/,/g,'').trim(); }
+function checkContains(value, subs){
+  const v = normalize(value);
+  return subs.some(s => v.includes(normalize(s)));
+}
+
+function checkAll(){
+  CORE_ITEMS.forEach((item, i) => checkOne('core', i, item));
+  TOPIC_ITEMS.forEach((item, i) => checkOne('topic', i, item));
+
+  const grid = [[null, "D", null, null], [null, "E", null, null], ["H", "A", "L", "L"], [null, "N", null, null]];
+  for(let r=0; r<grid.length; r++){
+    for(let c=0; c<grid[r].length; c++){
+      if(grid[r][c] === null) continue;
+      const input = document.getElementById(`cw-${r}-${c}`);
+      const val = (input.value || '').toUpperCase().trim();
+      input.classList.remove('correct','incorrect');
+      if(val === input.dataset.answer){ input.classList.add('correct'); }
+      else if(val.length > 0){ input.classList.add('incorrect'); }
+    }
+  }
+}
+
+function checkOne(part, i, item){
+  const input = document.getElementById(`${part}-${i}`);
+  const fb = document.getElementById(`fb-${part}-${i}`);
+  input.classList.remove('correct','incorrect');
+  if(item.check === null){
+    fb.textContent = 'Model answer: ' + item.model;
+    fb.className = 'feedback model';
+    return;
+  }
+  if(checkContains(input.value, item.check)){
+    input.classList.add('correct');
+    fb.textContent = '✓ Correct';
+    fb.className = 'feedback correct';
+  } else {
+    input.classList.add('incorrect');
+    fb.textContent = item.model ? ('Not quite — ' + item.model) : '✗ Not quite — check with your group';
+    fb.className = 'feedback incorrect';
+  }
+}
+</script>
+</body>
+</html>
