@@ -12,11 +12,7 @@
     --good:#2F6B5E; --bad:#A83434; --known:#E4EFE8;
   }
   *{ box-sizing:border-box; }
-  body{
-    margin:0; background:var(--stone); color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-    line-height:1.5; padding-bottom:60px;
-  }
+  body{ margin:0; background:var(--stone); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; line-height:1.55; padding-bottom:60px; }
   h1,h2,h3{ font-family:Georgia,'Times New Roman',serif; color:var(--teal-deep); margin:0 0 8px; }
   .hero{ background:linear-gradient(180deg, var(--teal-deep), var(--teal) 75%); color:#fff; padding:26px 20px 20px; text-align:center; }
   .hero h1{ color:#fff; font-size:clamp(20px,6vw,27px); margin-bottom:4px; }
@@ -24,20 +20,32 @@
   .hero p{ color:var(--teal-pale); font-size:13px; max-width:480px; margin:6px auto 0; }
   main{ max-width:560px; margin:0 auto; padding:18px 16px; }
   .card{ background:var(--card); border:1px solid var(--stone-deep); border-radius:14px; padding:20px 18px; margin-bottom:16px; }
+  .card.alt{ background:#F3ECD9; }
   .warn{ background:#FBF3E3; border:1.5px solid var(--gold); border-radius:10px; padding:12px 14px; font-size:13px; margin-bottom:16px; }
   .warn b{ color:var(--brick); }
   .known-facts{ background:var(--teal-pale); border-left:4px solid var(--teal); border-radius:8px; padding:14px 16px; margin-bottom:16px; font-size:14px; }
-  .part-label{ font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--teal-deep); font-weight:700; margin:16px 0 8px; }
-  .q-row{ margin-bottom:12px; }
-  .q-row label{ display:block; font-size:14px; font-weight:600; margin-bottom:5px; }
-  .q-row input[type=text]{ width:100%; padding:9px 11px; border-radius:8px; border:1.5px solid var(--stone-deep); font-family:inherit; font-size:14.5px; background:#fff; }
-  .q-row input.known{ background:var(--known); border-color:var(--teal); }
-  .q-row input.correct{ border-color:var(--good); background:#EAF4F1; }
-  .q-row input.incorrect{ border-color:var(--bad); background:#FBEAEA; }
-  .feedback{ font-size:12.5px; margin-top:4px; font-weight:600; }
-  .feedback.correct{ color:var(--good); }
-  .feedback.incorrect{ color:var(--bad); }
-  .feedback.model{ color:var(--brick); font-weight:400; font-style:italic; }
+  .part-label{ font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--teal-deep); font-weight:700; margin:18px 0 8px; }
+  .sub-heading{ font-size:14.5px; font-weight:700; color:var(--brick); margin:14px 0 6px; }
+  .chunk{ border-top:1px dotted var(--stone-deep); padding-top:14px; margin-top:14px; font-size:14.5px; margin-bottom:12px; }
+  .chunk:first-of-type{ border-top:none; margin-top:0; padding-top:0; }
+  .chunk input{ width:100px; padding:4px 6px; border:none; border-bottom:2px solid var(--teal); background:var(--teal-pale); font-family:inherit; font-size:14px; text-align:center; border-radius:3px 3px 0 0; }
+  .chunk input.correct{ background:#CFE3DD; border-color:var(--good); }
+  .chunk input.incorrect{ background:#F5D6D6; border-color:var(--bad); }
+  .helplink{ display:inline-block; background:var(--gold); color:#fff; text-decoration:none; font-size:11.5px; font-weight:700; border-radius:999px; padding:2px 8px; margin-left:4px; }
+  .backlink{ display:inline-block; margin-top:8px; font-size:12.5px; color:var(--teal-deep); text-decoration:none; font-weight:600; }
+  .qbuilder{ background:var(--stone); border-radius:10px; padding:12px 14px; margin-bottom:10px; }
+  .card.alt .qbuilder{ background:#EAE1C4; }
+  .qbuilder .hint{ font-size:12px; color:#5a5645; margin-bottom:8px; }
+  .answer-strip{ min-height:38px; background:#fff; border:1.5px dashed var(--stone-deep); border-radius:8px; padding:6px; margin-bottom:8px; display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+  .word-bank{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
+  .tile{ background:var(--card); border:1.5px solid var(--teal); color:var(--teal-deep); border-radius:7px; padding:7px 11px; font-size:13.5px; font-weight:600; cursor:pointer; font-family:inherit; user-select:none; }
+  .tile.placed{ background:var(--teal); color:#fff; }
+  .qb-controls{ display:flex; gap:8px; }
+  .qb-controls button{ padding:8px 14px; border-radius:7px; border:1.5px solid var(--teal-deep); background:var(--card); color:var(--teal-deep); font-family:inherit; font-weight:600; font-size:13px; cursor:pointer; }
+  .qb-controls button.primary{ background:var(--teal-deep); color:#fff; }
+  .qb-feedback{ font-size:13px; font-weight:600; margin-top:6px; min-height:18px; }
+  .qb-feedback.correct{ color:var(--good); }
+  .qb-feedback.incorrect{ color:var(--bad); }
   .crossword-wrap{ overflow-x:auto; margin:10px 0; }
   table.crossword{ border-collapse:collapse; margin:0 auto; }
   table.crossword td{ width:34px; height:34px; text-align:center; padding:0; }
@@ -47,8 +55,6 @@
   table.crossword input.incorrect{ background:#F5D6D6; border-color:var(--bad); }
   .clue{ font-size:13px; margin:4px 0; }
   .check-btn{ background:var(--teal-deep); color:#fff; border:none; border-radius:999px; padding:12px 26px; font-weight:700; font-size:15px; font-family:inherit; cursor:pointer; display:block; margin:16px auto 0; }
-  .legend{ font-size:11.5px; color:#5a5645; margin-bottom:10px; }
-  .legend span{ display:inline-block; width:12px; height:12px; border-radius:3px; background:var(--known); border:1px solid var(--teal); vertical-align:middle; margin-right:4px; }
 </style>
 </head>
 <body>
@@ -56,11 +62,11 @@
 <div class="hero">
   <div class="badge">Student D</div>
   <h1>The Bodleian Library</h1>
-  <p>This is YOUR fact file for your group's topic. Don't show this screen to your teammates — tell them what you know, and ask them what you don't.</p>
+  <p>This is YOUR fact file. Don't show this screen to your teammates — tell them what you know, and ask them the rest.</p>
 </div>
 
 <main>
-  <div class="warn"><b>Keep this private.</b> Everyone in your group has a different file with different information. The only way to finish the worksheet is by talking to each other.</div>
+  <div class="warn"><b>Keep this private.</b> Everyone in your group has different information. The only way to finish is by talking to each other.</div>
 
   <div class="known-facts">
     <b>What you already know:</b><br><br>
@@ -69,120 +75,269 @@
   </div>
 
   <div class="card">
-    <p class="legend"><span></span> = you already know this one. Everything else — ask your group.</p>
+    <h2 style="font-size:18px;">Find out the rest by asking your teammates</h2>
+    <p style="font-size:13px; color:#5a5645; margin-top:-4px;">Fill in each blank by asking a teammate. Stuck on how to ask? Tap the small number for help building the question.</p>
+    <div class="chunk" id="para-cA">Oxford's population is about <input type="text" id="gap-0" data-check="165" size="10"> people, which is <input type="text" id="gap-1" data-check="bigger" size="10"> than Bath's. <a class="helplink" href="#builder-cA">(1)</a></div>
+<div class="chunk" id="para-cB">Oxford is about <input type="text" id="gap-2" data-check="50" size="10"> miles from St Mary's Calne, and about <input type="text" id="gap-3" data-check="57" size="10"> miles from London. <a class="helplink" href="#builder-cB">(2)</a></div>
+<div class="chunk" id="para-cC">Oxford is about <input type="text" id="gap-4" data-check="80" size="10"> miles from Cambridge, and more than <input type="text" id="gap-5" data-check="70" size="10"> Nobel Prize winners have studied or worked at Oxford. <a class="helplink" href="#builder-cC">(3)</a></div>
+<div class="chunk" id="para-tA">The Bodleian Library opened in the year <input type="text" id="gap-6" data-check="1602" size="10">, and its nickname is <input type="text" id="gap-7" data-check="bod" size="10">. <a class="helplink" href="#builder-tA">(4)</a></div>
+<div class="chunk" id="para-tB">The Bodleian gets a free copy of every UK book, because it's a <input type="text" id="gap-8" data-check="deposit" size="10"> library. <a class="helplink" href="#builder-tB">(5)</a></div>
+<div class="chunk" id="para-tC">The most famous building of the Bodleian is round, with a big <input type="text" id="gap-9" data-check="dome" size="10"> on top. <a class="helplink" href="#builder-tC">(6)</a></div>
 
-    <div class="part-label">Part 1 — Core Facts (same for every group)</div>
-    <div class="q-row">
-    <label>About how many people live in Oxford today?</label>
-    <input type="text" id="core-0" class="" >
-    <div class="feedback" id="fb-core-0"></div>
-  </div><div class="q-row">
-    <label>Is that bigger or smaller than Bath (about 90,000 people)?</label>
-    <input type="text" id="core-1" class="" >
-    <div class="feedback" id="fb-core-1"></div>
-  </div><div class="q-row">
-    <label>About how many miles is it from Oxford to St Mary's Calne?</label>
-    <input type="text" id="core-2" class="" >
-    <div class="feedback" id="fb-core-2"></div>
-  </div><div class="q-row">
-    <label>About how many miles is it from Oxford to London?</label>
-    <input type="text" id="core-3" class="" >
-    <div class="feedback" id="fb-core-3"></div>
-  </div><div class="q-row">
-    <label>About how many miles is it from Oxford to Cambridge?</label>
-    <input type="text" id="core-4" class="" >
-    <div class="feedback" id="fb-core-4"></div>
-  </div><div class="q-row">
-    <label>More than how many Nobel Prize winners have studied or worked at Oxford?</label>
-    <input type="text" id="core-5" class="" >
-    <div class="feedback" id="fb-core-5"></div>
-  </div><div class="q-row">
-    <label>In what year did teaching begin at Oxford?</label>
-    <input type="text" id="core-6" class="known" value="1096">
-    <div class="feedback" id="fb-core-6"></div>
-  </div><div class="q-row">
-    <label>In what year was Cambridge started, and why?</label>
-    <input type="text" id="core-7" class="known" value="1209, after a fight with the townspeople">
-    <div class="feedback" id="fb-core-7"></div>
   </div>
 
-    <div class="part-label">Part 2 — The Bodleian Library</div>
-    <div class="q-row">
-    <label>In what year did the Bodleian Library open?</label>
-    <input type="text" id="topic-0" class="" >
-    <div class="feedback" id="fb-topic-0"></div>
-  </div><div class="q-row">
-    <label>What is the library's short nickname?</label>
-    <input type="text" id="topic-1" class="" >
-    <div class="feedback" id="fb-topic-1"></div>
-  </div><div class="q-row">
-    <label>Why does the library get a free copy of every UK book?</label>
-    <input type="text" id="topic-2" class="" >
-    <div class="feedback" id="fb-topic-2"></div>
-  </div><div class="q-row">
-    <label>What shape is the roof of the Radcliffe Camera?</label>
-    <input type="text" id="topic-3" class="" >
-    <div class="feedback" id="fb-topic-3"></div>
-  </div><div class="q-row">
-    <label>Which Harry Potter location was filmed inside the Bodleian?</label>
-    <input type="text" id="topic-4" class="known" value="the Hogwarts library">
-    <div class="feedback" id="fb-topic-4"></div>
+  <div class="card">
+    <h2 style="font-size:16px;">Need help asking? Build the question first</h2>
+    <p style="font-size:13px; color:#5a5645; margin-top:-4px;">Tap the pieces in order to build the question, then go back up and ask your teammate.</p>
+    <div class="qbuilder" id="builder-cA">
+      <div class="hint">🔤 Question for blank (1):</div>
+      <div class="answer-strip" id="strip-cA"></div>
+      <div class="word-bank" id="bank-cA"></div>
+      <div class="qb-controls">
+        <button onclick="resetBuilder('cA')">Reset</button>
+        <button class="primary" onclick="checkBuilder('cA')">Check my question</button>
+      </div>
+      <div class="qb-feedback" id="qbfb-cA"></div>
+      <a class="backlink" href="#para-cA">↑ Back up to blank (1)</a>
+    </div>
+<div class="qbuilder" id="builder-cB">
+      <div class="hint">🔤 Question for blank (2):</div>
+      <div class="answer-strip" id="strip-cB"></div>
+      <div class="word-bank" id="bank-cB"></div>
+      <div class="qb-controls">
+        <button onclick="resetBuilder('cB')">Reset</button>
+        <button class="primary" onclick="checkBuilder('cB')">Check my question</button>
+      </div>
+      <div class="qb-feedback" id="qbfb-cB"></div>
+      <a class="backlink" href="#para-cB">↑ Back up to blank (2)</a>
+    </div>
+<div class="qbuilder" id="builder-cC">
+      <div class="hint">🔤 Question for blank (3):</div>
+      <div class="answer-strip" id="strip-cC"></div>
+      <div class="word-bank" id="bank-cC"></div>
+      <div class="qb-controls">
+        <button onclick="resetBuilder('cC')">Reset</button>
+        <button class="primary" onclick="checkBuilder('cC')">Check my question</button>
+      </div>
+      <div class="qb-feedback" id="qbfb-cC"></div>
+      <a class="backlink" href="#para-cC">↑ Back up to blank (3)</a>
+    </div>
+<div class="qbuilder" id="builder-tA">
+      <div class="hint">🔤 Question for blank (4):</div>
+      <div class="answer-strip" id="strip-tA"></div>
+      <div class="word-bank" id="bank-tA"></div>
+      <div class="qb-controls">
+        <button onclick="resetBuilder('tA')">Reset</button>
+        <button class="primary" onclick="checkBuilder('tA')">Check my question</button>
+      </div>
+      <div class="qb-feedback" id="qbfb-tA"></div>
+      <a class="backlink" href="#para-tA">↑ Back up to blank (4)</a>
+    </div>
+<div class="qbuilder" id="builder-tB">
+      <div class="hint">🔤 Question for blank (5):</div>
+      <div class="answer-strip" id="strip-tB"></div>
+      <div class="word-bank" id="bank-tB"></div>
+      <div class="qb-controls">
+        <button onclick="resetBuilder('tB')">Reset</button>
+        <button class="primary" onclick="checkBuilder('tB')">Check my question</button>
+      </div>
+      <div class="qb-feedback" id="qbfb-tB"></div>
+      <a class="backlink" href="#para-tB">↑ Back up to blank (5)</a>
+    </div>
+<div class="qbuilder" id="builder-tC">
+      <div class="hint">🔤 Question for blank (6):</div>
+      <div class="answer-strip" id="strip-tC"></div>
+      <div class="word-bank" id="bank-tC"></div>
+      <div class="qb-controls">
+        <button onclick="resetBuilder('tC')">Reset</button>
+        <button class="primary" onclick="checkBuilder('tC')">Check my question</button>
+      </div>
+      <div class="qb-feedback" id="qbfb-tC"></div>
+      <a class="backlink" href="#para-tC">↑ Back up to blank (6)</a>
+    </div>
+
   </div>
 
-    <div class="part-label">Part 3 — Mini crossword</div>
+  <div class="card">
+    <div class="part-label">Mini crossword</div>
     <p class="clue"><b>Across:</b> Oxford students' nickname for the library (3 letters)</p>
     <p class="clue"><b>Down:</b> The shape of the Radcliffe Camera's roof (4 letters)</p>
     <div class="crossword-wrap"><table class="crossword"><tr><td></td><td><input maxlength="1" id="cw-0-1" data-answer="D" class="" ></td><td></td></tr><tr><td><input maxlength="1" id="cw-1-0" data-answer="B" class="" ></td><td><input maxlength="1" id="cw-1-1" data-answer="O" class="" ></td><td><input maxlength="1" id="cw-1-2" data-answer="D" class="" ></td></tr><tr><td></td><td><input maxlength="1" id="cw-2-1" data-answer="M" class="" ></td><td></td></tr><tr><td></td><td><input maxlength="1" id="cw-3-1" data-answer="E" class="" ></td><td></td></tr></table></div>
+    <button class="check-btn" onclick="checkAll()">✓ Check my answers</button>
+  </div>
 
-    <button class="check-btn" onclick="checkAll()">✓ Check answers</button>
+  <div class="card alt">
+    <h2 style="font-size:18px;">Find out what the other groups discovered</h2>
+    <p style="font-size:13px; color:#5a5645; margin-top:-4px;">During and after the presentations, fill these in by asking the other groups. By the end, everyone in the class should know all four topics.</p>
+    <div class="sub-heading">Christ Church College</div>
+<div class="chunk" id="para-og_christchurch_0">Christ Church was started by <input type="text" id="gap-10" data-check="wolsey" size="10"> in the year <input type="text" id="gap-11" data-check="1525" size="10">. A teacher told stories to a girl called <input type="text" id="gap-12" data-check="alice" size="10">, and the stories became the book Alice in Wonderland. <a class="helplink" href="#builder-og_christchurch_0">(1)</a></div>
+<div class="chunk" id="para-og_christchurch_1">Alice's father had a job at the college: he was the <input type="text" id="gap-13" data-check="dean" size="10">. In the first Harry Potter film, <input type="text" id="gap-14" data-check="mcgonagall" size="10"> meets Harry, Ron and Hermione on the staircase. Every day, students still <input type="text" id="gap-15" data-check="eat" size="10"> in the Hall. <a class="helplink" href="#builder-og_christchurch_1">(2)</a></div>
+<div class="sub-heading">J.R.R. Tolkien</div>
+<div class="chunk" id="para-og_tolkien_0">J.R.R. Tolkien was a <input type="text" id="gap-16" data-check="professor" size="10"> at Oxford. He wrote a book called <input type="text" id="gap-17" data-check="hobbit" size="10">, about a small creature's big adventure. <a class="helplink" href="#builder-og_tolkien_0">(1)</a></div>
+<div class="chunk" id="para-og_tolkien_1">His most famous story has a magic <input type="text" id="gap-18" data-check="ring" size="10"> in it. His close friend and fellow writer was <input type="text" id="gap-19" data-check="lewis" size="10">, who wrote the Narnia books. <a class="helplink" href="#builder-og_tolkien_1">(2)</a></div>
+<div class="sub-heading">Punting</div>
+<div class="chunk" id="para-og_punting_0">Punting is a way of moving a small flat boat without <input type="text" id="gap-20" data-check="oars" size="10">. You push a long <input type="text" id="gap-21" data-check="pole" size="10"> against the riverbed to move it. <a class="helplink" href="#builder-og_punting_0">(1)</a></div>
+<div class="chunk" id="para-og_punting_1">People go punting on the River <input type="text" id="gap-22" data-check="cherwell|isis" size="10"> in Oxford. Sometimes the pole gets <input type="text" id="gap-23" data-check="stuck" size="10">, and the boat can spin in circles. <a class="helplink" href="#builder-og_punting_1">(2)</a></div>
+
+  </div>
+
+  <div class="card alt">
+    <h2 style="font-size:16px;">Need help asking the other groups?</h2>
+    <p style="font-size:13px; color:#5a5645; margin-top:-4px;">Same idea — build the question first, then go find someone from that group to ask.</p>
+    <div class="qbuilder" id="builder-og_christchurch_0">
+      <div class="hint">🔤 Question for blank (1):</div>
+      <div class="answer-strip" id="strip-og_christchurch_0"></div>
+      <div class="word-bank" id="bank-og_christchurch_0"></div>
+      <div class="qb-controls">
+        <button onclick="resetBuilder('og_christchurch_0')">Reset</button>
+        <button class="primary" onclick="checkBuilder('og_christchurch_0')">Check my question</button>
+      </div>
+      <div class="qb-feedback" id="qbfb-og_christchurch_0"></div>
+      <a class="backlink" href="#para-og_christchurch_0">↑ Back up to blank (1)</a>
+    </div>
+<div class="qbuilder" id="builder-og_christchurch_1">
+      <div class="hint">🔤 Question for blank (2):</div>
+      <div class="answer-strip" id="strip-og_christchurch_1"></div>
+      <div class="word-bank" id="bank-og_christchurch_1"></div>
+      <div class="qb-controls">
+        <button onclick="resetBuilder('og_christchurch_1')">Reset</button>
+        <button class="primary" onclick="checkBuilder('og_christchurch_1')">Check my question</button>
+      </div>
+      <div class="qb-feedback" id="qbfb-og_christchurch_1"></div>
+      <a class="backlink" href="#para-og_christchurch_1">↑ Back up to blank (2)</a>
+    </div>
+<div class="qbuilder" id="builder-og_tolkien_0">
+      <div class="hint">🔤 Question for blank (1):</div>
+      <div class="answer-strip" id="strip-og_tolkien_0"></div>
+      <div class="word-bank" id="bank-og_tolkien_0"></div>
+      <div class="qb-controls">
+        <button onclick="resetBuilder('og_tolkien_0')">Reset</button>
+        <button class="primary" onclick="checkBuilder('og_tolkien_0')">Check my question</button>
+      </div>
+      <div class="qb-feedback" id="qbfb-og_tolkien_0"></div>
+      <a class="backlink" href="#para-og_tolkien_0">↑ Back up to blank (1)</a>
+    </div>
+<div class="qbuilder" id="builder-og_tolkien_1">
+      <div class="hint">🔤 Question for blank (2):</div>
+      <div class="answer-strip" id="strip-og_tolkien_1"></div>
+      <div class="word-bank" id="bank-og_tolkien_1"></div>
+      <div class="qb-controls">
+        <button onclick="resetBuilder('og_tolkien_1')">Reset</button>
+        <button class="primary" onclick="checkBuilder('og_tolkien_1')">Check my question</button>
+      </div>
+      <div class="qb-feedback" id="qbfb-og_tolkien_1"></div>
+      <a class="backlink" href="#para-og_tolkien_1">↑ Back up to blank (2)</a>
+    </div>
+<div class="qbuilder" id="builder-og_punting_0">
+      <div class="hint">🔤 Question for blank (1):</div>
+      <div class="answer-strip" id="strip-og_punting_0"></div>
+      <div class="word-bank" id="bank-og_punting_0"></div>
+      <div class="qb-controls">
+        <button onclick="resetBuilder('og_punting_0')">Reset</button>
+        <button class="primary" onclick="checkBuilder('og_punting_0')">Check my question</button>
+      </div>
+      <div class="qb-feedback" id="qbfb-og_punting_0"></div>
+      <a class="backlink" href="#para-og_punting_0">↑ Back up to blank (1)</a>
+    </div>
+<div class="qbuilder" id="builder-og_punting_1">
+      <div class="hint">🔤 Question for blank (2):</div>
+      <div class="answer-strip" id="strip-og_punting_1"></div>
+      <div class="word-bank" id="bank-og_punting_1"></div>
+      <div class="qb-controls">
+        <button onclick="resetBuilder('og_punting_1')">Reset</button>
+        <button class="primary" onclick="checkBuilder('og_punting_1')">Check my question</button>
+      </div>
+      <div class="qb-feedback" id="qbfb-og_punting_1"></div>
+      <a class="backlink" href="#para-og_punting_1">↑ Back up to blank (2)</a>
+    </div>
+
   </div>
 </main>
 
 <script>
-const CORE_ITEMS = [{"q": "About how many people live in Oxford today?", "check": ["165"], "model": null, "knows": "A", "prefill": "about 165,000"}, {"q": "Is that bigger or smaller than Bath (about 90,000 people)?", "check": ["bigger"], "model": null, "knows": "A", "prefill": "bigger"}, {"q": "About how many miles is it from Oxford to St Mary's Calne?", "check": ["50"], "model": null, "knows": "B", "prefill": "about 50 miles"}, {"q": "About how many miles is it from Oxford to London?", "check": ["57"], "model": null, "knows": "B", "prefill": "about 57 miles"}, {"q": "About how many miles is it from Oxford to Cambridge?", "check": ["80"], "model": null, "knows": "C", "prefill": "about 80 miles"}, {"q": "More than how many Nobel Prize winners have studied or worked at Oxford?", "check": ["70"], "model": null, "knows": "C", "prefill": "more than 70"}, {"q": "In what year did teaching begin at Oxford?", "check": ["1096"], "model": null, "knows": "D", "prefill": "1096"}, {"q": "In what year was Cambridge started, and why?", "check": ["1209"], "model": "1209 \u2014 after a fight between students and townspeople in Oxford.", "knows": "D", "prefill": "1209, after a fight with the townspeople"}];
-const TOPIC_ITEMS = [{"q": "In what year did the Bodleian Library open?", "check": ["1602"], "model": null, "knows": "A", "prefill": "1602"}, {"q": "What is the library's short nickname?", "check": ["bod"], "model": null, "knows": "A", "prefill": "the Bod"}, {"q": "Why does the library get a free copy of every UK book?", "check": ["legal deposit", "deposit"], "model": "It's a \"legal deposit library.\"", "knows": "B", "prefill": "it's a legal deposit library"}, {"q": "What shape is the roof of the Radcliffe Camera?", "check": ["round", "dome"], "model": null, "knows": "C", "prefill": "round, with a dome"}, {"q": "Which Harry Potter location was filmed inside the Bodleian?", "check": ["library", "hogwarts"], "model": null, "knows": "D", "prefill": "the Hogwarts library"}];
+const BUILDERS = {"cA": ["How many people", "live in Oxford,", "and is that", "bigger or smaller", "than Bath?"], "cB": ["How far is Oxford", "from St Mary's Calne,", "and how far", "is it from London?"], "cC": ["How far is it", "from Oxford to Cambridge,", "and how many", "Nobel Prize winners", "are linked to Oxford?"], "tA": ["When did", "the Bodleian Library open,", "and what's", "its nickname?"], "tB": ["Why does the library", "get a free copy", "of every UK book?"], "tC": ["What shape is", "the roof of", "the Radcliffe Camera?"], "og_christchurch_0": ["Who started Christ Church,", "in what year,", "and what was the name", "of the girl who", "inspired Alice in Wonderland?"], "og_christchurch_1": ["What job did", "Alice's father have,", "what Harry Potter scene", "was filmed there,", "and what do students", "still do in the Hall?"], "og_tolkien_0": ["What was Tolkien's job", "at Oxford,", "and what book", "did he write", "about a small creature?"], "og_tolkien_1": ["What magic object", "is in Tolkien's", "most famous story,", "and who was", "his close friend", "and fellow writer?"], "og_punting_0": ["What is punting,", "and what do you", "push to move", "the boat?"], "og_punting_1": ["Name a river", "where people go punting,", "and what", "can go wrong?"]};
+const state = {};
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+Object.keys(BUILDERS).forEach(key => {
+  const tokens = BUILDERS[key];
+  state[key] = { order: [] };
+  const bank = document.getElementById('bank-' + key);
+  const order = shuffle(tokens.map((_, idx) => idx));
+  order.forEach(tokenIdx => {
+    const tile = document.createElement('button');
+    tile.className = 'tile';
+    tile.textContent = tokens[tokenIdx];
+    tile.type = 'button';
+    tile.dataset.tokenIdx = tokenIdx;
+    tile.onclick = () => placeTile(key, tokenIdx, tile);
+    bank.appendChild(tile);
+  });
+});
+
+function placeTile(key, tokenIdx, tileEl){
+  if(tileEl.classList.contains('placed')){
+    state[key].order = state[key].order.filter(i => i !== tokenIdx);
+    tileEl.classList.remove('placed');
+    document.getElementById('bank-' + key).appendChild(tileEl);
+  } else {
+    state[key].order.push(tokenIdx);
+    tileEl.classList.add('placed');
+    document.getElementById('strip-' + key).appendChild(tileEl);
+  }
+}
+
+function resetBuilder(key){
+  state[key].order = [];
+  const bank = document.getElementById('bank-' + key);
+  const strip = document.getElementById('strip-' + key);
+  Array.from(strip.children).forEach(tile => {
+    tile.classList.remove('placed');
+    bank.appendChild(tile);
+  });
+  document.getElementById('qbfb-' + key).textContent = '';
+}
+
+function checkBuilder(key){
+  const tokens = BUILDERS[key];
+  const built = state[key].order.map(i => tokens[i]).join(' ');
+  const target = tokens.join(' ');
+  const fb = document.getElementById('qbfb-' + key);
+  if(built.toLowerCase() === target.toLowerCase()){
+    fb.textContent = '✓ Great question! Now go ask it.';
+    fb.className = 'qb-feedback correct';
+  } else {
+    fb.textContent = '✗ Not quite the right order yet — try again.';
+    fb.className = 'qb-feedback incorrect';
+  }
+}
 
 function normalize(s){ return (s || '').toLowerCase().replace(/,/g,'').trim(); }
-function checkContains(value, subs){
-  const v = normalize(value);
-  return subs.some(s => v.includes(normalize(s)));
-}
 
 function checkAll(){
-  CORE_ITEMS.forEach((item, i) => checkOne('core', i, item));
-  TOPIC_ITEMS.forEach((item, i) => checkOne('topic', i, item));
-
-  const grid = [[null, "D", null], ["B", "O", "D"], [null, "M", null], [null, "E", null]];
-  for(let r=0; r<grid.length; r++){
-    for(let c=0; c<grid[r].length; c++){
-      if(grid[r][c] === null) continue;
-      const input = document.getElementById(`cw-${r}-${c}`);
-      const val = (input.value || '').toUpperCase().trim();
-      input.classList.remove('correct','incorrect');
-      if(val === input.dataset.answer){ input.classList.add('correct'); }
-      else if(val.length > 0){ input.classList.add('incorrect'); }
-    }
-  }
-}
-
-function checkOne(part, i, item){
-  const input = document.getElementById(`${part}-${i}`);
-  const fb = document.getElementById(`fb-${part}-${i}`);
-  input.classList.remove('correct','incorrect');
-  if(item.check === null){
-    fb.textContent = 'Model answer: ' + item.model;
-    fb.className = 'feedback model';
-    return;
-  }
-  if(checkContains(input.value, item.check)){
-    input.classList.add('correct');
-    fb.textContent = '✓ Correct';
-    fb.className = 'feedback correct';
-  } else {
-    input.classList.add('incorrect');
-    fb.textContent = item.model ? ('Not quite — ' + item.model) : '✗ Not quite — check with your group';
-    fb.className = 'feedback incorrect';
-  }
+  document.querySelectorAll('.chunk input').forEach(input => {
+    input.classList.remove('correct','incorrect');
+    const expect = input.dataset.check || '';
+    const options = expect.split('|');
+    const v = normalize(input.value);
+    const isMatch = options.some(opt => v.includes(normalize(opt)));
+    if(isMatch){ input.classList.add('correct'); }
+    else if(input.value.trim().length > 0){ input.classList.add('incorrect'); }
+  });
+  document.querySelectorAll('table.crossword input').forEach(input => {
+    const val = (input.value || '').toUpperCase().trim();
+    input.classList.remove('correct','incorrect');
+    if(val === input.dataset.answer){ input.classList.add('correct'); }
+    else if(val.length > 0){ input.classList.add('incorrect'); }
+  });
 }
 </script>
 </body>
